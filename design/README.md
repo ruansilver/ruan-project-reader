@@ -4,7 +4,7 @@
 
 ## 文件规则
 
-- 新版本的文档放在 `versions/`，文件名等于版本号：`versions/1.2.0.md`。
+- 新版本的文档放在 `versions/`，文件/文件夹名等于版本号：`versions/1.2.0.md`。
 - 新建时复制 `templates/version.md` 作为起点。`templates/` 下的文件只是模板，不代表任何真实版本。
 - 版本号使用 `MAJOR.MINOR.PATCH` 三段数字（如 `1.2.0`）。
 - 已发布版本的文档永久保留、不覆盖；升级时新增一份新版本文档，用 `previous_version` 指向上一版。
