@@ -1,0 +1,25 @@
+# 临时工作区：实验、日志、评测输出
+src/.work/
+
+# 环境与密钥
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# 缓存与依赖
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+
+# 日志与系统临时文件
+*.log
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# 注意：不要忽略 design/versions/、install/、src/tests/ 与 Skill 正式源码。
