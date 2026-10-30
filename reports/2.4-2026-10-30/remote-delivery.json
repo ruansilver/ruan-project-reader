@@ -2,7 +2,25 @@
   "repository": "ruansilver/ruan-project-reader",
   "branch": "main",
   "authorization": "允许，交付后推送到远端",
-  "status": "发布成品已核验，待提交和推送",
+  "status": "正式交付提交已推送且远端核对一致",
+  "recorded_at": "2026-10-30T14:42:47.382734+00:00",
   "baseline_commit": "f306bf51537d436647ef7b25e0556ff350777708",
-  "tag_created": false
+  "release_commit": "785c7ba92a951762f15ec4683c51218a77d6db6f",
+  "push": {
+    "command": "git push origin main",
+    "exit_code": 0,
+    "output": "To github.com:ruansilver/ruan-project-reader.git\n   f306bf5..785c7ba  main -> main\n"
+  },
+  "remote_verification": {
+    "command": "git ls-remote origin refs/heads/main",
+    "exit_code": 0,
+    "remote_head": "785c7ba92a951762f15ec4683c51218a77d6db6f",
+    "equals_release_commit": true
+  },
+  "tracked_tree_clean_after_release_push": true,
+  "preserved_untracked": [
+    "install/ruan-project-reader (2).zip"
+  ],
+  "tag_created": false,
+  "receipt_note": "本回执随后作为独立文档提交同步；记录描述上述交付提交的实际推送结果，最终分支HEAD通过Git历史及最终回复核对。"
 }

@@ -28,6 +28,6 @@
 
 ## Git与用户已有文件
 
-用户授权在交付后提交并推送现有 `origin/main`；首次同步前fetch确认本地与远端基线均为 `f306bf51537d436647ef7b25e0556ff350777708`。不创建Tag，不强制推送，不改写历史。提交和同步实际结果记录在 `remote-delivery.json`。
+用户授权在交付后提交并推送现有 `origin/main`；首次同步前fetch确认本地与远端基线均为 `f306bf51537d436647ef7b25e0556ff350777708`。不创建Tag，不强制推送，不改写历史。正式交付提交 `785c7ba92a951762f15ec4683c51218a77d6db6f` 已通过 `git push origin main` 推送成功，随后 `git ls-remote origin refs/heads/main` 核对远端一致。实际命令和回执见 `remote-delivery.json`；该回执另以文档提交同步。
 
 用户原有 `install/ruan-project-reader (2).zip` 在构建时保护并原位恢复，SHA-256为 `5e26ef295c9887de641366f70444cbc215fbba780d45316db9da8b4134eb909d`，不纳入本次提交。标准安装包按本次授权重新生成。历史设计/报告、原始修复文档、旧测试夹具、构建脚本和102个既有忽略工作文件均保持原字节。
