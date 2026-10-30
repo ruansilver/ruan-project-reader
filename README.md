@@ -19,7 +19,21 @@
 
 ## 安装成品
 
-`install/ruan-project-reader/` 出现后，把整个目录复制到你的 AI 工具的 Skills 目录即可。`install/` 为空说明尚未正式发布，不要安装 `src/` 中的内容。
+当前正式版为 **2.3**，工程版本为 **2.3.0**，对应 [已确认设计](design/versions/2.3.0.md)。把 `install/ruan-project-reader/` 整个目录复制到你的 AI 工具的 Skills 目录即可，也可解压 [安装包](install/ruan-project-reader.zip) 后复制其中同名目录。
+
+2.3 使用标准 Agent Skills 目录与相对资源路径，运行核心不依赖特定模型、MCP 或联网服务。Codex、Claude Code、DeepSeek Harness 等平台按各自的 Skill 加载方式安装；具体 Harness 需支持本地 Skill，不能仅凭模型名称认定安装位置。检查器需要 Python 3.10+，缺少执行环境时仍可按 Skill 清单进行人工核验。
+
+本版明确每层先下研后成文、首轮总览协作、每次人工转交暂停、完成前核实远端输入，以及未展开入口登记和原始待办逐条计数。真实 Goal 自动续跑及其他平台实机验证仍未完成，详见 [验收报告](reports/2.3-2026-10-30/report.md) 和 [正式交付记录](reports/2.3-2026-10-30/release.md)。
+
+## 验证与构建
+
+```bash
+python3 -m unittest discover -s src/tests -v
+python3 src/build_release.py --build
+python3 src/build_release.py --verify
+```
+
+构建会重跑回归、核验原成品、从开发源暂存完整新成品，并生成规定的发布清单。设计语义验收见 [2.3 验收记录](reports/2.3-2026-10-30/report.md)；[2.2.0 验收记录](src/tests/acceptance-2.2.0.md) 保留作历史依据。测试与平台限制见 [测试说明](src/tests/README.md)。不会自动提交、推送或打 Tag。
 
 ## 用 GitHub 同步
 

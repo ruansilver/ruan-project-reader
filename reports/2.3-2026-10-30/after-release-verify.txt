@@ -1,0 +1,4 @@
+$ python3 src/build_release.py --verify
+失败：开发源的交付文件与成品不一致
+
+exit_code=1

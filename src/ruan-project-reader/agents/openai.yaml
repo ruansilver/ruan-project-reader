@@ -1,0 +1,4 @@
+interface:
+  display_name: "项目执行流程阅读"
+  short_description: "只读源码，建立可追溯的执行流程图文库，核查遗漏并支持跨会话继续阅读"
+  default_prompt: "使用 $ruan-project-reader 阅读当前项目，按执行流程建立或继续维护项目知识库。"

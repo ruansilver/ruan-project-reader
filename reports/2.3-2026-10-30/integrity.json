@@ -1,0 +1,55 @@
+{
+  "design_target": "2.2.0",
+  "source_version": "2.3",
+  "installed": {
+    "version": "2.2.0",
+    "design_document": "design/versions/2.2.0.md",
+    "skill_name": "ruan-project-reader",
+    "design_sha256": "107cbdbef401a68cb897e0602dfc3f9f5a357dffd4d906318d5fa3e3a22e36e8",
+    "artifact_sha256": "babd1396f0c11a9b804a92c7ce29a332121212c65ea929268e7967a3924c2170"
+  },
+  "design_and_install_unchanged": true,
+  "modified_existing_files": [
+    "src/ruan-project-reader/SKILL.md",
+    "src/tests/test_check.py",
+    "src/ruan-project-reader/templates/COVERAGE.md",
+    "src/ruan-project-reader/templates/remote-relay.md",
+    "src/ruan-project-reader/templates/module.md",
+    "src/ruan-project-reader/templates/STATE.md",
+    "src/ruan-project-reader/references/modules.md",
+    "src/ruan-project-reader/references/discovery.md",
+    "src/ruan-project-reader/references/completion.md",
+    "src/ruan-project-reader/references/collaboration.md",
+    "src/ruan-project-reader/references/check-format.md",
+    "src/ruan-project-reader/scripts/check.py"
+  ],
+  "source_validation": "PASS",
+  "git_status": "UNAVAILABLE: not a git repository",
+  "final_source_artifact_sha256": "b9cfac9e51cf787106bb617164abf6cf5a8bf2a8649c5033f65d2dda27544eeb",
+  "skill_file_inventory_unchanged": true,
+  "isolation_source_6_files_unchanged": true,
+  "isolated_final_module_count": 1,
+  "acceptance": {
+    "overview": "PASS",
+    "manual_relays": "PASS",
+    "goal_scope_resume": "UNVERIFIED",
+    "completion_gate": "PASS",
+    "known_unread_entry": "PASS",
+    "duplicate_tasks": "PASS",
+    "minimal_regression": "PASS"
+  },
+  "final_source_file_sha256": {
+    "src/ruan-project-reader/SKILL.md": "f7e669d813afd0cd28e2fc43ba3e0028be2707bab528313c3dc6eda172bf46b3",
+    "src/ruan-project-reader/references/check-format.md": "620b87b74cfc909d445fddd5cb75e7d6ef04ea2fd98495eee88364daa71066e8",
+    "src/ruan-project-reader/references/collaboration.md": "80d6642d27b0af6f87b560814541c96b28fd4edf569212b2c01143b0abb83821",
+    "src/ruan-project-reader/references/completion.md": "4c55fe0e4c0f7ea9a52963fd177a45651da0830a3c825ae685f1ac47a2e4a7e5",
+    "src/ruan-project-reader/references/discovery.md": "3846b84e17655a04790b9d5cc2b1dcb56354dabd209dfa4767296251e693e2b3",
+    "src/ruan-project-reader/references/modules.md": "5f5a5afd0f2fb1e7b7cf306f3c74503daf5d798e62c0adfd81f99dded8833082",
+    "src/ruan-project-reader/scripts/check.py": "5c25c81bc871d6977b6ba1f0badc6f27ce0c28e990c5424869059d75e0cda605",
+    "src/ruan-project-reader/templates/COVERAGE.md": "59b7012832af471ef3bace00175e7d6cc463a81bb60bc12708497c5fe50af754",
+    "src/ruan-project-reader/templates/STATE.md": "5f93afadb2b4f7b2f54cb7eac92fdf34238ce10a4f952bc9681bf4a1f5f7126d",
+    "src/ruan-project-reader/templates/module.md": "aa302b6779e6b217e772ebd209167b27a02d067892c4c640ad05e5a750673af0",
+    "src/ruan-project-reader/templates/remote-relay.md": "7a5751622f8e8bfd5362829e19e9f88aef2c8f5b79e6e09c9446b523ec65c5aa",
+    "src/tests/test_check.py": "651ef0658f5f08e33f11277f45da6b5dd93e45f56bc49a6a3fd1d5d2ac372aba"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "MqProducer.java": "986d5c77dfb248dd060d52681d14c4ed3b60f907e34b829dd85c54be67a81a95",
+  "NotifyService.java": "d73d5d37116bf84aaf301749bb1b2f89507aa0e3e9dd812a51113e4c86c66196",
+  "OrderController.java": "033d9fd3ac782f099064c9c712ebd0a4ca451a03be628cd2fcff98a381ce1aee",
+  "OrderEventListener.java": "d7f1a229e71753ad22aaa1fbbdf383950df6f1f1580742fd65881a96e61dd778",
+  "OrderMapper.xml": "aed83b91e8769db181ced3a63a3584db21fc871b6990ade7d3b08097d2835101",
+  "OrderService.java": "36ce346dd86b563840e0678ddd3bc332c68faabaaa20ed0a4e945667beba1f3b",
+  "OrderTimeoutJob.java": "53dd331c7e995715b4b177904e7d4490492a8ab0a60e2c4511db76dbf70d95ea",
+  "StockClient.java": "1b8d965184fcae220411bb4c38b9677c625f607daea91e2b90e73ef4b4c05885",
+  "application.yml": "8daeb9cc8d1d3ae2fb846f95e94f5b828aae67e18eb3a38b2db26faf6cd511ea"
+}

@@ -1,0 +1,7 @@
+{
+  "version": "2.3.0",
+  "design_document": "design/versions/2.3.0.md",
+  "skill_name": "ruan-project-reader",
+  "design_sha256": "fa1cf28cec6d6af64ab9338067077c35312abd0f1c6502f430bea58f30adc21f",
+  "artifact_sha256": "a5ff4d6805b00391e6bd68b7e669692325882a0d189ebab33545f67ac08e3cce"
+}

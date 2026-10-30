@@ -1,0 +1,34 @@
+{
+  "release_name": "2.3",
+  "version": "2.3.0",
+  "decision": "用户明确确认当前实现为正式版本；Goal 验收仍 UNVERIFIED",
+  "manifest": {
+    "version": "2.3.0",
+    "design_document": "design/versions/2.3.0.md",
+    "skill_name": "ruan-project-reader",
+    "design_sha256": "fa1cf28cec6d6af64ab9338067077c35312abd0f1c6502f430bea58f30adc21f",
+    "artifact_sha256": "a5ff4d6805b00391e6bd68b7e669692325882a0d189ebab33545f67ac08e3cce"
+  },
+  "artifact_file_count": 14,
+  "zip_sha256": "038ebe40931480287c17e7da401b9c82edaaa2cf57e65540e9ede98948d30754",
+  "zip_matches_artifact": true,
+  "regression_test_count": 36,
+  "checks": [
+    {
+      "name": "release-verify",
+      "exit_code": 0
+    },
+    {
+      "name": "install-validation",
+      "exit_code": 0
+    },
+    {
+      "name": "install-check",
+      "exit_code": 0
+    }
+  ],
+  "goal_scope_resume": "UNVERIFIED",
+  "remote": "https://github.com/ruansilver/ruan-project-reader.git",
+  "branch": "main",
+  "base_commit": "08fd5deff8df81952b75f1a94d3222e9822a2b7d"
+}

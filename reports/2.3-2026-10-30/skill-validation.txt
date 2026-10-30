@@ -1,0 +1,4 @@
+$ /usr/bin/python3 /home/ruan/.codex/skills/.system/skill-creator/scripts/quick_validate.py src/ruan-project-reader
+Skill is valid!
+
+exit_code=0

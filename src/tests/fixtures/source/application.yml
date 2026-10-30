@@ -1,0 +1,5 @@
+mq:
+  consumer:
+    order.created:
+      max-retry: 3
+      dead-letter: order.created.dlq

@@ -1,0 +1,39 @@
+{
+  "kind": "维护者控制的隔离源码与记录演练；不代表自主模型或远端审查",
+  "steps": [
+    {
+      "remaining_tasks": 2,
+      "mechanical": "通过",
+      "evidence": "两条原始记录来源与目标模块均相同；当前未决保留两行"
+    },
+    {
+      "remaining_tasks": 1,
+      "mechanical": "通过",
+      "evidence": "先核实第 2–3 行且执行 disabled 分支，仅移除开关分支任务；数量任务仍在"
+    },
+    {
+      "remaining_tasks": 0,
+      "mechanical": "通过",
+      "evidence": {
+        "source": "fixture.py:save 第 4–5 行",
+        "executed_cases": [
+          {
+            "qty": 0,
+            "result": "quantity",
+            "rows": []
+          },
+          {
+            "qty": -1,
+            "result": "quantity",
+            "rows": []
+          },
+          {
+            "qty": 6,
+            "result": "quantity",
+            "rows": []
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+$ /usr/bin/python3 -m unittest discover -s src/tests -v
+test_cli_read_only_and_exit_codes (test_check.ContractTests.test_cli_read_only_and_exit_codes) ... ok
+test_crlf (test_check.ContractTests.test_crlf) ... ok
+test_duplicate_candidate_blocks_not_silently_ignored (test_check.ContractTests.test_duplicate_candidate_blocks_not_silently_ignored) ... ok
+test_each_trigger_not_trivial (test_check.ContractTests.test_each_trigger_not_trivial) ... ok
+test_fault_injection (test_check.ContractTests.test_fault_injection) ... ok
+test_independent_limitation_counted (test_check.ContractTests.test_independent_limitation_counted) ... ok
+test_leaf_cannot_hide_tasks (test_check.ContractTests.test_leaf_cannot_hide_tasks) ... ok
+test_malformed_table_not_empty (test_check.ContractTests.test_malformed_table_not_empty) ... ok
+test_missing_blocked_detail_fails (test_check.ContractTests.test_missing_blocked_detail_fails) ... ok
+test_missing_root (test_check.ContractTests.test_missing_root) ... ok
+test_multiple_tasks_same_module_count_separately (test_check.ContractTests.test_multiple_tasks_same_module_count_separately) ... ok
+test_non_utf8_is_unverified (test_check.ContractTests.test_non_utf8_is_unverified) ... ok
+test_outbound_url_not_fetched (test_check.ContractTests.test_outbound_url_not_fetched) ... ok
+test_pending_candidate_carried_once (test_check.ContractTests.test_pending_candidate_carried_once) ... ok
+test_pending_candidate_with_detailed_limitation (test_check.ContractTests.test_pending_candidate_with_detailed_limitation) ... ok
+test_realistic_forward_draft (test_check.ContractTests.test_realistic_forward_draft) ... ok
+test_reference_link_unknown (test_check.ContractTests.test_reference_link_unknown) ... ok
+test_search_method_with_pipe_is_not_table (test_check.ContractTests.test_search_method_with_pipe_is_not_table) ... ok
+test_shared_module_multiple_entries (test_check.ContractTests.test_shared_module_multiple_entries) ... ok
+test_standalone_blocked_task (test_check.ContractTests.test_standalone_blocked_task) ... ok
+test_uncarried_candidate_count_unknown (test_check.ContractTests.test_uncarried_candidate_count_unknown) ... ok
+test_unknown_mermaid (test_check.ContractTests.test_unknown_mermaid) ... ok
+test_unknown_quantity_never_zero (test_check.ContractTests.test_unknown_quantity_never_zero) ... ok
+test_unreadable_module_counts_not_partial (test_check.ContractTests.test_unreadable_module_counts_not_partial) ... ok
+test_valid (test_check.ContractTests.test_valid) ... ok
+test_build_hash_and_idempotence (test_release.ReleaseTests.test_build_hash_and_idempotence) ... ok
+test_duplicate_metadata_rejected (test_release.ReleaseTests.test_duplicate_metadata_rejected) ... ok
+test_failed_replacement_rolls_back (test_release.ReleaseTests.test_failed_replacement_rolls_back) ... ok
+test_failed_validation_preserves_release (test_release.ReleaseTests.test_failed_validation_preserves_release) ... ok
+test_filename_conflict (test_release.ReleaseTests.test_filename_conflict) ... ok
+test_manifest_derived_exact_fields (test_release.ReleaseTests.test_manifest_derived_exact_fields) ... ok
+test_modified_artifact_stops_before_writes (test_release.ReleaseTests.test_modified_artifact_stops_before_writes) ... ok
+test_no_approved (test_release.ReleaseTests.test_no_approved) ... ok
+test_normalized_text_hash_binary_unchanged (test_release.ReleaseTests.test_normalized_text_hash_binary_unchanged) ... ok
+test_numeric_semver_approved_only (test_release.ReleaseTests.test_numeric_semver_approved_only) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 2.317s
+
+OK
+
+exit_code=0
