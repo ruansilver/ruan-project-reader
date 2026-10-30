@@ -1,0 +1,17 @@
+{
+  "current_development_design_install_check_exit": 0,
+  "unrestricted_evidence_check_exit": 2,
+  "evidence_findings": {
+    "reports/2.4-2026-10-30/before/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md": 7,
+    "reports/2.4-2026-10-30/changes.diff": 116,
+    "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md": 5,
+    "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md": 5,
+    "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/文本文档.txt": 1,
+    "reports/2.4-2026-10-30/evidence/build/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md": 7,
+    "reports/2.4-2026-10-30/evidence/roundtrip/local-layout.diff": 1,
+    "reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff": 24,
+    "reports/2.4-2026-10-30/release-version-residuals-raw.txt": 13,
+    "reports/2.4-2026-10-30/version-residuals-raw.txt": 13
+  },
+  "disposition": "Keep original snapshot whitespace, diff context prefixes, and raw grep lines verbatim; no current source/design/install whitespace errors."
+}

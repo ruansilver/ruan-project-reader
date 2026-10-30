@@ -1,0 +1,298 @@
+[
+  {
+    "file": "src/build_release.py",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/README.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/source-baseline.json",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/check-final.json",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/source/OrderController.java",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/source/OrderService.java",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/source/NotifyService.java",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/source/StockClient.java",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/source/OrderEventListener.java",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/source/application.yml",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/source/OrderTimeoutJob.java",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/source/OrderMapper.xml",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/source/MqProducer.java",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/valid-map/README.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/valid-map/COVERAGE.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/valid-map/STATE.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/project-map/README.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/project-map/CHECKS.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/project-map/COVERAGE.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/project-map/STATE.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/project-map/modules/00-总览.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/project-map/modules/30-超时关单.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/project-map/modules/10-创建订单.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/project-map/modules/20-订单创建通知.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/valid-map/modules/保存.md",
+    "unchanged": true
+  },
+  {
+    "file": "src/tests/fixtures/valid-map/modules/00-总览.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/README.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/templates/version.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.3.0.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/.gitkeep",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2.0.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/文本文档.txt",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader.skill",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/SKILL.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/README.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/COVERAGE.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/gates.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/candidates.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/remote-relay.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/module.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/STATE.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/search-examples.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/discovery-and-coverage.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/diagrams-and-completion.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/check-format.md",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/assets/icon.svg",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/scripts/check.py",
+    "unchanged": true
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/agents/openai.yaml",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader (2).zip",
+    "unchanged": true
+  },
+  {
+    "file": "install/.release.json",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/SKILL.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/templates/README.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/templates/COVERAGE.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/templates/gates.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/templates/remote-relay.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/templates/module.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/templates/STATE.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/references/modules.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/references/discovery.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/references/completion.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/references/collaboration.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/references/check-format.md",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/scripts/check.py",
+    "unchanged": true
+  },
+  {
+    "file": "install/ruan-project-reader/agents/openai.yaml",
+    "unchanged": true
+  }
+]

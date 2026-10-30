@@ -1,0 +1,3 @@
+$ rg -n 此前.?2\.[23]|本次.?2\.4|修复前|修复后|旧方案|东坡肉|蛋炒饭|补丁版|Demo|过渡版 src/ruan-project-reader reports/2.4-2026-10-30/evidence/build/install/ruan-project-reader
+
+exit=1（无命中）

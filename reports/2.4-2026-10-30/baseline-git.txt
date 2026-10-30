@@ -1,0 +1,7 @@
+$ git status --short
+ D install/ruan-project-reader.zip
+?? design/versions/2.4/
+?? "install/ruan-project-reader (2).zip"
+?? reports/2.4-2026-10-30/
+
+exit=0

@@ -1,0 +1,122 @@
+{
+  "formal_release": true,
+  "file_count": 14,
+  "manifest": {
+    "version": "2.4.0",
+    "design_document": "design/versions/2.4.0.md",
+    "skill_name": "ruan-project-reader",
+    "design_sha256": "60472580497909c63d627d88a3f9d20d42a3e9c94915151cd430b6047c7b86b1",
+    "artifact_sha256": "d23453f2d91ffb3e4fd65cf29fca59736affac53a5908678541f93930e63e26d"
+  },
+  "zip_sha256": "aaf6e5b06661afb53be3e93e39c54576e879d854ff01dddd23925388d255e04d",
+  "files": [
+    {
+      "file": "install/ruan-project-reader/SKILL.md",
+      "sha256": "9effaddf6bd4c1f2dc3bddf280134b9a2c40bac81cbcf9158245259641232079",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 55
+    },
+    {
+      "file": "install/ruan-project-reader/agents/openai.yaml",
+      "sha256": "36edec309929989474a021a8aac66b09446aaa15a84d7ff5d6a4cff8266a0f6d",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 4
+    },
+    {
+      "file": "install/ruan-project-reader/references/check-format.md",
+      "sha256": "71046f2f574e91ab1c3ca2267690a709078d4b3cc84a92a4ac51a00f061aa2fc",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 125
+    },
+    {
+      "file": "install/ruan-project-reader/references/collaboration.md",
+      "sha256": "a913043d5a825f19959cdf26cef41bebb8cd30628f2a4361eeb3ba3bf35d4023",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 47
+    },
+    {
+      "file": "install/ruan-project-reader/references/completion.md",
+      "sha256": "69d0e72d4df2d8f4cd2a7f385109e6ee9bbda758fa639586196e0b051b02d33c",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 58
+    },
+    {
+      "file": "install/ruan-project-reader/references/discovery.md",
+      "sha256": "2626f3bdf1decb6b7fee3f97a4df18e88ee06d0504546dc2d2ece59ee62f822c",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 35
+    },
+    {
+      "file": "install/ruan-project-reader/references/modules.md",
+      "sha256": "62e58b08dc7ac29499f46117014bb85125eb4d1bdc68eeb043311bbe847b4609",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 52
+    },
+    {
+      "file": "install/ruan-project-reader/scripts/check.py",
+      "sha256": "154fac47a27b88942cfdc1960bc54cdf5b7785d94d8aeca8020ddd05a2870c8f",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 1107
+    },
+    {
+      "file": "install/ruan-project-reader/templates/COVERAGE.md",
+      "sha256": "46e32214d15ba8796124700af66cc1c3cde04da0b0bc3e5c0b1354c348eda02c",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 50
+    },
+    {
+      "file": "install/ruan-project-reader/templates/README.md",
+      "sha256": "5d82dce6040741686bb9b453bc5f0974259c9fbbc14d913b0a4a60e6655161e4",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 9
+    },
+    {
+      "file": "install/ruan-project-reader/templates/STATE.md",
+      "sha256": "df1db31b502a1a99077ca0f18140d6475c7476832394abc6126b866c96d405fa",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 17
+    },
+    {
+      "file": "install/ruan-project-reader/templates/gates.md",
+      "sha256": "3a852a5e4367c304aec9ef28b492999d4cf2558a296012cc5a3ac95624d5095a",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 10
+    },
+    {
+      "file": "install/ruan-project-reader/templates/module.md",
+      "sha256": "37dbad2f0170c14c386a9b8826a353a721ed2a7ee285924e7ab5345bd49cdaf7",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 63
+    },
+    {
+      "file": "install/ruan-project-reader/templates/remote-relay.md",
+      "sha256": "77170eb9628efa309fd35ae222653670edb9f6066dce5f1b4bab9b9e360bf1ca",
+      "source_equal": true,
+      "zip_equal": true,
+      "lines": 36
+    }
+  ],
+  "preserved_user_zip_sha256": "5e26ef295c9887de641366f70444cbc215fbba780d45316db9da8b4134eb909d",
+  "acceptance": {
+    "limited_scope_pass": 18,
+    "fail": 0,
+    "unverified": [
+      2,
+      19
+    ]
+  },
+  "publication_authorization": "允许，交付后推送到远端"
+}

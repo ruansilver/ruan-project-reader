@@ -1,0 +1,13 @@
+interface:
+  display_name: 项目认知文档库 Demo
+  short_description: 按真实源码建立分层执行流程文档并核对候选、覆盖与完成记录
+  default_prompt: 使用 $ruan-project-reader-demo 按当前授权源码建立项目执行流程文档库。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

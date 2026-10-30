@@ -1,0 +1,20 @@
+{
+  "isolated_build_only": true,
+  "file_count": 14,
+  "zip_sha256": "aaf6e5b06661afb53be3e93e39c54576e879d854ff01dddd23925388d255e04d",
+  "all_zip_members_equal_built_source": true,
+  "manifest": {
+    "version": "2.4.0",
+    "design_document": "design/versions/2.4.0.md",
+    "skill_name": "ruan-project-reader",
+    "design_sha256": "60472580497909c63d627d88a3f9d20d42a3e9c94915151cd430b6047c7b86b1",
+    "artifact_sha256": "d23453f2d91ffb3e4fd65cf29fca59736affac53a5908678541f93930e63e26d"
+  },
+  "production_manifest": {
+    "version": "2.3.0",
+    "design_document": "design/versions/2.3.0.md",
+    "skill_name": "ruan-project-reader",
+    "design_sha256": "fa1cf28cec6d6af64ab9338067077c35312abd0f1c6502f430bea58f30adc21f",
+    "artifact_sha256": "a5ff4d6805b00391e6bd68b7e669692325882a0d189ebab33545f67ac08e3cce"
+  }
+}

@@ -1,0 +1,20 @@
+ M README.md
+ D install/ruan-project-reader.zip
+ M src/ruan-project-reader/SKILL.md
+ M src/ruan-project-reader/references/check-format.md
+ M src/ruan-project-reader/references/collaboration.md
+ M src/ruan-project-reader/references/completion.md
+ M src/ruan-project-reader/references/discovery.md
+ M src/ruan-project-reader/references/modules.md
+ M src/ruan-project-reader/scripts/check.py
+ M src/ruan-project-reader/templates/COVERAGE.md
+ M src/ruan-project-reader/templates/STATE.md
+ M src/ruan-project-reader/templates/module.md
+ M src/ruan-project-reader/templates/remote-relay.md
+ M src/tests/README.md
+ M src/tests/test_check.py
+?? design/versions/2.4.0.md
+?? design/versions/2.4/
+?? "install/ruan-project-reader (2).zip"
+?? reports/2.4-2026-10-30/
+?? src/tests/test_acceptance.py

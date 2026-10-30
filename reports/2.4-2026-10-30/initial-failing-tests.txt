@@ -1,0 +1,29 @@
+test_fingerprint_is_read_only (test_acceptance.AcceptanceTests.test_fingerprint_is_read_only) ... ERROR
+test_pending_and_missing_approval (test_acceptance.AcceptanceTests.test_pending_and_missing_approval) ... ERROR
+
+======================================================================
+ERROR: test_fingerprint_is_read_only (test_acceptance.AcceptanceTests.test_fingerprint_is_read_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/src/tests/test_acceptance.py", line 65, in test_fingerprint_is_read_only
+    result = check.fingerprint(p)
+             ^^^^^^^^^^^^^^^^^
+AttributeError: module 'project_reader_check' has no attribute 'fingerprint'
+
+======================================================================
+ERROR: test_pending_and_missing_approval (test_acceptance.AcceptanceTests.test_pending_and_missing_approval)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/src/tests/test_acceptance.py", line 71, in test_pending_and_missing_approval
+    self.prepare()
+  File "/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/src/tests/test_acceptance.py", line 59, in prepare
+    record(p, state, '模拟用户：通过当前文件。' if accepted else '未取得')
+  File "/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/src/tests/test_acceptance.py", line 28, in record
+    digest = check.fingerprint(path)['sha256']
+             ^^^^^^^^^^^^^^^^^
+AttributeError: module 'project_reader_check' has no attribute 'fingerprint'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.004s
+
+FAILED (errors=2)

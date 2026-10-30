@@ -1,0 +1,22 @@
+{
+  "per_line_occurrences": 719,
+  "by_classification": {
+    "保留：历史依据链接或只读兼容说明": 2,
+    "保留：历史设计与原始材料": 128,
+    "保留：仓库版本规则示例": 12,
+    "保留：设计继承关系、原始批准输入和兼容边界": 28,
+    "保留：旧数据契约识别或测试，不是当前Skill版本": 3,
+    "保留：版本选择、冲突与回滚测试数据": 23,
+    "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本": 504,
+    "保留：历史夹具与固定验收证据，不进入安装包": 12,
+    "保留：会话前已有的忽略实验文件，不进入安装包": 7
+  },
+  "unclassified": [],
+  "current_source_metadata": "2.4.0",
+  "checker_docstring_help": "2.4.0",
+  "state_contract": "2.4",
+  "official_manifest": "2.4.0",
+  "official_zip": "2.4.0; 14 members byte-identical to source",
+  "scan_exclusions": "Git internals, caches, binary ZIP/skill archives and current version-audit output files; archives are handled separately",
+  "user_duplicate_zip": "Preserved original bytes and path, untracked, not the official package"
+}

@@ -1,0 +1,298 @@
+{
+  "protected_files": [
+    {
+      "file": "src/build_release.py",
+      "sha256": "a7c538d9d8b435b2f6b0f27bfb318c2e3502f20d76bf0ba52181d707f20e35ce",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/acceptance-2.2.0.md",
+      "sha256": "749db13c7e1b8e97d575e46ffe328901161da8bc493cdc143db5d2dc0ec260ae",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/README.md",
+      "sha256": "678e53746a5e1cbdcd8e5dcd98dcda2341250eb0fdb2a849cf792fc14177938f",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/source-baseline.json",
+      "sha256": "a433d220a638e1c7b44b13fcb284912f5c83c6efb2212f4b718896fcd2945462",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/check-final.json",
+      "sha256": "8e3f6337aaed714f8f75d9f9dd29aeba257b16bd041377e94de386816716f8b0",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/source/OrderController.java",
+      "sha256": "033d9fd3ac782f099064c9c712ebd0a4ca451a03be628cd2fcff98a381ce1aee",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/source/OrderService.java",
+      "sha256": "36ce346dd86b563840e0678ddd3bc332c68faabaaa20ed0a4e945667beba1f3b",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/source/NotifyService.java",
+      "sha256": "d73d5d37116bf84aaf301749bb1b2f89507aa0e3e9dd812a51113e4c86c66196",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/source/StockClient.java",
+      "sha256": "1b8d965184fcae220411bb4c38b9677c625f607daea91e2b90e73ef4b4c05885",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/source/OrderEventListener.java",
+      "sha256": "d7f1a229e71753ad22aaa1fbbdf383950df6f1f1580742fd65881a96e61dd778",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/source/application.yml",
+      "sha256": "8daeb9cc8d1d3ae2fb846f95e94f5b828aae67e18eb3a38b2db26faf6cd511ea",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/source/OrderTimeoutJob.java",
+      "sha256": "53dd331c7e995715b4b177904e7d4490492a8ab0a60e2c4511db76dbf70d95ea",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/source/OrderMapper.xml",
+      "sha256": "aed83b91e8769db181ced3a63a3584db21fc871b6990ade7d3b08097d2835101",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/source/MqProducer.java",
+      "sha256": "986d5c77dfb248dd060d52681d14c4ed3b60f907e34b829dd85c54be67a81a95",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/valid-map/README.md",
+      "sha256": "d7e46c6bf2a4a0cf96da710eef185e08f1ae9736a98e502739f0e91842d48690",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/valid-map/COVERAGE.md",
+      "sha256": "9039f1e72f1a37f94a0f5188ad18738dd7d6b30c19f06e4616e6cf2daae918b6",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/valid-map/STATE.md",
+      "sha256": "f15de72306c5d34c3037bf14d724915983b0301974591659cc0aa47a90d42b3d",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/project-map/README.md",
+      "sha256": "944446ff805462ee9bd422031c6d5c18690d7d81470a95b1bff68a984c91bf0b",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/project-map/CHECKS.md",
+      "sha256": "a5f0bc3ad3e5bdc7d599973ab328282a444367fe5e1f82e1f6fd5752adab1608",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/project-map/COVERAGE.md",
+      "sha256": "c6e4a022021610165a8d286c1a69299b355c23c6799cfdf273a925e5672a1b9a",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md",
+      "sha256": "d43eed5d4908188b1146da30da5b4e7b1eab400942d7dd3cd571ace212c29f80",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/project-map/STATE.md",
+      "sha256": "af34a748e069505fe697472cbe0da86c54c184f60178f1bbe3da3895f274649a",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/project-map/modules/00-总览.md",
+      "sha256": "5e8495a66b4b2569965e819a0a5cb11fa1bedfecba7c9343dce9c804d0046bea",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/project-map/modules/30-超时关单.md",
+      "sha256": "afb97d0349d9cb4cf7a10434c75f7d46df52be8fd38fff14ee8ff5a192920521",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/project-map/modules/10-创建订单.md",
+      "sha256": "355964ca6558cc9f5c1b33e6b768c54e60504fded72b4765a4b6a95ea2a80173",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/forward-reviewed/project-map/modules/20-订单创建通知.md",
+      "sha256": "2bd306924cf1f5a035d1ac0e800f3ec1724edbbda528d51df405fff2ae55147e",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/valid-map/modules/保存.md",
+      "sha256": "54e407625e63e6f22286f890ae30fa72583bc2a0270d873ff6d29024f7ee28a0",
+      "unchanged": true
+    },
+    {
+      "file": "src/tests/fixtures/valid-map/modules/00-总览.md",
+      "sha256": "1b7b577bd08acbe101c2120ec9b469e68ae0682a66771f0f4d18973e07d187c7",
+      "unchanged": true
+    },
+    {
+      "file": "design/README.md",
+      "sha256": "a6651c3eba9e87894bc8abf6b424382d0fa23ce9034fb47e58f60ba114f5b491",
+      "unchanged": true
+    },
+    {
+      "file": "design/templates/version.md",
+      "sha256": "4bcb2c0a6691f947345e0046ca66d8430467943fc2de12b17ee83359b293c1ec",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.3.0.md",
+      "sha256": "fa1cf28cec6d6af64ab9338067077c35312abd0f1c6502f430bea58f30adc21f",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2.0.md",
+      "sha256": "107cbdbef401a68cb897e0602dfc3f9f5a357dffd4d906318d5fa3e3a22e36e8",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/1.6.2.md",
+      "sha256": "862cc5b8f3130d1878d4714c937c12088c173a7fa1d8898d03da3b0977ea8a64",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+      "sha256": "68b2f2fd7890a23b588cc65f6092e59c77735cba27cf5f1ce37108b461b841e0",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+      "sha256": "4b347234578507d3c057f09b8c6e01eb2ad00aa2add36b300721f8eb3c077d20",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md",
+      "sha256": "eca7e53df9a28a3935e7e81182b6c0d46788af9cebf8005cf07698d979aa011c",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+      "sha256": "9b4e90a29c7d85c97b430107273291bf5ea1c24ee034960e1d1a9c20075b9bf3",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+      "sha256": "8ec60d3b4681d0abe4f8b83903689e2221e3b2f50a0ed2967d8d13f0a49f4040",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/文本文档.txt",
+      "sha256": "34f4f2dfeca1db2c3bcb0cc91dee030c092e9cf9d4845bf9592b54193af9da3d",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader.skill",
+      "sha256": "2da1538a2754ccc4f291574e43c3cf19ace704463156bac3d0cd0ab215db35c5",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/SKILL.md",
+      "sha256": "ffb2122591bbcc43f7c26a8acb39a6f424e965a24a6003fe27308644ab5c6939",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/README.md",
+      "sha256": "23fc419067a9e3d86c5158e86780cc756931f98e4e993c5b50b5c5492f1aca4e",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/COVERAGE.md",
+      "sha256": "dcc274aad0c02f3f5e544843fe7c4f09e9c03aba59be32897731d3ee3f78bc12",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/gates.md",
+      "sha256": "b9773e4dd137f08d30a7d7e683ae3bfc5daf2218232bba92b6c5473133cd3578",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/candidates.md",
+      "sha256": "6567adcf7dc92cbf8d95c3c0e47e0817d07cd6c84407d8da583e52156da25eca",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/remote-relay.md",
+      "sha256": "5df5d4f31cde327726db43135269a6b4546e125d0ddeaef4796228dabb88b6e3",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/module.md",
+      "sha256": "6c638a264758a68e97627f6964138e4bdec392ec1ffe38bc39c2466e7c2437cb",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/STATE.md",
+      "sha256": "3fd8b917cbd763784fa9cc8aca7117b803c9ebf3d5f90c3c6e973b5342762d00",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/search-examples.md",
+      "sha256": "1b856aeb81603045aefe64718de9e893fe7d9315ed7bba5d87d39b3c42d42aea",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/discovery-and-coverage.md",
+      "sha256": "b12252f398ef2f8d0bab976b8825178b563c91e1f039d1a845e04b1b5d27162e",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md",
+      "sha256": "eb41b5817901ae1c9f69c6cb25d737e19db2f8522c2ba596cea1bbc359618cd2",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/diagrams-and-completion.md",
+      "sha256": "ba848e51fbf138f3803b4409fe3ee89c97d2a96e17ff292017fd73a4f16efdae",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md",
+      "sha256": "53b485cda59e2367d025934522a23bf4214f317b8d03531c1ea1c1abde5d2e00",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/check-format.md",
+      "sha256": "2d89b7878d774eccb1b402825a5cbff0297dda00387cf04eda7bffdda65e2692",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/assets/icon.svg",
+      "sha256": "e9301497fa98ef56aaca7ede0857b9a18dc06c34040f0679c609a6bf49b1d38b",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/scripts/check.py",
+      "sha256": "0669d8875c367262609daa6bd123241fcef9d6d1b38e297ac9a4dc505e71ecb0",
+      "unchanged": true
+    },
+    {
+      "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/agents/openai.yaml",
+      "sha256": "a554fbf6ac6153ccd56f3881148502aabdbb1e62b1abea447ebc17388866a44c",
+      "unchanged": true
+    }
+  ],
+  "unchanged_existing_work_files": 102,
+  "historical_diff": "",
+  "user_zip_original_path_retained": true,
+  "user_zip_equals_before_snapshot": true
+}

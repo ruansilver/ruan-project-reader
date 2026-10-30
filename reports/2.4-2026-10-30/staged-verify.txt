@@ -1,0 +1,5 @@
+隔离工程副本：/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.4-2026-10-30/evidence/build
+$ python3 src/build_release.py --verify
+通过：目标与已发布 2.4.0；设计、成品哈希及源文件一致
+
+exit=0

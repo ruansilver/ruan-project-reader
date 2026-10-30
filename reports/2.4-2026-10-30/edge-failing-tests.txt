@@ -1,0 +1,72 @@
+test_active_empty_scope_is_not_silently_replaced_with_inventory (test_acceptance.AcceptanceTests.test_active_empty_scope_is_not_silently_replaced_with_inventory) ... FAIL
+test_body_is_not_unicode_normalized_or_whitespace_folded (test_acceptance.AcceptanceTests.test_body_is_not_unicode_normalized_or_whitespace_folded) ... ok
+test_cli_hashes_match_normal_check_and_are_read_only (test_acceptance.AcceptanceTests.test_cli_hashes_match_normal_check_and_are_read_only) ... ok
+test_declared_contract_requires_records_and_nine_counts (test_acceptance.AcceptanceTests.test_declared_contract_requires_records_and_nine_counts) ... ok
+test_each_file_approval_and_partial_batch (test_acceptance.AcceptanceTests.test_each_file_approval_and_partial_batch) ... ok
+test_fences_and_headings_follow_markdown_boundaries (test_acceptance.AcceptanceTests.test_fences_and_headings_follow_markdown_boundaries) ... ok
+test_fingerprint_is_read_only (test_acceptance.AcceptanceTests.test_fingerprint_is_read_only) ... ok
+test_new_contract_cannot_be_bypassed_by_deleting_version (test_acceptance.AcceptanceTests.test_new_contract_cannot_be_bypassed_by_deleting_version) ... ok
+test_no_partial_hash_on_ambiguous_or_missing_structure (test_acceptance.AcceptanceTests.test_no_partial_hash_on_ambiguous_or_missing_structure) ... ok
+test_nonblocking_problems_preserve_parent_completion (test_acceptance.AcceptanceTests.test_nonblocking_problems_preserve_parent_completion) ... ok
+test_normalization_and_independent_golden_bytes (test_acceptance.AcceptanceTests.test_normalization_and_independent_golden_bytes) ... ok
+test_pending_and_missing_approval (test_acceptance.AcceptanceTests.test_pending_and_missing_approval) ... ok
+test_pending_leaf_still_requires_technical_gates (test_acceptance.AcceptanceTests.test_pending_leaf_still_requires_technical_gates) ... ok
+test_reader_changes_invalidate_and_operational_changes_do_not (test_acceptance.AcceptanceTests.test_reader_changes_invalidate_and_operational_changes_do_not) ... ok
+test_scope_detects_rename_add_remove_and_changed_reader (test_acceptance.AcceptanceTests.test_scope_detects_rename_add_remove_and_changed_reader) ... ok
+test_scope_path_rules_and_independent_recalculation (test_acceptance.AcceptanceTests.test_scope_path_rules_and_independent_recalculation) ... ok
+test_scope_requires_individual_acceptance_then_own_answer (test_acceptance.AcceptanceTests.test_scope_requires_individual_acceptance_then_own_answer) ... ok
+test_source_baseline_unknown_is_explicit_not_fabricated (test_acceptance.AcceptanceTests.test_source_baseline_unknown_is_explicit_not_fabricated) ... ok
+test_unknown_fingerprint_prevents_promotion_even_with_answer (test_acceptance.AcceptanceTests.test_unknown_fingerprint_prevents_promotion_even_with_answer) ... ok
+test_unreadable_completed_module_is_unverified_not_false_fail (test_acceptance.AcceptanceTests.test_unreadable_completed_module_is_unverified_not_false_fail) ... FAIL
+
+======================================================================
+FAIL: test_active_empty_scope_is_not_silently_replaced_with_inventory (test_acceptance.AcceptanceTests.test_active_empty_scope_is_not_silently_replaced_with_inventory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/src/tests/test_acceptance.py", line 314, in test_active_empty_scope_is_not_silently_replaced_with_inventory
+    self.assertEqual(proc.returncode,1,proc.stdout)
+AssertionError: 0 != 1 : {
+  "文件": "/tmp/reader 2.4 中文 gd8y9y8r/project-map",
+  "规范版本": "2.4",
+  "算法": "reader-scope-2.4-nfc-utf8-sha256",
+  "sha256": "236befc5e22555071f98320c81f7e1bbe762f4ccbdd7ebfd33270d2d1ef82ba2",
+  "清单": [
+    {
+      "路径": "modules/00-总览.md",
+      "文件": "/tmp/reader 2.4 中文 gd8y9y8r/project-map/modules/00-总览.md",
+      "规范版本": "2.4",
+      "算法": "reader-content-2.4-sha256",
+      "sha256": "116dbb68ee4e4396334d366b710e2424f97a2d598cc26f2211b744abc512758b",
+      "结果": "通过",
+      "说明": "读者内容指纹已实际计算；不证明用户授权或源码真实性"
+    },
+    {
+      "路径": "modules/保存.md",
+      "文件": "/tmp/reader 2.4 中文 gd8y9y8r/project-map/modules/保存.md",
+      "规范版本": "2.4",
+      "算法": "reader-content-2.4-sha256",
+      "sha256": "cbc5e51695530c822133adf8edfed85e8dbfd703935a4cd86330dc1b37a548fb",
+      "结果": "通过",
+      "说明": "读者内容指纹已实际计算；不证明用户授权或源码真实性"
+    }
+  ],
+  "结果": "通过",
+  "说明": "范围指纹已实际计算；模块验收与整体技术条件须另行核验"
+}
+
+
+======================================================================
+FAIL: test_unreadable_completed_module_is_unverified_not_false_fail (test_acceptance.AcceptanceTests.test_unreadable_completed_module_is_unverified_not_false_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/src/tests/test_acceptance.py", line 322, in test_unreadable_completed_module_is_unverified_not_false_fail
+    self.assertEqual(result['机械检查'],'未验证',[r for r in result['明细'] if r['结果']=='失败'])
+AssertionError: '失败' != '未验证'
+- 失败
++ 未验证
+ : [{'结果': '失败', '范围': '节点', '文件': 'modules/00-总览.md', '说明': 'F 去向是有效模块/正文或未决定位'}, {'结果': '失败', '范围': '发现', '文件': 'COVERAGE.md', '说明': '入口 E1 主体流程指向实际模块：modules/保存.md'}, {'结果': '失败', '范围': '发现', '文件': 'COVERAGE.md', '说明': '汇点 S1 没有对应候选/正文中的源码位置：fixture.py:save'}, {'结果': '失败', '范围': '验收', '文件': 'COVERAGE.md', '说明': '清单所有模块（含总览）已个别验收，整体认可不能顺带批准'}, {'结果': '失败', '范围': '完成', '文件': '.', '说明': '存在 check 失败，不得以当前检查支持完成／叶子状态切换；修复后复检'}]
+
+----------------------------------------------------------------------
+Ran 20 tests in 1.194s
+
+FAILED (failures=2)

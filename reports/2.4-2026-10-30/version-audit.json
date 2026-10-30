@@ -1,0 +1,22 @@
+{
+  "per_line_occurrences": 653,
+  "by_classification": {
+    "保留：正式发布尚未批准替换，现存2.3.0须如实保留": 5,
+    "保留：历史依据链接或兼容说明": 2,
+    "保留：不可改写的历史设计/原始材料": 128,
+    "保留：设计继承关系、原始已批准输入和兼容边界": 28,
+    "保留：历史夹具/固定证据，不进入安装包": 12,
+    "保留：仓库版本规则示例": 12,
+    "保留：2.3数据契约兼容选择/断言，不是当前Skill版本": 2,
+    "保留：SemVer选择/冲突/回滚测试数据，不是产品标识": 23,
+    "保留：历史报告、基线、隔离证据或发布状态说明，不作为现行运行版本": 434,
+    "保留：会话前已有的忽略实验文件，不进入安装包": 7
+  },
+  "unclassified": 0,
+  "current_source_metadata": "2.4.0",
+  "checker_docstring_help": "2.4.0",
+  "state_contract": "2.4",
+  "staged_manifest": "2.4.0",
+  "official_manifest": "2.3.0 (not published; unchanged)",
+  "binary_archives": "Historical archives kept; prepared 2.4 ZIP was read member-by-member and matched to the current source."
+}

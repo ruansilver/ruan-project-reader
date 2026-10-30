@@ -1,0 +1,384 @@
+reports/2.4-2026-10-30/before/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:41: trailing whitespace.
++  4: 
+reports/2.4-2026-10-30/before/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:57: trailing whitespace.
++  5: 
+reports/2.4-2026-10-30/before/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:71: trailing whitespace.
++  4: 
+reports/2.4-2026-10-30/before/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:83: trailing whitespace.
++  4: 
+reports/2.4-2026-10-30/before/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:113: trailing whitespace.
++  6: 
+reports/2.4-2026-10-30/before/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:135: trailing whitespace.
++  5: 
+reports/2.4-2026-10-30/before/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:153: trailing whitespace.
++  5: 
+reports/2.4-2026-10-30/changes.diff:6: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:8: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:11: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:14: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:17: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:19: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:23: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:26: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:28: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:40: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:42: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:45: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:47: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:52: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:54: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:65: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:67: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:75: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:84: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:91: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:93: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:96: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:98: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:100: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:103: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:105: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:109: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:112: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:116: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:118: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:121: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:124: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:126: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:129: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:175: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:177: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:180: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:183: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:186: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:189: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:191: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:217: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:220: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:222: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:228: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:236: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:239: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:241: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:243: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:246: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:250: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:252: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:255: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:257: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:272: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:274: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:276: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:284: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:286: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:289: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:291: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:297: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:299: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:310: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:324: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:354: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:355: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:494: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:495: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:502: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:503: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:507: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:527: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:544: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:579: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:612: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:781: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:826: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:837: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:838: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:894: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:914: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:929: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:937: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:939: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:942: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:944: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:946: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:948: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:959: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:967: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:970: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:972: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:974: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:976: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:979: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:981: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:984: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:994: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:997: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:999: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1001: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1003: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1012: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1030: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1044: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1066: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1076: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1083: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1092: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1101: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1109: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1115: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1129: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1134: trailing whitespace.
++ 
+reports/2.4-2026-10-30/changes.diff:1145: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:9: trailing whitespace.
++**设计版本：** 1.6.2（最小清理）  
+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:10: trailing whitespace.
++**整理日期：** 2026-10-26  
+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:11: trailing whitespace.
++**工作名称：** `ruan-project-reader`  
+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:12: trailing whitespace.
++**直接底稿：** 完整的 1.6.1 设计文档。  
+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:13: trailing whitespace.
++**阶段：**生产skills阶段  
+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:3: trailing whitespace.
++**设计版本：** 1.6.2（最小清理）  
+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:4: trailing whitespace.
++**整理日期：** 2026-10-26  
+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:5: trailing whitespace.
++**工作名称：** `ruan-project-reader`  
+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:6: trailing whitespace.
++**直接底稿：** 完整的 1.6.1 设计文档。  
+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:7: trailing whitespace.
++**阶段：**生产skills阶段  
+reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/文本文档.txt:2: new blank line at EOF.
+reports/2.4-2026-10-30/evidence/build/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:41: trailing whitespace.
++  4: 
+reports/2.4-2026-10-30/evidence/build/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:57: trailing whitespace.
++  5: 
+reports/2.4-2026-10-30/evidence/build/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:71: trailing whitespace.
++  4: 
+reports/2.4-2026-10-30/evidence/build/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:83: trailing whitespace.
++  4: 
+reports/2.4-2026-10-30/evidence/build/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:113: trailing whitespace.
++  6: 
+reports/2.4-2026-10-30/evidence/build/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:135: trailing whitespace.
++  5: 
+reports/2.4-2026-10-30/evidence/build/src/tests/fixtures/forward-reviewed/project-map/REMOTE-RELAY.md:153: trailing whitespace.
++  5: 
+reports/2.4-2026-10-30/evidence/roundtrip/local-layout.diff:5: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:4: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:6: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:9: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:11: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:22: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:24: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:31: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:33: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:35: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:38: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:40: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:42: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:48: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:54: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:56: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:67: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:69: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:74: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:76: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:78: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:80: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:83: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:85: trailing whitespace.
++ 
+reports/2.4-2026-10-30/evidence/roundtrip/local-revision.diff:85: new blank line at EOF.
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:32: trailing whitespace.
++design/versions/1.6.2.md:9:**设计版本：** 1.6.2（最小清理）  
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:33: trailing whitespace.
++design/versions/1.6.2.md:12:**直接底稿：** 完整的 1.6.1 设计文档。  
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:95: trailing whitespace.
++design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:3:**设计版本：** 1.6.2（最小清理）  
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:96: trailing whitespace.
++design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:6:**直接底稿：** 完整的 1.6.1 设计文档。  
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:229: trailing whitespace.
++src/.work/evaluation/init-output/REMOTE-STARTER.md:501:version = "0.1.0"
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:231: trailing whitespace.
++src/.work/evaluation/iteration-1/init-remote-before-fix.md:501:version = "0.1.0"
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:248: trailing whitespace.
++src/.work/evaluation/init-retest/000-项目总览.md:50:assets/sample.json 是合成输入样例；pyproject.toml 只声明包名 parcel-quote、版本 0.1.0、Python >=3.11，未见依赖列表或脚本命令。它们由 N0021/N0022 承接。
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:253: trailing whitespace.
++src/.work/evaluation/init-retest/REMOTE-RELAY.md:125:assets/sample.json 是合成输入样例；pyproject.toml 只声明包名 parcel-quote、版本 0.1.0、Python >=3.11，未见依赖列表或脚本命令。它们由 N0021/N0022 承接。
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:254: trailing whitespace.
++src/.work/evaluation/init-retest/REMOTE-RELAY.md:440:version = "0.1.0"
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:361: trailing whitespace.
++reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:9:**设计版本：** 1.6.2（最小清理）  
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:362: trailing whitespace.
++reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:12:**直接底稿：** 完整的 1.6.1 设计文档。  
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:616: trailing whitespace.
++reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:3:**设计版本：** 1.6.2（最小清理）  
+reports/2.4-2026-10-30/release-version-residuals-raw.txt:617: trailing whitespace.
++reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:6:**直接底稿：** 完整的 1.6.1 设计文档。  
+reports/2.4-2026-10-30/version-residuals-raw.txt:66: trailing whitespace.
++design/versions/1.6.2.md:9:**设计版本：** 1.6.2（最小清理）  
+reports/2.4-2026-10-30/version-residuals-raw.txt:67: trailing whitespace.
++design/versions/1.6.2.md:12:**直接底稿：** 完整的 1.6.1 设计文档。  
+reports/2.4-2026-10-30/version-residuals-raw.txt:142: trailing whitespace.
++src/.work/evaluation/init-retest/000-项目总览.md:50:assets/sample.json 是合成输入样例；pyproject.toml 只声明包名 parcel-quote、版本 0.1.0、Python >=3.11，未见依赖列表或脚本命令。它们由 N0021/N0022 承接。
+reports/2.4-2026-10-30/version-residuals-raw.txt:143: trailing whitespace.
++src/.work/evaluation/init-output/REMOTE-STARTER.md:501:version = "0.1.0"
+reports/2.4-2026-10-30/version-residuals-raw.txt:150: trailing whitespace.
++src/.work/evaluation/init-retest/REMOTE-RELAY.md:125:assets/sample.json 是合成输入样例；pyproject.toml 只声明包名 parcel-quote、版本 0.1.0、Python >=3.11，未见依赖列表或脚本命令。它们由 N0021/N0022 承接。
+reports/2.4-2026-10-30/version-residuals-raw.txt:151: trailing whitespace.
++src/.work/evaluation/init-retest/REMOTE-RELAY.md:440:version = "0.1.0"
+reports/2.4-2026-10-30/version-residuals-raw.txt:153: trailing whitespace.
++src/.work/evaluation/iteration-1/init-remote-before-fix.md:501:version = "0.1.0"
+reports/2.4-2026-10-30/version-residuals-raw.txt:244: trailing whitespace.
++design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:3:**设计版本：** 1.6.2（最小清理）  
+reports/2.4-2026-10-30/version-residuals-raw.txt:245: trailing whitespace.
++design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:6:**直接底稿：** 完整的 1.6.1 设计文档。  
+reports/2.4-2026-10-30/version-residuals-raw.txt:320: trailing whitespace.
++reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:9:**设计版本：** 1.6.2（最小清理）  
+reports/2.4-2026-10-30/version-residuals-raw.txt:321: trailing whitespace.
++reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:12:**直接底稿：** 完整的 1.6.1 设计文档。  
+reports/2.4-2026-10-30/version-residuals-raw.txt:453: trailing whitespace.
++reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:3:**设计版本：** 1.6.2（最小清理）  
+reports/2.4-2026-10-30/version-residuals-raw.txt:454: trailing whitespace.
++reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:6:**直接底稿：** 完整的 1.6.1 设计文档。  
+
+exit=2

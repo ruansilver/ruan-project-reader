@@ -1,0 +1,4 @@
+隔离缺工具模拟（宿主机实际有Python）
+PATH为空目录；python3不可执行；没有调用等效工具。
+[Errno 2] No such file or directory: 'python3'
+不得生成哈希或转正；机械负例见test_unknown_fingerprint_prevents_promotion_even_with_answer。

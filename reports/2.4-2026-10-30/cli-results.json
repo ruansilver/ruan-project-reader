@@ -1,0 +1,35 @@
+[
+  {
+    "name": "legacy",
+    "command": [
+      "python3",
+      "/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/src/ruan-project-reader/scripts/check.py",
+      "src/tests/fixtures/valid-map",
+      "--json"
+    ],
+    "exit": 2,
+    "read_only": true
+  },
+  {
+    "name": "module-fingerprint",
+    "command": [
+      "python3",
+      "/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/src/ruan-project-reader/scripts/check.py",
+      "--fingerprint",
+      "reports/2.4-2026-10-30/evidence/migration-2-whole-pending/project-map/modules/保存.md"
+    ],
+    "exit": 0,
+    "read_only": true
+  },
+  {
+    "name": "scope-fingerprint",
+    "command": [
+      "python3",
+      "/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/src/ruan-project-reader/scripts/check.py",
+      "--scope-fingerprint",
+      "reports/2.4-2026-10-30/evidence/migration-2-whole-pending/project-map"
+    ],
+    "exit": 0,
+    "read_only": true
+  }
+]

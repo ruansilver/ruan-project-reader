@@ -1,0 +1,18 @@
+[
+  "README.md",
+  "src/ruan-project-reader/SKILL.md",
+  "src/ruan-project-reader/references/check-format.md",
+  "src/ruan-project-reader/references/collaboration.md",
+  "src/ruan-project-reader/references/completion.md",
+  "src/ruan-project-reader/references/discovery.md",
+  "src/ruan-project-reader/references/modules.md",
+  "src/ruan-project-reader/scripts/check.py",
+  "src/ruan-project-reader/templates/COVERAGE.md",
+  "src/ruan-project-reader/templates/STATE.md",
+  "src/ruan-project-reader/templates/module.md",
+  "src/ruan-project-reader/templates/remote-relay.md",
+  "src/tests/README.md",
+  "src/tests/test_check.py",
+  "design/versions/2.4.0.md",
+  "src/tests/test_acceptance.py"
+]

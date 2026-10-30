@@ -45,9 +45,16 @@ class ContractTests(unittest.TestCase):
         with (self.root / MODULE).open("a", encoding="utf-8") as f:
             f.write(f"| {source} | {kind} | {problem} | 读取调用体 | 检索实现 | 契约尚缺 | 出口不明 | 获取契约后重试 |\n")
 
+    def assert_legacy_valid(self, report):
+        self.assertEqual(report["机械检查"], "未验证", report["明细"])
+        self.assertEqual(report["规范版本"], "2.3")
+        for group in ("记录", "发现", "处置", "节点", "链接", "完成", "汇总"):
+            self.assertEqual(report["分项"][group], "通过", report["明细"])
+        self.assertEqual(report["分项"]["规范"], "未验证")
+
     def test_valid(self):
         r = self.report()
-        self.assertEqual(r["机械检查"], "通过", r["明细"])
+        self.assert_legacy_valid(r)
         self.assertEqual(r["派生计数"]["覆盖记录数"], 6)
         self.assertTrue(r["人工核验（脚本未验证）"])
 
@@ -133,19 +140,19 @@ class ContractTests(unittest.TestCase):
         self.task("同一来源", problem="调用场景甲")
         self.task("同一来源", problem="调用场景乙")
         self.replace("STATE.md", "待办数：0", "待办数：2")
-        self.assertEqual(self.report()["机械检查"], "通过")
+        self.assert_legacy_valid(self.report())
         self.assertEqual(self.report()["派生计数"]["待办数"], 2)
         p = self.root / MODULE
         lines = p.read_text(encoding="utf-8").splitlines()
         p.write_text("\n".join(x for x in lines if "调用场景甲" not in x) + "\n", encoding="utf-8")
         self.replace("STATE.md", "待办数：2", "待办数：1")
-        self.assertEqual(self.report()["机械检查"], "通过")
+        self.assert_legacy_valid(self.report())
         self.assertEqual(self.report()["派生计数"]["待办数"], 1)
         self.assertIn("调用场景乙", p.read_text(encoding="utf-8"))
         lines = p.read_text(encoding="utf-8").splitlines()
         p.write_text("\n".join(x for x in lines if "调用场景乙" not in x) + "\n", encoding="utf-8")
         self.replace("STATE.md", "待办数：1", "待办数：0")
-        self.assertEqual(self.report()["机械检查"], "通过")
+        self.assert_legacy_valid(self.report())
         self.assertEqual(self.report()["派生计数"]["待办数"], 0)
 
     def test_known_unexpanded_entry_is_registered_and_counted(self):
@@ -159,7 +166,7 @@ class ContractTests(unittest.TestCase):
         self.replace("STATE.md", "入口数：1", "入口数：2")
         self.replace("STATE.md", "覆盖记录数：6", "覆盖记录数：7")
         r = self.report()
-        self.assertEqual(r["机械检查"], "通过", r["明细"])
+        self.assert_legacy_valid(r)
         self.assertEqual(r["派生计数"]["入口数"], 2)
         self.assertEqual(r["派生计数"]["待办数"], 1)
 
@@ -168,7 +175,7 @@ class ContractTests(unittest.TestCase):
         self.task(kind="阻塞")
         self.replace("STATE.md", "待办数：0", "待办数：1")
         self.replace("STATE.md", "阻塞数：0", "阻塞数：1")
-        self.assertEqual(self.report()["机械检查"], "通过")
+        self.assert_legacy_valid(self.report())
 
     def test_missing_blocked_detail_fails(self):
         self.unfinished()
@@ -181,7 +188,7 @@ class ContractTests(unittest.TestCase):
         self.replace(MODULE, "| 本文已解释 | [规则](#规则)", "| 待核实 | [未决](#未决)")
         self.task("fixture.py:save / 保存记录")
         self.replace("STATE.md", "待办数：0", "待办数：1")
-        self.assertEqual(self.report()["机械检查"], "通过")
+        self.assert_legacy_valid(self.report())
 
     def test_uncarried_candidate_count_unknown(self):
         self.unfinished()
@@ -200,27 +207,27 @@ class ContractTests(unittest.TestCase):
         with (self.root / MODULE).open("a", encoding="utf-8") as f:
             f.write("\n## 限制说明\n问题：契约未知\n已尝试方法：查公开文档\n缺失依据：生产配置\n影响：重试时序未知\n重试条件：获得配置\n")
         self.replace("STATE.md", "待办数：0", "待办数：1")
-        self.assertEqual(self.report()["机械检查"], "通过")
+        self.assert_legacy_valid(self.report())
 
     def test_shared_module_multiple_entries(self):
         self.replace(OVERVIEW, "E1 触发", "E1、E2 触发")
         self.replace("COVERAGE.md", "| E1 | fixture.py:save | [保存](modules/保存.md) | [保存流程](modules/00-总览.md#F) | 无 |", "| E1 | fixture.py:save | [保存](modules/保存.md) | [保存流程](modules/00-总览.md#F) | 无 |\n| E2 | fixture.py:other | [保存](modules/保存.md) | [保存流程](modules/00-总览.md#F) | 无 |")
         self.replace("STATE.md", "入口数：1", "入口数：2")
         self.replace("STATE.md", "覆盖记录数：6", "覆盖记录数：7")
-        self.assertEqual(self.report()["机械检查"], "通过")
+        self.assert_legacy_valid(self.report())
 
     def test_crlf(self):
         for p in self.root.rglob("*.md"):
             p.write_bytes(p.read_bytes().replace(b"\n", b"\r\n"))
-        self.assertEqual(self.report()["机械检查"], "通过")
+        self.assert_legacy_valid(self.report())
 
     def test_cli_read_only_and_exit_codes(self):
         def snapshot():
             return {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in self.root.rglob("*") if p.is_file()}
         before = snapshot()
         proc = subprocess.run([sys.executable, str(SCRIPT), str(self.root), "--json"], capture_output=True, text=True, cwd=self.tmp.name)
-        self.assertEqual(proc.returncode, 0, proc.stderr)
-        self.assertEqual(json.loads(proc.stdout)["机械检查"], "通过")
+        self.assertEqual(proc.returncode, 2, proc.stderr)
+        self.assert_legacy_valid(json.loads(proc.stdout))
         self.assertEqual(snapshot(), before)
         self.replace(MODULE, '  A["保存"]', '  A@{ shape: rect, label: "保存" }')
         proc = subprocess.run([sys.executable, str(SCRIPT), str(self.root)], capture_output=True)
@@ -254,7 +261,7 @@ class ContractTests(unittest.TestCase):
 
     def test_search_method_with_pipe_is_not_table(self):
         self.replace(MODULE, "扫描方法：逐行读 fixture.py 的 save 和返回", '扫描方法：rg -n "save|return" fixture.py')
-        self.assertEqual(self.report()["机械检查"], "通过")
+        self.assert_legacy_valid(self.report())
 
     def test_pending_candidate_with_detailed_limitation(self):
         self.unfinished()
@@ -262,14 +269,14 @@ class ContractTests(unittest.TestCase):
         self.replace(MODULE, "| 本文已解释 | [规则](#规则)", "| 待核实 | [未决](#未决)")
         self.task("fixture.py:save / 保存记录", kind="限制")
         self.replace("STATE.md", "待办数：0", "待办数：1")
-        self.assertEqual(self.report()["机械检查"], "通过")
+        self.assert_legacy_valid(self.report())
         self.replace(MODULE, "| 读取调用体 |", "| 无 |")
         self.assertEqual(self.report()["分项"]["处置"], "失败")
 
     def test_realistic_forward_draft(self):
         fixture = BASE / "fixtures/forward-reviewed"
         r = check.Checker(fixture / "project-map").run()
-        self.assertEqual(r["机械检查"], "通过")
+        self.assert_legacy_valid(r)
         self.assertEqual(r["派生计数"]["待办数"], 9)
         self.assertEqual(r["派生计数"]["阻塞数"], 0)
         self.assertEqual(r["派生计数"]["已证叶子模块数"], 0)

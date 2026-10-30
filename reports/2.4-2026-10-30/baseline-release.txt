@@ -1,0 +1,4 @@
+$ python3 src/build_release.py --verify
+通过：目标与已发布 2.3.0；设计、成品哈希及源文件一致
+
+exit=0

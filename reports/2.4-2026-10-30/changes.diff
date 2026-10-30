@@ -1,0 +1,1662 @@
+diff --git a/README.md b/README.md
+index a74af47..29d77cf 100644
+--- a/README.md
++++ b/README.md
+@@ -19,11 +19,11 @@
+ 
+ ## 安装成品
+ 
+-当前正式版为 **2.3**，工程版本为 **2.3.0**，对应 [已确认设计](design/versions/2.3.0.md)。把 `install/ruan-project-reader/` 整个目录复制到你的 AI 工具的 Skills 目录即可，也可解压 [安装包](install/ruan-project-reader.zip) 后复制其中同名目录。
++当前正式版本为 **2.4**，工程版本为 **2.4.0**，对应 [已确认设计](design/versions/2.4.0.md)。成品已从开发源构建并核验，发布详情见 [发布记录](reports/2.4-2026-10-30/release.md) 和 `install/.release.json`。把 `install/ruan-project-reader/` 整个目录复制到你的 AI 工具的 Skills 目录即可，也可解压 [安装包](install/ruan-project-reader.zip) 后复制其中同名目录。
+ 
+-2.3 使用标准 Agent Skills 目录与相对资源路径，运行核心不依赖特定模型、MCP 或联网服务。Codex、Claude Code、DeepSeek Harness 等平台按各自的 Skill 加载方式安装；具体 Harness 需支持本地 Skill，不能仅凭模型名称认定安装位置。检查器需要 Python 3.10+，缺少执行环境时仍可按 Skill 清单进行人工核验。
++2.4 使用标准 Agent Skills 目录与相对资源路径，运行核心不依赖特定模型、MCP 或联网服务。Codex、Claude Code、DeepSeek Harness 等平台按各自的 Skill 加载方式安装；具体 Harness 需支持本地 Skill，不能仅凭模型名称认定安装位置。检查器需要 Python 3.10+ 标准库。正式转正及整体完成必须由 Python 或可信同算法工具实际计算指纹；没有可信计算能力时可继续调查、保存草稿或待验收，但指纹未验证，用户表示认可也不能转正。工具恢复后须重算并重新确认具体版本。
+ 
+-本版明确每层先下研后成文、首轮总览协作、每次人工转交暂停、完成前核实远端输入，以及未展开入口登记和原始待办逐条计数。真实 Goal 自动续跑及其他平台实机验证仍未完成，详见 [验收报告](reports/2.3-2026-10-30/report.md) 和 [正式交付记录](reports/2.3-2026-10-30/release.md)。
++本版按“本地核验通过 → 待验收 → 用户明确认可当前文件指纹版本 → 独立授权继续”运行，完整稿默认文件回传。各模块先验收，再对整体清单确认。已有知识库默认只读检查；合法三状态/八统计结构返回 UNVERIFIED（退出2），格式迁移须用户明确触发。完整证据及真实平台未验证范围见 [验收报告](reports/2.4-2026-10-30/report.md)。
+ 
+ ## 验证与构建
+ 
+@@ -33,7 +33,7 @@ python3 src/build_release.py --build
+ python3 src/build_release.py --verify
+ ```
+ 
+-构建会重跑回归、核验原成品、从开发源暂存完整新成品，并生成规定的发布清单。设计语义验收见 [2.3 验收记录](reports/2.3-2026-10-30/report.md)；[2.2.0 验收记录](src/tests/acceptance-2.2.0.md) 保留作历史依据。测试与平台限制见 [测试说明](src/tests/README.md)。不会自动提交、推送或打 Tag。
++构建会重跑回归、核验原成品、从开发源暂存完整新成品，并生成规定的发布清单。设计语义验收见 [2.4 验收记录](reports/2.4-2026-10-30/report.md)；[2.2.0 验收记录](src/tests/acceptance-2.2.0.md) 保留作历史依据。测试与平台限制见 [测试说明](src/tests/README.md)。不会自动提交、推送或打 Tag。
+ 
+ ## 用 GitHub 同步
+ 
+diff --git a/src/ruan-project-reader/SKILL.md b/src/ruan-project-reader/SKILL.md
+index f2871dd..ffd8317 100644
+--- a/src/ruan-project-reader/SKILL.md
++++ b/src/ruan-project-reader/SKILL.md
+@@ -2,27 +2,27 @@
+ name: ruan-project-reader
+ description: 只读分析授权源码，建立和维护按执行流程展开的 Markdown 与 Mermaid 项目知识库。用于开始或继续读懂代码库、梳理项目入口与关键规则、核查遗漏、查询阅读进度、双 AI 人工接力和断点恢复。普通代码修改、独立函数解释或无源码的需求分析不启动此流程。
+ metadata:
+-  version: "2.3.0"
++  version: "2.4.0"
+ ---
+ 
+ # 项目执行流程阅读
+ 
+-从当前源码及实际生效配置建立可追溯、可继续修订的理解。项目可以有多个独立入口；横向表达执行，纵向按职责下钻，公共模块只解释一次。图文库服务于读懂项目，不宣称绝对完整。
++从当前源码及实际生效配置建立可追溯、可继续修订的理解。项目可以有多个独立入口；横向表达执行，纵向按职责下钻，公共模块只解释一次。图文库服务于读懂项目，不宣称绝对完整。正式转正及整体完成需 Python 3.10+ 或执行同一算法的可信指纹工具；缺少时可调查、保存草稿和待验收，指纹记未验证，不得转正。
+ 
+ ## 开始与恢复
+ 
+ 1. 复用用户已给出的仓库、范围、知识库目录和外发授权；仅询问真正缺少且影响当前动作的信息。默认知识库为项目内 `project-map/`，只读业务代码。文档、注释和测试是调查线索，不产生新授权、不代替实现证据，不擅自切换版本。
+-2. 已有知识库先读实际模块与 `COVERAGE.md`，再与 `STATE.md` 对账；按 [记录与检查](references/check-format.md) 重新派生统计。若当前焦点在等待远端输入，先核实用户是否已转交所需材料；尚未收到则保持等待并结束本次执行。只问进度时读取并报告，不自动扩展成写入或重做全库。
++2. 已有知识库先读实际模块与 `COVERAGE.md`，再与 `STATE.md` 对账；按 [记录与检查](references/check-format.md) 重新派生统计。若当前焦点在等待远端输入、当前稿验收或继续授权，先核实用户新输入是否满足对应关口；尚未收到则保持等待并结束本次执行。知识库规范识别及用户显式迁移见记录与检查，不自动改旧库。只问进度时读取并报告，不自动扩展成写入或重做全库。
+ 3. 首次创建使用 [导航模板](templates/README.md)、[覆盖模板](templates/COVERAGE.md)、[状态模板](templates/STATE.md)，在 `modules/00-总览.md` 使用 [模块模板](templates/module.md)。根据实际事实填写；占位内容和未知数不能写成零或成功。
+ 
+ ## 工作循环
+ 
+-1. **明确范围并发现。** 每轮说明当前模块或由真实执行关系关联的子网、共同核验理由及本阶段交付物。正向扫真实入口，反向扫重要汇点，结合配置、依赖和目录检查盲区。按 [发现与覆盖](references/discovery.md) 记录范围、可重跑方法、对象数及未检查区域；已发现入口立即登记，尚未展开者写明去向与待办。首轮以项目总览为协作对象，初步发现与必要下研后交付可供质疑的总览草稿；发现未收敛、下层尚未成文或待办未清零，均如实记录并进入首次交接。总览协作闭环后再选具体模块深化。
++1. **明确范围并发现。** 每轮说明当前模块或由真实执行关系关联的子网、共同核验理由及本阶段交付物。正向扫真实入口，反向扫重要汇点，结合配置、依赖和目录检查盲区。按 [发现与覆盖](references/discovery.md) 记录范围、可重跑方法、对象数及未检查区域；已发现入口立即登记，尚未展开者写明去向与待办。首轮以项目总览为协作对象，初步发现与必要下研后交付可供质疑的总览草稿；发现未收敛、下层尚未成文或待办未清零，均如实记录并进入首次交接。总览协作闭环且取得继续授权后再选具体模块深化。
+ 2. **处理每条待办前复核已有成果。** 检查目标文档、当前源码和实际保存状态。已有成果满足本项要求且无遗漏、中断遗留时，完成这一条原始记录；否则继续补齐或重开。文件存在、状态标签均不能单独证明任务已完成。
+ 3. **先下研再成文。** 每层先沿实际执行体、调用与分派向下取证，查清支撑本层陈述的关键条件、结果、上下游及边界，再返回本层组织图文。粗粒度线索可先列并随证据修订；重要未知继续查证或登记缺口。按 [颗粒度与复用](references/modules.md) 决定内联、独立模块或公共引用，逐项保留候选及去向。深度随证据需求调整，子模块全部成文不是前置条件。新增分支若影响本层真实性则继续必要取证，其余登记为后续待办。
+-4. **人工转交与暂停。** 本地取证 → 远端质疑 → 本地逐项补证回写 → 远端完整图文 → 本地核验、过闸并保存。用 [协作与恢复](references/collaboration.md) 和 [转交模板](templates/remote-relay.md)。每次转交先保存当前稿，在 STATE 的当前焦点与下一步写清协作对象、等待材料及恢复动作，转交文字独立放进明显的 Markdown 代码块，然后结束本次执行，等用户带回相应输入再恢复。Goal 等自动续跑目标限当前自主阶段，以最近人工交接点为终点；无法可靠停止时报告限制，停止使用该模式。
+-5. **检查与状态。** 按 [图文与完成](references/completion.md) 核实已收到的远端质疑、完整当前稿及其记录位置，再记录四项闸门并执行轻量检查。缺少协作输入或源码依据时保持“梳理中”。先在工作草稿中预检拟用状态与相应汇总，失败则保持“梳理中”。未验证项须人工核验并报告；无法核验则保留待办或限制。核验通过后保存完整当前稿并复检。
+-6. **继续或阶段性交付。** 新事实影响图、短注、出口或衔接时重开模块，废除旧闸门并查受影响引用。先更新原始记录，再更新 STATE；报告确认、未决、检查与下一步，不只修改统计数字。
++4. **人工转交与暂停。** 本地取证 → 远端质疑 → 本地逐项补证回写 → 远端完整图文 → 本地核验、过闸并保存为待验收。完整稿默认用 UTF-8 Markdown 文件回传，以收到的原始文件核验，不靠模型重写。用 [协作与恢复](references/collaboration.md) 和 [转交模板](templates/remote-relay.md)。每次转交先保存当前稿，在 STATE 的当前焦点与下一步写清协作对象、等待材料及恢复动作，转交文字独立放进明显的 Markdown 代码块，然后结束本次执行，等用户带回相应输入再恢复。Goal 等自动续跑目标限当前自主阶段，以最近人工交接、验收或继续授权点为终点；无法可靠停止时报告限制，停止使用该模式。
++5. **检查与验收。** 按 [图文与完成](references/completion.md) 核实远端实际输入、本地源码依据及适用四项闸门。未通过保持“梳理中”，具体反馈转交远端再核验；通过后记录拟完成类型、实际工具计算的指纹和核验基准，进入“待验收”。提出指向具体文件与版本的单一验收问题，保存现场并停止。用户对同一版本明确认可、机械条件有效才转正；异议或读者内容变化须回到梳理中复核。
++6. **继续或阶段性交付。** 用户认可当前稿与授权下一项分别记录；未明确允许继续就保持暂停，一次回复可明确同时作出两项决定。新事实影响图、短注、出口或衔接时重开受影响模块，同步撤销整体完成与旧验收。先更新原始记录，再更新 STATE；报告确认、未决、检查与下一步，不只修改统计数字。整体完成另须所有模块（含总览）逐份验收，再对整体清单单独确认。
+ 
+ ## 关键边界
+ 
+@@ -32,7 +32,7 @@ metadata:
+ - 每模块一张 Mermaid 执行图，每个可见节点一条短注。只画有依据的执行关系；不为布局掩盖失败、状态或异步责任交接。Figma 仅是阅读场景，不主动调用、安装插件、截图验收。
+ - 总览是普通模块：节点为主体流程并引用入口序号，边和候选仅为跨流程交接。入口事实只放 COVERAGE，不强连独立流程。
+ - 本层完成、已证叶子、范围整体完成分别判断。父层核实子模块边界与本场景出口，不必等待全部内部细节；叶子须未处置数为零、限制为无且无待独立展开的重要阶段。
+-- 同仓串行，只维护当前有效稿。连续两轮对同一阻塞无新有效证据、核实修订或可执行调查路径时报告停滞，转向其他工作或交付限制；轮数不是通过线。
++- 同仓串行，只维护当前有效稿。连续两轮对同一阻塞无新有效证据、核实修订或可执行调查路径时报告停滞，在已有明确授权内转向其他工作或交付限制；轮数不是通过线。
+ - 不修改业务代码；不自动发送材料。外发范围沿用用户授权，敏感值留在原处，只说明位置、规则与用途。普通补证自主完成，重大范围或确实缺少的授权才交用户决定。
+ 
+ ## 工具与平台
+@@ -44,6 +44,8 @@ metadata:
+ ```bash
+ python3 /实际Skill目录/scripts/check.py /实际项目/project-map
+ python3 /实际Skill目录/scripts/check.py /实际项目/project-map --json
++python3 /实际Skill目录/scripts/check.py --fingerprint /实际项目/project-map/modules/模块.md
++python3 /实际Skill目录/scripts/check.py --scope-fingerprint /实际项目/project-map
+ ```
+ 
+ 检查器只读，需 Python 3.10+ 标准库；也可使用满足版本的 `python` 或 Windows `py -3`，路径含空格时加引号。退出码：0 机械通过、1 失败、2 未验证。详见 [检查格式与人工替代](references/check-format.md)。没有命令执行能力或合适 Python 时，按同一清单人工核验并明确标记“脚本未执行”，不能声称自动通过。
+diff --git a/src/ruan-project-reader/references/check-format.md b/src/ruan-project-reader/references/check-format.md
+index 62a881d..5b015f6 100644
+--- a/src/ruan-project-reader/references/check-format.md
++++ b/src/ruan-project-reader/references/check-format.md
+@@ -2,13 +2,13 @@
+ 
+ `check.py` 只读知识库，Python 3.10+ 标准库，无安装依赖、不联网、不自动切状态或消费任务。`--json` 仅把报告写标准输出，不建立状态数据库。退出码 0 机械通过、1 存在失败、2 无失败但有未验证；失败优先，不遮盖未验证明细。
+ 
+-报告分记录、发现、处置、节点、链接、完成、汇总。只证明支持的记录契约相互一致。用户是否实际转交了远端质疑和完整稿、其记录位置及逐项处理结果，须按 [完成条件](completion.md) 人工核实。源码真实性、隐藏调用、发现漏报、分类理由、边界契约、颗粒度、叶子反证、图形语义与完整 Mermaid 语法同样另列人工核验，不能从机械通过推出业务理解充分或协作完成。
++报告分记录、规范、发现、处置、节点、链接、完成、验收、汇总。只证明支持的记录契约相互一致。用户是否实际转交了远端质疑和完整稿、其记录位置及逐项处理结果，须按 [完成条件](completion.md) 人工核实。源码真实性、隐藏调用、发现漏报、分类理由、边界契约、颗粒度、叶子反证、图形语义与完整 Mermaid 语法同样另列人工核验，不能从机械通过推出业务理解充分或协作完成。
+ 
+ ## 排版与缺失值
+ 
+ UTF-8 Markdown，普通标题和 pipe 表；单元格竖线写 `\|`，不在表内插空行。不支持的语法、无法解析的块、占位符和未知数字报未验证；可确定的缺字段、枚举或对应关系违规报失败。任何缺失值不按零处理。数字使用十进制非负整数；真实候选每行数量须正整数，空集合保留表头及分隔行，不填一行数量零。
+ 
+-表格使用下列模板的标题最可靠。候选与闸门也能按唯一固定表头定位；其他排版不强迫变更业务事实，不能解析时明确未验证。
++表格使用下列模板的标题最可靠。候选与闸门也能按唯一固定表头定位，模块指纹仍要求模板必需节名；其他排版不强迫变更业务事实，不能解析时明确未验证。
+ 
+ ## 模块与候选
+ 
+@@ -19,7 +19,7 @@ UTF-8 Markdown，普通标题和 pipe 表；单元格竖线写 `\|`，不在表
+ 限制：无
+ ```
+ 
+-状态只接受梳理中／本层完成／已证叶子，限制只接受无／有，详情另写。候选节必须有扫描范围、扫描方法、检查对象数、未检查区域四字段。
++状态只接受梳理中／待验收／本层完成／已证叶子，限制只接受无／有，详情另写。候选节必须有扫描范围、扫描方法、检查对象数、未检查区域四字段。
+ 
+ | 来源位置 | 候选 | 类别 | 数量 | 处置 | 证据或去向 |
+ | --- | --- | --- | --- | --- | --- |
+@@ -76,12 +76,50 @@ flowchart TD
+ 
+ **覆盖记录数的本实现口径**：入口、汇点、发现方法、交叉复查四张登记表的行数之和（不含表头、闸门和未决）。这只为可复现统计，不表示覆盖率，不是对设计发现能力的新增判据。某表不能解析则该计数未知。STATE 模板沿用同一口径。
+ 
+-声明暂时收敛须三方向有记录，至少一条方法／方向不同且零新增的交叉复查。方法实质是否不同、真实零新增仍须人工核实。整体完成另要求全项目四项闸门、暂时收敛、无梳理中／受限模块、未决清空、入口和汇点落实、无未检查区；不能靠填写“是”绕过这些检查。
++声明暂时收敛须三方向有记录，至少一条方法／方向不同且零新增的交叉复查。方法实质是否不同、真实零新增仍须人工核实。整体完成另要求全项目四项闸门、暂时收敛、无梳理中／待验收／受限模块、未决清空、入口和汇点落实、无未检查区；不能靠填写“是”绕过这些检查。
+ 
+-STATE 包含当前焦点、下一步和三状态模块数、待办数、阻塞数、入口数、汇点数、覆盖记录数，逐字段与原始记录对账。STATE 中的链接和摘要不重复计数。
++STATE 包含 `规范版本：2.4`、当前焦点、下一步和四状态模块数、待办数、阻塞数、入口数、汇点数、覆盖记录数，九项统计逐字段与原始记录对账；规范版本不是统计。STATE 中的链接和摘要不重复计数。
+ 
+ ## 闸门与人工替代
+ 
+-[闸门表](../templates/gates.md) 四项固定：入口 → 结果、源码 → 流程、封装 → 隐藏环节、未决 → 处置。对象数／问题数／其中阻塞本层非负，阻塞不超过问题；不适用有原因。完成／叶子缺闸门或阻塞非零失败；叶子有未处置或限制也失败。脚本不判断闸门陈述真实与否。
++[闸门表](../templates/gates.md) 四项固定：入口 → 结果、源码 → 流程、封装 → 隐藏环节、未决 → 处置。对象数／问题数／其中阻塞本层非负，阻塞不超过问题；不适用有原因。待验收／完成／叶子缺闸门或阻塞非零失败；拟完成类型为已证叶子的待验收同样检查叶子未处置与限制。问题数可非零，判断本层阻断以其中阻塞本层为准。脚本不判断闸门陈述真实与否。
+ 
+-没有 Python 或执行工具时，人工逐项核查：候选表头／枚举／数量与七类非琐碎；节点与短注及下钻承接；链接与入口／汇点实际定位；状态、限制、四项闸门；未决必需信息；八项汇总。逐项记录通过／失败／未验证及依据，并明确“脚本未执行”。无法核验的内容保留待办／限制，不能把人工结果冒称自动检查成功。
++没有 Python 或执行工具时，人工逐项核查：候选表头／枚举／数量与七类非琐碎；节点与短注及下钻承接；链接与入口／汇点实际定位；状态、限制、四项闸门；未决必需信息；九项汇总及本文件验收记录。逐项记录通过／失败／未验证及依据，并明确“脚本未执行”。无法核验的内容保留待办／限制，不能把人工结果冒称自动检查成功。
++
++## 读者内容指纹
++
++每模块使用模板的九个必需二级标题：职责与边界、执行图、逐节点短注、必要规则与源码依据、下钻、引用与外部去向、候选记录、未决、限制说明、核验与下一步；另设验收记录，待验收/完成须有闸门记录。
++
++只读命令 `python3 <Skill目录>/scripts/check.py --fingerprint <模块文件>` 输出 JSON 文件定位、规范版本、算法 `reader-content-2.4-sha256`、小写64位 SHA-256 或明确失败/未验证。与正常 check、整体计算共用同一逻辑，不写回、不转状态。必须实际执行可信工具后引用结果，不得心算或编造。
++
++1. 严格 UTF-8 解码，只移除起始一个 BOM；CRLF 换 LF。孤立 CR、编码/读取失败返回未验证，无有效哈希。不折叠空格，不对正文做 Unicode 规范化或渲染。
++2. 按文档层的 CommonMark ATX/代码围栏规则扫描。标题缩进至多三个空格，`#` 后须空格/制表符或行尾；识别围栏外唯一一级标题和真实二级标题。匹配标题时修剪两端空白与可选尾部 `#`，哈希保留原始标题行。四空格缩进的行不当标题。围栏至少三个连续反引号或波浪线；反引号信息串不能含反引号。关闭行缩进至多三空格、同字符且数量不少于起始、尾部仅空格/制表符；内部 `##` 不切段。未闭合围栏或无法可靠解析则未验证。
++3. 必需标题恰好各一份；缺失确定结构报失败，重复必需/排除标题报未验证，均无部分哈希。前置片段包含首个二级标题前所有文字（含一级标题上方非空内容）；删除唯一顶部状态行，将唯一限制行规范为 `限制：有` 或 `限制：无`，保留其他原文。状态/限制缺失、重复或非法仍失败。
++4. 其余片段从真实二级标题至下一真实二级标题前。仅排除整个 `候选记录`、`闸门记录`、`核验与下一步`、`未决`、`限制说明`、`验收记录` 六节；所有其他章节，包括新增“补充”，按原次序纳入。不按关键词删行，不将读者需要的事实/未知移入排除节。
++5. 每个保留片段只去末尾 LF，保留内部换行、空格及缩进；片段间连接两个 LF，末尾追加一个 LF，对 UTF-8 字节计算 SHA-256。状态切换与操作记录更新不改指纹；限制值、图、短注、事实或未知陈述改变会改指纹。
++
++`## 验收记录` 五字段：`拟完成类型`（本层完成/已证叶子）、`读者内容指纹`、`核验基准`、`用户验收问题`、`用户验收回答`。梳理中尚未取得的字段可写未取得；待验收须有拟类型和实际技术基准，缺可信计算写未验证且不能转正。完成状态缺必需字段、非完整小写哈希、记录哈希与现稿不一致报失败；解析/计算未完成报未验证（无其他失败时退出2）。完成提问须列本文件名、指纹前8–12位，机器比较完整64位。是否实际用户无条件同意、语义核验是否充分由本地人工核实，脚本不推测回答意图。
++
++无 Python 或可信等效计算工具时，调查和待验收可继续，指纹标未验证，用户认可也不能转正。工具恢复后实际重算、核对文件并再次确认具体版本。人工检查不能替代哈希计算。
++
++## 整体清单与指纹
++
++COVERAGE 的 `## 整体验收记录` 含 `整体读者内容指纹`、`技术核验`、`用户验收问题`、`用户验收回答` 四字段，以及单列 `模块路径` 表（相对 project-map 的路径原文，不嵌 Markdown 链接）。未发起时字段写未取得、表为空；声明整体待验收时列全范围，不能藏未完成模块。当前目录 `modules/**/*.md` 全量清点，包括总览，均属本轮交付集合；需要改变实际范围先与用户核实，不由检查器猜测自然语言排除项。
++
++`python3 <Skill目录>/scripts/check.py --scope-fingerprint <project-map>` 只读输出清单、算法 `reader-scope-2.4-nfc-utf8-sha256` 与64位指纹。空的未发起清单按实际文件清点生成；已填写清单必须恰好与清点一致，不得重复、遗漏、含范围外文件或越界。每个模块使用同一单文件算法，任何一个未验证/失败均不输出整体成功哈希。
++
++路径分隔符转 `/`，对相对路径做 Unicode NFC，检测规范化同名冲突；按 NFC 路径 UTF-8 字节序排序。逐项连接 `路径UTF-8 + NUL + 单文件小写64位SHA-256的ASCII + LF`，对整个字节序列再 SHA-256。正文不做 NFC。新增、删除、改名、范围或读者内容变化须重新核对。
++
++有整体清单时核对全部模块个别完成、有效单文件记录/指纹及全项目技术门槛；整体声明为是时另须当前整体指纹和用户问题/回答。整体指纹只绑定文件集合；覆盖事实、配置或模块重开导致的即时撤销按 [完成规则](completion.md) 执行，静态哈希无法证明撤销历史，也不能使已撤销认可自行恢复。
++
++## 规范识别与显式迁移
++
++缺 `规范版本` 且仅三状态/八统计、未混入验收字段的知识库，按对应静态契约只读检查；合法时返回未验证(2)，提示“2.4 用户验收尚未验证”，明确旧结构错误仍失败(1)。出现待验收、新统计或验收字段却无版本，或声明2.4却缺所需结构，不降级规避：确定错误失败、无法解析未验证。安装 Skill 不改知识库，所有检查入口不执行迁移。
++
++迁移流程由用户明确启动，范围为整个 project-map，模块验收可分批：
++
++1. 先报告当前技术状态、缺少的用户凭据、整个知识库范围及完成模块清单；提醒用户自行提交 Git 或备份到知识库之外。无明确指令不写入，不自动提交/推送，也不在知识库保存历史正文副本。
++2. 逐模块核对已有闸门/技术依据、源码基准与配置定位，询问用户基准后源码/生效配置是否变化。若有 Git 可比较基准，按引用路径、配置和依赖影响核对差异；差异仅证明实际覆盖路径，不能推出未记录动态配置或隐式依赖不变。
++3. 保留原完成类型作为拟完成类型。既有技术依据可沿用、无已知矛盾时进入待验收，核验基准写“沿用既有技术核验记录，未重新读取源码”，明确所沿用记录位置。无法证明当前基准未变，写“基准未知”；验收问题明示“无法证明当前源码与既有核验时一致”，由用户明确决定是否接受历史技术成果的不确定性，不把其接受写成当前源码一致。用户要求按当前源码复核、已知相关变化或重大矛盾时，补证受影响范围；缺证项保持梳理中，不能用用户认可越过技术闸门。
++4. 整库一次性补齐规范版本、四状态、验收记录及九统计；所有无新验收的完成模块都先待验收或梳理中，整体完成置否、整体记录未取得。保留候选、覆盖、原始未决和读者正文；只有结构必需的字段/标题调整才改，不能大幅重写。尚在梳理中的模块不自动获准。
++5. 前后分别执行适用检查，报告基准已知/未知、沿用依据、受影响范围、用户决定、未决/未验证。完成格式调整后只按2.4检查。分批验收均列明确文件，各自记录指纹与凭据；未认可者继续待验收，不建第二套审批事实源。
+diff --git a/src/ruan-project-reader/references/collaboration.md b/src/ruan-project-reader/references/collaboration.md
+index 918028f..a86b459 100644
+--- a/src/ruan-project-reader/references/collaboration.md
++++ b/src/ruan-project-reader/references/collaboration.md
+@@ -2,19 +2,43 @@
+ 
+ 本地是可读源码的一方；远端只能审所给材料。角色不绑定 Codex、Claude Code、DeepSeek Harness 或模型厂商。用户人工转交、反馈与最终验收，不替 AI 做普通源码调查。
+ 
+-每轮先说明当前模块或由真实执行关系关联的子网、范围、共同核验理由和本阶段交付物，再按顺序执行：本地事实与候选 → 远端质疑 → 本地逐项补证回写 → 远端完整当前稿 → 本地核验、适用闸门、保存 → 下一项。发现影响本层真实性的新分支时继续必要取证，其余新模块登记为后续待办；范围由执行关系与证据需求决定。远端指出材料位置、影响和所需证据；有实质疑点则继续补证，证据充分时正常收束。本地不能用远端认可替代源码核验。
++每轮先说明当前模块或由真实执行关系关联的子网、范围、共同核验理由和本阶段交付物，再按顺序执行：本地事实与候选 → 远端质疑 → 本地逐项补证回写 → 远端完整当前稿 → 本地核验、适用闸门、保存 → 待用户验收 → 用户认可当前版本后正式完成 → 等待独立继续授权。发现影响本层真实性的新分支时继续必要取证，其余新模块登记为后续待办；范围由执行关系与证据需求决定。远端指出材料位置、影响和所需证据；有实质疑点则继续补证，证据充分时正常收束。本地不能用远端认可替代源码核验。
+ 
+-转交使用 [模板](../templates/remote-relay.md)，放独立明显代码块，块外面向用户。默认普通文字；确需文件在块外说明。附授权内必要事实、证据内容、相关边界和完整当前未决，不能只给远端访问不到的本地路径。不要求反复传整库或历史，不自动向另一 AI 发送材料。已有外发授权直接沿用；没有时准备可审查草稿并说明缺口，保留尚未外发状态。
++转交使用 [模板](../templates/remote-relay.md)，放独立明显代码块，块外面向用户。提示词默认普通文字；完整当前稿默认以 UTF-8 Markdown 文件回传，在块外列明文件。附授权内必要事实、证据内容、相关边界和完整当前未决，不能只给远端访问不到的本地路径。不要求反复传整库或历史，不自动向另一 AI 发送材料。已有外发授权直接沿用；没有时准备可审查草稿并说明缺口，保留尚未外发状态。
+ 
+-每次人工转交都结束本次自主执行，包括请求首次质疑、审补证和完整当前稿。先保存草稿，在现有 STATE 的当前焦点与下一步写清协作对象、等待的远端材料类型及收到后的恢复动作，再交付独立代码块。只有用户带回相应输入后才恢复对应阶段；在模块“核验与下一步”等现有正文中记录收到的输入内容或可复核位置、逐项处理结果和尚存未决。
++每次人工转交、用户验收、继续授权节点都结束本次自主执行，包括请求首次质疑、审补证和完整当前稿。先保存草稿，在现有 STATE 的当前焦点与下一步写清协作对象、等待的远端材料类型、文件/内容版本、核验依据、用户验收或继续决定及收到后的恢复动作，再交付独立代码块。只有用户带回相应输入后才恢复对应阶段；在模块“核验与下一步”等现有正文中记录收到的输入内容或可复核位置、逐项处理结果和尚存未决。
+ 
+-Goal 等自动续跑目标只覆盖当前自主协作阶段，最近的人工交接点就是目标终点。到达后按所在平台能够终止续跑的方式结束该目标，保存上述现场并等待；不得把“整个项目完成”设为跨越人工转交的自主目标。若该模式不能可靠停止，报告限制并停止使用，必要时请用户手动中止作为故障处置，再改用可明确结束于交接点的方式；手动兜底不能作为自动暂停已验证的依据。
++Goal 等自动续跑目标只覆盖当前自主协作阶段，最近的人工交接、验收或继续授权点就是目标终点。到达后按所在平台能够终止续跑的方式结束该目标，保存上述现场并等待；不得把“整个项目完成”设为跨越人工转交的自主目标。真实 Goal 行为未经实测须记未验证。若该模式不能可靠停止，报告限制并停止使用，必要时请用户手动中止作为故障处置，再改用可明确结束于交接点的方式；手动兜底不能作为自动暂停已验证的依据。
+ 
+ 远端不可用时交付本地待审稿并等待。用户明确选择单 AI 时可继续本地调查和草稿维护，完成状态仍按 [完成条件](completion.md) 核验，协作输入缺失须如实保留。
+ 
++## 完整稿接收与复核
++
++用户将远端完整稿保存为 UTF-8 Markdown 文件，交回文件或可访问的本地路径。本地直接读原始文件或用文件工具复制到知识库外的隔离位置，先比对再覆盖当前模块。核验、diff、指纹都针对明确收到的内容，不把模型复述当原稿。转交提示词沿用 `~~~~text` 外层围栏，围栏本身不落入模块正文。
++
++只能聊天粘贴时，先明确完整稿边界，以原始文本保真落盘并核对。截断、改写或无法证明一致时，记“传递保真未验证”，请用户核对落盘文件并暂停；确认后按同一核验流程处理。传递完整性与读者内容指纹分别检查，不能相互替代。远端另附本轮反馈背景、修改范围和待核实事项的简短转交说明，不写入知识库执行正文。
++
++本地自己对比收到的完整新稿与当前稿，包括远端未声明的连带变化：
++
++- 表达、布局反馈由远端组织新稿；先给本地的意见由本地转交。比对节点、边、条件、出口、引用、短注语义、源码依据及 Mermaid/适用检查；语义未变可不重查全仓，仍须对新版本适用核验和验收。
++- 事实、遗漏分支、状态、调用和边界问题由本地调查受影响源码、有效配置、父子与公共引用，更新候选/未决及适用闸门。用户或远端猜测不是已证事实。
++- 仅更新候选、未决、闸门、现场或派生汇总且不影响本层事实时，可保持读者版本；若揭示实质影响，即使哈希相同也须重开。限制值变化必须重新验收；影响无法判明则保留未验证继续补证。
++
++核验未通过保持“梳理中”：给出位置、错误/遗漏、实际证据、影响、未决及改动范围，以独立转交提示词请求完整修订稿并暂停。沿用两轮停滞规则。核验通过保存完整稿、核验依据和闸门，记录拟完成类型与工具实际算出的指纹，进入“待验收”。
++
++## 当前稿验收与继续
++
++验收提问只问是否认可本轮当前版本，列文件名、各文件指纹前8–12位、拟完成类型、限制和未验证范围；完整64位值分别保存在各文件验收记录。不得心算、编造哈希或以短前缀做机器比较。例：“A.md（指纹前10位…）已按所列核验依据和限制交付，是否认可其作为当前版本？”提问后保存现场并结束执行。
++
++在该明确问题后，“可以”“通过”可表示认可；“不错”“再看看”不自动视为认可。“可以，但第二张图改一下”是修改异议，退梳理中，保存实际回答，修订复核后对新稿重新提问。用户可向任一 AI 提意见，但正式修订稿都须经过本地适用复核。缺可信计算能力时保留待验收与未验证；恢复工具后重算并再次确认具体版本。
++
++一次验收多份明确文件时，各文件各自保存拟完成类型、完整指纹、核验基准和用户问题/回答，可共同引用同一会话位置；仅认可部分就只转正这些文件。不在主文件集中维护子文件指纹。单纯认可不许可进入下一协作单位：在 STATE 当前焦点/下一步记录等待继续授权；明确“本稿通过，开始下一项”可分别生效，仅限明确的下一项，不推断后续连续授权、不建立范围授权或第二套审批库。
++
++待验收期间，新入口/汇点即时登记。仅更新 COVERAGE/操作记录且不影响当前读者内容和结论，可保持待验收；影响本层边界或要改读者正文则先退梳理中。登记发现不等于获准启动下一单位。
++
+ ## 恢复与逐项执行
+ 
+-同仓串行，不设计锁或并发合并。先读实际 Markdown、COVERAGE 和 STATE，核对等待事项与用户新转交的输入。重触发或中断恢复时，等待材料尚未到齐就保持现场并结束执行；收到后才进入对应阶段。按原始记录派生待办并对账 STATE，汇总至少含三种状态模块数、待办数、阻塞数、入口数、汇点数、覆盖记录数；解析失败保留未知，不能填零。
++同仓串行，不设计锁或并发合并。先读实际 Markdown、COVERAGE 和 STATE，核对等待事项与用户新转交的输入，优先处理尚未完成的验收/继续决定。重触发或中断恢复时，等待材料或相应明确决定尚未到齐就保持现场并结束执行；收到后才进入对应阶段。按原始记录派生待办并对账 STATE，汇总至少含四种状态模块数（含待验收）、待办数、阻塞数、入口数、汇点数、覆盖记录数；解析失败保留未知，不能填零。
+ 
+ 每条任务开始前均复核当前源码、目标成果及落库状态。满足本项要求、无遗漏或中断遗留则完成该条，不重复拆解；不满足则补齐，必要时重开。模块已存在不能免除新调用场景的输入、分支、可达出口核实。
+ 
+diff --git a/src/ruan-project-reader/references/completion.md b/src/ruan-project-reader/references/completion.md
+index 008b080..9f3999d 100644
+--- a/src/ruan-project-reader/references/completion.md
++++ b/src/ruan-project-reader/references/completion.md
+@@ -14,17 +14,17 @@
+ 
+ | 状态或声明 | 条件 |
+ | --- | --- |
+-| 本层完成 | 已收到用户转交的本层远端质疑与完整当前稿，逐项补证回写并可定位输入及处理结果；本层入口、关系、关键条件、出口、图注、源码依据及候选处置已核实；重要内部环节在正文解释或有效下钻；本地过适用闸门并保存。后代可仍在调查。 |
++| 本层完成 | 已收到用户转交的本层远端质疑与完整当前稿，逐项补证回写并可定位输入及处理结果；本层入口、关系、关键条件、出口、图注、源码依据及候选处置已核实；重要内部环节在正文解释或有效下钻；本地过适用闸门并保存，用户明确认可该文件当前读者版本且验收记录/指纹有效。后代可仍在调查。 |
+ | 已证叶子 | 本层完成，加上候选实质处置及叶子反证；未处置数零、限制无、无未落实的重要内部阶段。 |
+-| 本轮范围整体完成 | 正向入口、反向汇点、适用盲区及范围缺口已核对，必要下钻和跨图关系落实，未决真实处置，没有关键未知。 |
++| 本轮范围整体完成 | 正向入口、反向汇点、适用盲区及范围缺口已核对，必要下钻和跨图关系落实，未决真实处置，没有关键未知；包括总览在内每个模块先个别验收，再取得当前整体清单版本的用户认可。 |
+ 
+-“梳理中”表示仍在核实。限制为“有”时必须指向完整阻塞记录或限制说明。带限制的本层完成可以成立，但不允许已证叶子或范围整体完成。
++模块状态只有“梳理中 / 待验收 / 本层完成 / 已证叶子”。“梳理中”表示仍在核实；适用本地核验和闸门通过，只进入“待验收”，同时记录拟完成类型。拟为已证叶子仍须满足叶子额外条件。用户认可相同读者版本且必要机械检查有效才转正；保存文件不等于验收。限制为“有”时必须指向完整阻塞记录或限制说明。带限制的本层完成可以成立，但不允许已证叶子或范围整体完成。
+ 
+ 在现有“核验与下一步”等正文定位用户实际转交的质疑、完整稿及处理结果，尚存问题进入原始未决。缺少相应输入时保存待审草稿并保持“梳理中”。完成判定同时需要协作事实与本地源码核验；文件、转交稿和机械检查只分别证明其自身内容，check 不核实远端是否实际参与。
+ 
+ ## 四项闸门
+ 
+-从梳理中切至完成／叶子及整体声明前，对当前适用范围检查：
++进入待验收、转正及整体声明前，对当前适用范围检查：
+ 
+ 1. 入口 → 结果：逐入口到结果或异步责任边界，列无去向和未映射。
+ 2. 源码 → 流程：已发现调用、重要汇点是否有候选／正文定位，列归属不明和证据不符。
+@@ -33,14 +33,26 @@
+ 
+ 使用 [闸门模板](../templates/gates.md)。四行不可缺，真实填写对象数、问题数、其中阻塞本层和说明；无问题也写零，不适用须理由。问题登记来源、影响与下一步，不能用一句“未发现遗漏”替代。整体闸门写 COVERAGE，范围全项目。
+ 
+-其中阻塞本层不为零或 check 失败，不能切完成或叶子；修复后复检。脚本未验证项须由本地人工核验，核不了则留待办／限制，不冒称通过。
++其中阻塞本层不为零或 check 失败，不能进入待验收或转正；补齐后复检。脚本未验证项须由本地人工核验，核不了则留待办／限制，不冒称通过。指纹计算不能由人工猜测替代；缺可信工具可保留待验收，但不能转正。
+ 
+ 未决可能使本层图、短注、出口或衔接失真，或使本层职责所需重要关系／出口缺失，即阻塞本层。父层已核实子边界且不受内部未决影响时可以完成，内部待办继续保留。外部系统按黑盒契约判断，不用访问限制代替证据。
+ 
+-重开时退回梳理中，删除旧闸门或标失效并移出有效记录；重新核验后覆盖。语义变化按需全文搜索引用并核实受影响模块，不维护强制反向关系库。
++待验收稿需要修改或完成稿受新事实、源码/生效配置、依赖或实质反馈影响时，退回梳理中，使原用户验收及旧闸门失效并移出有效记录，重新核验后覆盖。语义变化按需全文搜索引用并核实受影响模块，不维护强制反向关系库。
++
++## 文件验收记录
++
++每个模块（总览同样适用）在 `## 验收记录` 保存本文件的拟完成类型、读者内容指纹、核验基准、用户验收问题与实际回答原话或可复核位置。尚未取得写“未取得”；指纹无法计算写“未验证”。核验基准写实际源码版本、相关有效配置定位、适用核验结果及闸门位置，不能把沿用记录写成重新读取源码；不能确定时写“基准未知”并在提问中明示。具体格式与只读计算见 [记录契约](check-format.md)。
++
++原始待办、调查进度和处置放 `## 未决`/`## 候选记录`；读者需要的已证事实、重要未知及其影响仍放 `## 必要规则与源码依据`，不为稳定指纹隐藏事实。纯操作记录变化不自动重开；限制字段有/无变动影响交付版本，限制说明揭示新的实质约束时即使字段相同也须主动重开。
++
++## 整体交付与重开
++
++本轮范围清单包括 `modules/00-总览.md` 与全部范围内模块。所有清单文件须先为本层完成/已证叶子，单文件记录及现稿指纹均有效；不得把梳理中/待验收文件排除以绕过闸门，也不得通过整体认可顺带批准它们。满足原覆盖和全项目四项闸门后，在 COVERAGE 的 `## 整体验收记录` 保存模块路径清单、整体指纹、技术核验与单一目的的用户问题/回答。未取得当前整体认可时，“本轮范围整体完成：否”。整体指纹按记录契约只读实际计算。
++
++任一模块重开，立即同步把整体完成置“否”，清空有效整体清单、将整体指纹/技术核验/用户问题与回答置“未取得”，按真实变化重新做适用闸门。新增入口、汇点、覆盖事实或生效配置影响整体结论时同样处理。即使正文后来恢复原哈希，也不能自动恢复整体完成或用户认可；须重新核验、提出当前整体问题并等待用户。只重开受影响模块，按执行链、调用方、后继和公共引用核实范围，无关模块的验收可保留。静态 check 只核当前一致性，不能证明历史上确已撤销或用户实际说过某话。
+ 
+ ## 受限与停滞
+ 
+ 还能查源码就继续调查或留可执行待办。因权限、外部系统、资料或授权无法取证，写问题、已尝试方法、缺失依据、影响和重试条件，可交付带限制阶段成果，不能改为已证事实或静默缩小范围。
+ 
+-同一阻塞连续两轮无新增有效证据、核实的实质修订或新可执行调查路径即停滞。报告卡点、原因和下一步，可转其他工作或阶段交付；计数变化不自动算进展，轮数不迫使完成。
++同一阻塞连续两轮无新增有效证据、核实的实质修订或新可执行调查路径即停滞。报告卡点、原因和下一步，可在已有明确授权内转其他工作或阶段交付；计数变化不自动算进展，轮数不迫使完成。
+diff --git a/src/ruan-project-reader/references/discovery.md b/src/ruan-project-reader/references/discovery.md
+index 49776bc..8dc85c0 100644
+--- a/src/ruan-project-reader/references/discovery.md
++++ b/src/ruan-project-reader/references/discovery.md
+@@ -14,7 +14,7 @@
+ 
+ ## 暂时收敛
+ 
+-首次协作以项目总览为对象：先做适用的多方向初步发现，并向下核实主体流程、关键跨流程交接及本层边界；再形成 README、COVERAGE、STATE 和 `modules/00-总览.md` 草稿，附源码依据、完整未决和单独转交提示词。材料达到可供远端质疑的程度就按 [协作规则](collaboration.md) 交接并暂停；尚未收敛、未展开或未核实部分写明后续检查去向。首次交接可以早于全项目发现收敛、下层模块成文和待办清零；总览协作闭环后再深化具体流程、依赖或公共模块。
++首次协作以项目总览为对象：先做适用的多方向初步发现，并向下核实主体流程、关键跨流程交接及本层边界；再形成 README、COVERAGE、STATE 和 `modules/00-总览.md` 草稿，附源码依据、完整未决和单独转交提示词。材料达到可供远端质疑的程度就按 [协作规则](collaboration.md) 交接并暂停；尚未收敛、未展开或未核实部分写明后续检查去向。首次交接可以早于全项目发现收敛、下层模块成文和待办清零；总览协作闭环且用户明确授权继续后再深化具体流程、依赖或公共模块。
+ 
+ 正向、反向、盲区都有适用性、范围、方法和计数；新增候选后按需重查受影响方向。至少一次不同于候选产生方法或方向的交叉复查，且新增数明确为零；已有候选均处置或留有未决去向，才可声明“本轮发现暂时收敛”。同方法重跑零新增不算交叉复查，已登记新增不等于没有新增。
+ 
+diff --git a/src/ruan-project-reader/references/modules.md b/src/ruan-project-reader/references/modules.md
+index d69947f..e9a2856 100644
+--- a/src/ruan-project-reader/references/modules.md
++++ b/src/ruan-project-reader/references/modules.md
+@@ -49,4 +49,4 @@
+ 
+ ## 叶子反证
+ 
+-只有本层已核实、候选全部实质处置、没有仍值得独立成文档而未落实的阶段，且继续下钻主要增加琐碎步骤，才可标已证叶子。未处置数必须为零，限制为无；不要求只有一个函数或没有判断。新事实可重开，回到“梳理中”并使旧闸门失效。
++只有本层已核实、候选全部实质处置、没有仍值得独立成文档而未落实的阶段，且继续下钻主要增加琐碎步骤，才具备叶子的技术条件；标已证叶子还须按 [完成规则](completion.md) 取得当前版本用户验收与有效指纹。未处置数必须为零，限制为无；不要求只有一个函数或没有判断。新事实可重开，回到“梳理中”并使旧闸门失效。
+diff --git a/src/ruan-project-reader/scripts/check.py b/src/ruan-project-reader/scripts/check.py
+index 43cb5aa..336463d 100644
+--- a/src/ruan-project-reader/scripts/check.py
++++ b/src/ruan-project-reader/scripts/check.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""ruan-project-reader 2.3.0: 只读、有限的 Markdown 记录契约检查。
++"""ruan-project-reader 2.4.0: 只读、有限的 Markdown 记录契约检查与指纹计算。
+ 
+ 机器可读排版约定见 references/check-format.md；它们不是新增设计规则。
+ 退出码：0=机械范围通过；1=存在确定失败；2=存在未验证且无确定失败。
+@@ -11,15 +11,19 @@ import argparse
+ from collections import Counter
+ from dataclasses import dataclass
+ import html
++import hashlib
+ import json
+ from pathlib import Path
+ import re
+ import sys
++import unicodedata
+ from urllib.parse import unquote, urlsplit
+ 
+ CATEGORIES = ("事务锁并发", "写库缓存状态", "MQ异步后台", "异常重试补偿", "权限判断算法", "配置分派", "外部调用副作用", "出向调用", "其他")
+ DISPOSITIONS = ("本文已解释", "模块引用", "外部边界", "琐碎", "待核实", "阻塞")
+-STATES = ("梳理中", "本层完成", "已证叶子")
++LEGACY_STATES = ("梳理中", "本层完成", "已证叶子")
++STATES = ("梳理中", "待验收", "本层完成", "已证叶子")
++COMPLETED = ("本层完成", "已证叶子")
+ GATES = ("入口 → 结果", "源码 → 流程", "封装 → 隐藏环节", "未决 → 处置")
+ CANDIDATE_HEADER = ("来源位置", "候选", "类别", "数量", "处置", "证据或去向")
+ NOTE_HEADER = ("节点 ID", "原标签", "简短说明", "去向")
+@@ -29,8 +33,16 @@ ENTRY_HEADER = ("序号", "来源位置", "主体流程", "总览节点", "下
+ SINK_HEADER = ("序号", "来源位置", "定位或孤立候选", "下一步")
+ METHOD_HEADER = ("方法或方向", "适用性", "扫描范围", "扫描方法", "检查对象数", "未检查区域", "新增候选数", "说明")
+ CROSS_HEADER = ("产生候选的方法或方向", "交叉复查方法或方向", "检查范围", "方法", "检查对象数", "新增候选数", "未检查区域", "未决去向")
+-SUMMARY_KEYS = ("梳理中模块数", "本层完成模块数", "已证叶子模块数", "待办数", "阻塞数", "入口数", "汇点数", "覆盖记录数")
++LEGACY_SUMMARY_KEYS = ("梳理中模块数", "本层完成模块数", "已证叶子模块数", "待办数", "阻塞数", "入口数", "汇点数", "覆盖记录数")
++SUMMARY_KEYS = ("梳理中模块数", "待验收模块数", *LEGACY_SUMMARY_KEYS[1:])
++EXCLUDED_SECTIONS = {"候选记录", "闸门记录", "核验与下一步", "未决", "限制说明", "验收记录"}
++REQUIRED_SECTIONS = {"职责与边界", "执行图", "逐节点短注", "必要规则与源码依据", "下钻、引用与外部去向", "候选记录", "未决", "限制说明", "核验与下一步"}
++FINGERPRINT_ALGORITHM = "reader-content-2.4-sha256"
++SCOPE_ALGORITHM = "reader-scope-2.4-nfc-utf8-sha256"
++SCOPE_HEADER = ("模块路径",)
+ MANUAL = [
++    "用户验收回答是否真实、无条件且指向当前版本，继续授权是否独立取得：脚本未验证。",
++    "源码/覆盖变化或模块重开时是否即时撤销整体验收，真实 Goal 是否停止：静态检查不能证明历史行为。",
+     "用户是否实际转交本层远端质疑和完整当前稿、记录位置及逐项补证处理：脚本未验证；完成状态须由本地核实协作输入与源码依据。",
+     "隐藏调用、发现漏报、业务语义、源码真实性、证据是否支持分类和处置理由：脚本未验证，须本地核源码并由远端独立质疑。",
+     "闸门断言、边界契约、外部黑盒契约、交叉复查的实质差异与真实无新增：脚本未验证。",
+@@ -42,6 +54,140 @@ PLACEHOLDER = re.compile(r"待填写|待填|〈|〉|<待|\bTODO\b|^\.{3}$|^…+$
+ LINK = re.compile(r"(?<!!)\[([^\]\n]+)\]\(([^\n]*?)\)")
+ 
+ 
++class ContractError(ValueError):
++    def __init__(self, status, message):
++        super().__init__(message)
++        self.status = status
++
++
++def read_utf8(path: Path) -> str:
++    text = path.read_bytes().decode("utf-8")
++    if text.startswith("\ufeff"):
++        text = text[1:]
++    text = text.replace("\r\n", "\n")
++    if "\r" in text:
++        raise ContractError("未验证", "含孤立 CR，无法按 UTF-8/LF 契约计算")
++    return text
++
++
++def markdown_structure(text: str):
++    """ATX headings and fenced blocks at document level; never split inside code."""
++    lines = text.split("\n")
++    headings, blocks = [], []
++    opened = None
++    for i, line in enumerate(lines):
++        if opened is not None:
++            start, char, length, info = opened
++            if re.fullmatch(r" {0,3}" + re.escape(char) + "{" + str(length) + r",}[ \t]*", line):
++                blocks.append((start, i, info))
++                opened = None
++            continue
++        fence = re.match(r"^ {0,3}(`{3,}|~{3,})(.*)$", line)
++        if fence and not (fence[1][0] == "`" and "`" in fence[2]):
++            opened = (i, fence[1][0], len(fence[1]), fence[2].strip())
++            continue
++        heading = re.fullmatch(r" {0,3}(#{1,6})(?:[ \t]+(.*)|[ \t]*)", line)
++        if heading:
++            title = re.sub(r"(?:^|[ \t]+)#+[ \t]*$", "", heading[2] or "").strip()
++            headings.append((i, len(heading[1]), title))
++    if opened:
++        raise ContractError("未验证", f"第 {opened[0]+1} 行代码围栏未闭合")
++    return lines, headings, blocks
++
++
++def reader_content(text: str) -> bytes:
++    lines, headings, blocks = markdown_structure(text)
++    titles = [h for h in headings if h[1] == 1]
++    sections = [h for h in headings if h[1] == 2]
++    if len(titles) != 1 or not sections or titles[0][0] >= sections[0][0]:
++        raise ContractError("失败", "模块须有唯一一级标题，且位于首个二级标题之前")
++    counts = Counter(h[2] for h in sections)
++    for name in REQUIRED_SECTIONS | EXCLUDED_SECTIONS:
++        if counts[name] > 1:
++            raise ContractError("未验证", f"二级标题 {name} 重复，不能确定有效区块")
++    missing = REQUIRED_SECTIONS - counts.keys()
++    if missing:
++        raise ContractError("失败", "缺必需二级标题：" + "、".join(sorted(missing)))
++    prefix = lines[:sections[0][0]]
++    code_lines = {i for start, end, _ in blocks for i in range(start, end+1)}
++    fields = {"状态": [], "限制": []}
++    for i, line in enumerate(prefix):
++        match = re.fullmatch(r"[ \t]*(状态|限制)[：:][ \t]*(.*)", line)
++        if match and i not in code_lines:
++            fields[match[1]].append((i, clean(match[2])))
++    if any(len(v) != 1 for v in fields.values()):
++        raise ContractError("失败", "首节前状态、限制须各恰好一行")
++    state_index, state = fields["状态"][0]
++    limit_index, limit = fields["限制"][0]
++    if state not in STATES or limit not in ("有", "无"):
++        raise ContractError("失败", "状态或限制值非法")
++    prefix[limit_index] = "限制：" + limit
++    del prefix[state_index]
++    fragments = ["\n".join(prefix).rstrip("\n")]
++    for n, (start, _, name) in enumerate(sections):
++        if name in EXCLUDED_SECTIONS:
++            continue
++        end = sections[n+1][0] if n+1 < len(sections) else len(lines)
++        fragments.append("\n".join(lines[start:end]).rstrip("\n"))
++    return ("\n\n".join(fragments) + "\n").encode("utf-8")
++
++
++def fingerprint(path: Path) -> dict:
++    result = {"文件": str(path), "规范版本": "2.4", "算法": FINGERPRINT_ALGORITHM, "sha256": None}
++    try:
++        result["sha256"] = hashlib.sha256(reader_content(read_utf8(path))).hexdigest()
++        result.update(结果="通过", 说明="读者内容指纹已实际计算；不证明用户授权或源码真实性")
++    except ContractError as exc:
++        result.update(结果=exc.status, 说明=str(exc))
++    except (OSError, UnicodeError) as exc:
++        result.update(结果="未验证", 说明=f"不能读取/计算：{exc}")
++    return result
++
++
++def scope_fingerprint(root: Path, paths: list[str] | None = None) -> dict:
++    result = {"文件": str(root), "规范版本": "2.4", "算法": SCOPE_ALGORITHM, "sha256": None, "清单": []}
++    try:
++        inventory = {}
++        for path in (root / "modules").rglob("*.md"):
++            if path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
++                raise ContractError("失败", f"模块路径不能经符号链接越过清点边界：{path}")
++            relative = path.relative_to(root).as_posix().replace("\\", "/")
++            normalized = unicodedata.normalize("NFC", relative)
++            if normalized in inventory:
++                raise ContractError("失败", f"NFC 路径冲突：{relative}")
++            inventory[normalized] = path
++        if "modules/00-总览.md" not in inventory:
++            raise ContractError("失败", "整体范围缺少 modules/00-总览.md")
++        selected = list(inventory) if paths is None else []
++        for raw in paths or []:
++            name = unicodedata.normalize("NFC", raw.replace("\\", "/"))
++            if name.startswith("/") or any(part in ("", ".", "..") for part in name.split("/")) or "\0" in name:
++                raise ContractError("失败", f"须使用 project-map 内模块相对路径：{raw}")
++            if name in selected:
++                raise ContractError("失败", f"清单路径重复/NFC 冲突：{raw}")
++            selected.append(name)
++        if set(selected) != set(inventory):
++            raise ContractError("失败", "清单必须恰好包含全部 modules/**/*.md（含总览），不能遗漏或越界")
++        rows, failures = [], []
++        for name in sorted(selected, key=lambda x: x.encode("utf-8")):
++            item = fingerprint(inventory[name])
++            result["清单"].append({"路径": name, **item})
++            if item["结果"] != "通过":
++                failures.append(item)
++            else:
++                rows.append(name.encode("utf-8") + b"\0" + item["sha256"].encode("ascii") + b"\n")
++        if failures:
++            status = "失败" if any(i["结果"] == "失败" for i in failures) else "未验证"
++            raise ContractError(status, "范围中存在不可计算的模块；见清单明细")
++        result["sha256"] = hashlib.sha256(b"".join(rows)).hexdigest()
++        result.update(结果="通过", 说明="范围指纹已实际计算；模块验收与整体技术条件须另行核验")
++    except ContractError as exc:
++        result.update(结果=exc.status, 说明=str(exc))
++    except (OSError, UnicodeError) as exc:
++        result.update(结果="未验证", 说明=f"范围清点/计算未完成：{exc}")
++    return result
++
++
+ def clean(value: str) -> str:
+     value = value.strip()
+     if value.startswith("**") and value.endswith("**"):
+@@ -54,7 +200,10 @@ def plain(value: str) -> str:
+ 
+ 
+ def without_fences(text: str) -> str:
+-    return re.sub(r"(?ms)^\s*(`{3,}|~{3,})[^\n]*\n.*?^\s*\1\s*$", "", text)
++    lines, _, blocks = markdown_structure(text)
++    for start, end, _ in blocks:
++        lines[start:end+1] = [""] * (end-start+1)
++    return "\n".join(lines)
+ 
+ 
+ def cells(line: str) -> list[str]:
+@@ -103,25 +252,18 @@ class Document:
+     text: str
+ 
+     def section(self, name: str) -> str | None:
+-        lines = without_fences(self.text).splitlines()
+-        for index, line in enumerate(lines):
+-            match = re.match(r"^(#{1,6})\s+(.+?)\s*#*\s*$", line)
+-            if match and clean(match.group(2)) == name:
+-                level = len(match.group(1))
+-                end = len(lines)
+-                for i in range(index + 1, len(lines)):
+-                    following = re.match(r"^(#{1,6})\s+", lines[i])
+-                    if following and len(following.group(1)) <= level:
+-                        end = i
+-                        break
+-                return "\n".join(lines[index + 1:end])
++        lines, headings, _ = markdown_structure(without_fences(self.text))
++        for index, (at, level, title) in enumerate(headings):
++            if title == name:
++                end = next((i for i, lev, _ in headings[index+1:] if lev <= level), len(lines))
++                return "\n".join(lines[at+1:end])
+         return None
+ 
+     def record_section(self, name: str, header: tuple[str, ...]) -> str | None:
+         body = self.section(name)
+         if body is not None:
+             return body
+-        # 规范固定的是内容/表头，并未固定章节标题。对唯一匹配表头回溯所在节。
++        # 候选/闸门可按唯一表头定位；模块必需标题另由读者指纹核验。
+         lines = without_fences(self.text).splitlines()
+         matches = [i for i, line in enumerate(lines) if "|" in line and tuple(cells(line)) == header]
+         if len(matches) != 1:
+@@ -161,6 +303,9 @@ class Checker:
+         self.raw_counts: dict[str, int | None] = {}
+         self.extra_tasks = 0
+         self.module_inventory_complete = True
++        self.contract = "2.4"
++        self.fingerprints = {}
++        self.unreadable_modules = set()
+ 
+     def record(self, status: str, group: str, path: Path, message: str):
+         try:
+@@ -183,8 +328,9 @@ class Checker:
+         if not self.require(path.is_file(), "记录", path, "文件存在"):
+             return None
+         try:
+-            doc = Document(path, path.read_text(encoding="utf-8-sig"))
+-        except (OSError, UnicodeError) as exc:
++            doc = Document(path, read_utf8(path))
++            markdown_structure(doc.text)
++        except (OSError, UnicodeError, ContractError) as exc:
+             self.unknown("记录", path, f"无法读取 UTF-8 文档：{exc}")
+             return None
+         self.docs[path] = doc
+@@ -276,7 +422,7 @@ class Checker:
+         if rows is None:
+             self.unresolved_complete = False
+             return None
+-        # 用户补充：分别登记的原始任务逐条计数；相同来源不自动合并。
++        # 分别登记的原始任务逐条计数；相同来源不自动合并。
+         for row in rows:
+             source, kind = plain(row["来源"]), row["类型"]
+             self.require(kind in ("待核实", "阻塞", "限制"), "处置", doc.path, f"未决 {source} 类型合法：{kind}")
+@@ -336,7 +482,7 @@ class Checker:
+     def anchors(self, doc: Document) -> set[str]:
+         anchors = set(re.findall(r'<a\s+(?:id|name)=[\"\']([^\"\']+)[\"\']', doc.text, re.I))
+         used = Counter()
+-        for title in re.findall(r"(?m)^#{1,6}\s+(.+?)\s*#*\s*$", without_fences(doc.text)):
++        for _, _, title in markdown_structure(without_fences(doc.text))[1]:
+             title = re.sub(r"[^\w\-\s\u4e00-\u9fff]", "", plain(title).lower())
+             slug = re.sub(r"\s+", "-", title.strip())
+             suffix = "" if used[slug] == 0 else f"-{used[slug]}"
+@@ -348,8 +494,8 @@ class Checker:
+         return anchors
+ 
+     def mermaid(self, doc: Document) -> dict[str, str] | None:
+-        blocks = re.findall(r"(?ms)^\s*(`{3,}|~{3,})mermaid\s*\n(.*?)^\s*\1\s*$", doc.text)
+-        graphs = [body for _, body in blocks]
++        lines, _, blocks = markdown_structure(doc.text)
++        graphs = ["\n".join(lines[start+1:end]) for start, end, info in blocks if info == "mermaid"]
+         if not graphs and "mermaid" in doc.text.lower():
+             self.unknown("节点", doc.path, "Mermaid 围栏写法无法解析，未验证节点对应")
+             return None
+@@ -429,14 +575,19 @@ class Checker:
+                     continue
+                 valid = False
+                 external = False
++                unreadable = False
+                 for _, target in refs:
+                     path, frag = self.target(doc, target)
+                     if path is None:
+                         external = True
++                    elif path in self.unreadable_modules:
++                        unreadable = True
+                     elif path.is_file():
+                         if path.suffix.lower() == ".md" and (path in self.modules or frag):
+                             valid = True
+-                if not valid and external:
++                if not valid and unreadable:
++                    self.unknown("节点", doc.path, f"{ident} 的目标模块存在但无法读取")
++                elif not valid and external:
+                     self.unknown("节点", doc.path, f"{ident} 外部引用去向未联网验证")
+                 else:
+                     self.require(valid, "节点", doc.path, f"{ident} 去向是有效模块/正文或未决定位")
+@@ -462,12 +613,104 @@ class Checker:
+             if row["检查范围"] in ("不适用", "无"):
+                 self.require(row["说明"] not in ("", "无", "不适用"), "完成", doc.path, f"闸门 {row['检查项']} 不适用有原因")
+ 
++    def detect_contract(self):
++        state = self.docs.get((self.root / "STATE.md").resolve())
++        if state is None:
++            self.unknown("规范", self.root, "无法读取规范版本，不启用兼容降级")
++            return
++        versions = state.fields().get("规范版本", [])
++        if versions == ["2.4"]:
++            self.record("通过", "规范", state.path, "规范版本为 2.4，核对四状态和九项统计")
++        elif versions:
++            self.require(False, "规范", state.path, "规范版本须唯一且为 2.4；不支持的版本不按旧库放行")
++        else:
++            mixed = bool(state.fields().get("待验收模块数"))
++            for path in self.modules:
++                doc = self.docs[path]
++                mixed |= doc.section("验收记录") is not None or "待验收" in doc.fields().get("状态", [])
++                mixed |= "读者内容指纹" in doc.fields()
++            coverage = self.docs.get((self.root / "COVERAGE.md").resolve())
++            mixed |= bool(coverage and coverage.section("整体验收记录") is not None)
++            if mixed:
++                self.require(False, "规范", state.path, "缺规范版本却混用四状态/验收/九统计字段，不能按旧库检查")
++            else:
++                self.contract = "2.3"
++                self.unknown("规范", state.path, "按三状态/八统计契约只读检查；2.4 用户验收尚未验证，不自动迁移")
++
++    def acceptance(self, doc: Document, status: str | None):
++        computed = fingerprint(doc.path)
++        self.fingerprints[str(doc.path.relative_to(self.root))] = computed
++        self.record(computed["结果"], "验收", doc.path, computed["说明"])
++        block = doc.section("验收记录")
++        if not self.require(block is not None, "验收", doc.path, "模块有本文件的验收记录"):
++            return None
++        proposed = self.field(doc, "拟完成类型", block, "验收")
++        saved = self.field(doc, "读者内容指纹", block, "验收")
++        baseline = self.field(doc, "核验基准", block, "验收")
++        question = self.field(doc, "用户验收问题", block, "验收")
++        answer = self.field(doc, "用户验收回答", block, "验收")
++        if status not in (*COMPLETED, "待验收"):
++            return proposed
++        self.require(proposed in COMPLETED, "验收", doc.path, "待验收/完成的拟完成类型合法")
++        absent = (None, "无", "未取得", "未验证", "失效")
++        self.require(baseline not in absent, "验收", doc.path, "记录当前技术核验基准；无法确定时须明写基准未知及依据")
++        if saved in absent and status == "待验收":
++            self.unknown("验收", doc.path, "待验收的记录指纹未验证；不得转正，工具恢复后须重新确认具体版本")
++        elif self.require(bool(saved and re.fullmatch(r"[0-9a-f]{64}", saved)), "验收", doc.path, "记录完整小写 SHA-256"):
++            if computed["sha256"] is not None:
++                self.require(saved == computed["sha256"], "验收", doc.path, "记录指纹等于当前读者内容")
++        if status in COMPLETED:
++            self.require(proposed == status, "验收", doc.path, "完成状态与本文件拟完成类型一致")
++            self.require(question not in absent and answer not in absent, "验收", doc.path, "完成状态具备用户验收问题与实际回答/可复核位置")
++            if question not in absent and computed["sha256"]:
++                self.require(doc.path.name in question and computed["sha256"][:8] in question,
++                             "验收", doc.path, "验收问题列明本文件名及当前指纹前8–12位")
++        return proposed
++
++    def scope_acceptance(self, doc: Document, claimed: bool) -> bool:
++        block = doc.section("整体验收记录")
++        if block is None:
++            if claimed:
++                self.require(False, "验收", doc.path, "整体完成须有整体验收记录")
++            return False
++        headings = markdown_structure(doc.text)[1]
++        if sum(level == 2 and name == "整体验收记录" for _, level, name in headings) != 1:
++            self.unknown("验收", doc.path, "整体验收记录不唯一，不能确定当前有效记录")
++            return False
++        rows = self.table(doc, "整体验收记录", SCOPE_HEADER, group="验收")
++        saved = self.field(doc, "整体读者内容指纹", block, "验收")
++        technical = self.field(doc, "技术核验", block, "验收")
++        question = self.field(doc, "用户验收问题", block, "验收")
++        answer = self.field(doc, "用户验收回答", block, "验收")
++        absent = (None, "无", "未取得", "未验证", "失效")
++        active = claimed or bool(rows) or saved not in absent
++        if not active:
++            return False
++        if rows is not None:
++            result = scope_fingerprint(self.root, [r["模块路径"] for r in rows])
++            self.record(result["结果"], "验收", doc.path, result["说明"])
++            if self.require(bool(saved and re.fullmatch(r"[0-9a-f]{64}", saved)), "验收", doc.path, "整体记录具备完整 SHA-256") and result["sha256"]:
++                self.require(saved == result["sha256"], "验收", doc.path, "整体记录指纹与当前清单内容一致")
++            if claimed and question not in absent and result["sha256"]:
++                self.require(result["sha256"][:8] in question, "验收", doc.path, "整体提问指向当前整体指纹")
++        self.require(technical not in absent, "验收", doc.path, "整体验收有技术核验依据")
++        if not self.module_inventory_complete:
++            self.unknown("验收", doc.path, "模块无法全部读取，逐份验收状态未验证")
++        else:
++            self.require(all(m.get("status") in COMPLETED for m in self.modules.values()),
++                         "验收", doc.path, "清单所有模块（含总览）已个别验收，整体认可不能顺带批准")
++        if claimed:
++            self.require(question not in absent and answer not in absent, "验收", doc.path, "整体完成须取得当前整体版本的用户问题与回答")
++        return True
++
+     def module(self, doc: Document):
+         # 模块固定两行元信息位于标题前后皆可，但必须位于第一节前。
+-        prefix = re.split(r"(?m)^##\s+", doc.text, maxsplit=1)[0]
++        lines, headings, _ = markdown_structure(doc.text)
++        first = next((i for i, level, _ in headings if level == 2), len(lines))
++        prefix = "\n".join(lines[:first])
+         status = self.field(doc, "状态", prefix, "完成")
+         limitation = self.field(doc, "限制", prefix, "完成")
+-        self.require(status in STATES, "完成", doc.path, f"模块状态合法：{status}") if status is not None else None
++        self.require(status in (STATES if self.contract == "2.4" else LEGACY_STATES), "完成", doc.path, f"模块状态合法：{status}") if status is not None else None
+         self.require(limitation in ("无", "有"), "完成", doc.path, f"限制值合法：{limitation}") if limitation is not None else None
+         unknowns = self.unresolved(doc)
+         section = doc.record_section("候选记录", CANDIDATE_HEADER)
+@@ -521,7 +764,9 @@ class Checker:
+                         for _, raw in refs:
+                             target, fragment = self.target(doc, raw)
+                             self.require(target is not None and target.is_file(), "处置", doc.path, f"候选 {source} 证据去向实际存在：{raw}")
+-                            if row["处置"] == "模块引用":
++                            if row["处置"] == "模块引用" and target in self.unreadable_modules:
++                                self.unknown("处置", doc.path, f"候选 {source} 引用模块存在但无法读取")
++                            elif row["处置"] == "模块引用":
+                                 self.require(target in self.modules, "处置", doc.path, f"候选 {source} 引用已纳入本知识库的实际模块")
+                             elif target != doc.path:
+                                 self.require(False, "处置", doc.path, f"候选 {source} 本文已解释必须定位当前文档")
+@@ -557,9 +802,10 @@ class Checker:
+                     self.extra_tasks += 1  # 独立完整限制说明也是一条原始未完成记录。
+             if block is not None:
+                 self.require(block, "完成", doc.path, "限制为有时有对应阻塞项或完整限制说明")
+-        complete = status in ("本层完成", "已证叶子")
++        proposed = self.acceptance(doc, status) if self.contract == "2.4" else None
++        complete = status in COMPLETED or status == "待验收"
+         self.gates(doc, complete, complete)
+-        if status == "已证叶子":
++        if status == "已证叶子" or (status == "待验收" and proposed == "已证叶子"):
+             self.require(limitation == "无", "完成", doc.path, "已证叶子限制必须为无")
+             if pending is None:
+                 self.unknown("完成", doc.path, "已证叶子未处置数无法确定，不能当作零")
+@@ -618,6 +864,9 @@ class Checker:
+             else:
+                 for _, raw in flow_refs:
+                     target, _ = self.target(doc, raw)
++                    if target in self.unreadable_modules:
++                        self.unknown("发现", doc.path, f"入口 {row['序号']} 主体模块无法读取")
++                        continue
+                     self.require(target in self.modules, "发现", doc.path, f"入口 {row['序号']} 主体流程指向实际模块：{raw}")
+         for row in sinks or []:
+             position = row["定位或孤立候选"]
+@@ -632,6 +881,9 @@ class Checker:
+             uncertain = False
+             for _, raw in refs:
+                 target, fragment = self.target(doc, raw)
++                if target in self.unreadable_modules:
++                    uncertain = True
++                    continue
+                 if target not in self.modules or not fragment:
+                     continue
+                 target_doc = self.docs[target]
+@@ -680,6 +932,8 @@ class Checker:
+         self.field(doc, "范围", group="发现")
+         self.field(doc, "召回探针", group="发现")
+         claimed = overall == "是"
++        if self.contract == "2.4":
++            claimed = self.scope_acceptance(doc, claimed) or claimed
+         if convergence == "是" or claimed:
+             directions = {r["方法或方向"] for r in methods or []}
+             self.require({"正向入口", "反向汇点", "盲区审查"} <= directions, "发现", doc.path, "暂时收敛须登记正向入口、反向汇点、盲区审查及适用性")
+@@ -694,8 +948,8 @@ class Checker:
+                 self.require(not any(records) and self.extra_tasks == 0, "完成", doc.path, "整体完成没有未处置的原始任务或独立限制说明")
+             else:
+                 self.unknown("完成", doc.path, "整体完成的未决尚未完整解析")
+-            self.require(all(m.get("status") in STATES[1:] and m.get("limitation") == "无"
+-                             for m in self.modules.values()), "完成", doc.path, "整体完成没有梳理中或受限模块")
++            self.require(all(m.get("status") in COMPLETED and m.get("limitation") == "无"
++                             for m in self.modules.values()), "完成", doc.path, "整体完成没有梳理中、待验收或受限模块")
+             for rows, field in ((entries, "总览节点"), (sinks, "定位或孤立候选")):
+                 self.require(rows is not None and all(r[field] not in ("未映射", "孤立候选", "孤立汇点候选") for r in rows or []), "完成", doc.path, "整体完成的入口及汇点均已映射")
+             for rows in (methods, crosses):
+@@ -704,14 +958,14 @@ class Checker:
+ 
+     def summary(self, state: Document, coverage: dict):
+         statuses = [m.get("status") for m in self.modules.values()]
+-        for value in STATES:
++        for value in (STATES if self.contract == "2.4" else LEGACY_STATES):
+             self.counts[value + "模块数"] = statuses.count(value) if self.module_inventory_complete and all(s in STATES for s in statuses) else None
+         unresolved_sets = [m.get("unresolved") for m in self.modules.values()] + [coverage.get("unresolved")]
+         if self.unresolved_complete and all(x is not None for x in unresolved_sets):
+             records = [r for rows in unresolved_sets for r in rows]
+             self.raw_counts["未决原始行数"] = len(records)
+             self.raw_counts["阻塞原始行数"] = sum(r["类型"] == "阻塞" for r in records)
+-            # 用户对 §5.1 的补充：当前未完成原始任务逐条计数，不按模块/来源去重。
++            # 当前未完成原始任务逐条计数，不按模块/来源去重。
+             # 候选表是这些任务的依据/引用；STATE 只是汇总，不另计一份。
+             self.counts["待办数"] = len(records) + self.extra_tasks
+             self.counts["阻塞数"] = self.raw_counts["阻塞原始行数"]
+@@ -724,7 +978,7 @@ class Checker:
+         records = [coverage.get(k) for k in ("entries", "sinks", "methods", "crosses")]
+         self.raw_counts["COVERAGE四张登记表原始行数"] = sum(len(x) for x in records) if all(x is not None for x in records) else None
+         self.counts["覆盖记录数"] = self.raw_counts["COVERAGE四张登记表原始行数"]
+-        for key in SUMMARY_KEYS:
++        for key in (SUMMARY_KEYS if self.contract == "2.4" else LEGACY_SUMMARY_KEYS):
+             actual = self.number(self.field(state, key, group="汇总"), state, key, "汇总")
+             expected = self.counts[key]
+             if expected is None:
+@@ -747,8 +1001,10 @@ class Checker:
+             if doc:
+                 self.modules[doc.path] = {}
+             else:
++                self.unreadable_modules.add(path.resolve())
+                 self.module_inventory_complete = False
+                 self.unresolved_complete = False
++        self.detect_contract()
+         # 先建立整个模块/节点索引，引用可共享且不存在唯一父模块或固定深度。
+         for path in list(self.modules):
+             self.modules[path]["nodes"] = self.mermaid(self.docs[path])
+@@ -765,25 +1021,64 @@ class Checker:
+             doc = self.read(path)
+             if doc:
+                 self.local_links(doc)
+-        if any(r["结果"] == "失败" for r in self.results) and any(m.get("status") in STATES[1:] for m in self.modules.values()):
+-            self.record("失败", "完成", self.root, "存在 check 失败，不得以当前检查支持完成／叶子状态切换；修复后复检")
++        if any(r["结果"] == "失败" for r in self.results) and any(m.get("status") in COMPLETED for m in self.modules.values()):
++            self.record("失败", "完成", self.root, "存在 check 失败，不得以当前检查支持完成／叶子状态切换；补齐后复检")
+         return self.report()
+ 
+     def report(self):
+         statuses = [r["结果"] for r in self.results]
+         result = "失败" if "失败" in statuses else "未验证" if "未验证" in statuses else "通过"
+         groups = {}
+-        for name in ("记录", "发现", "处置", "节点", "链接", "完成", "汇总"):
++        for name in ("记录", "规范", "发现", "处置", "节点", "链接", "完成", "验收", "汇总"):
+             items = [r["结果"] for r in self.results if r["范围"] == name]
+             groups[name] = ("失败" if "失败" in items else "未验证" if "未验证" in items else "通过" if items else "未验证")
+-        return {"机械检查": result, "范围说明": "只检查已支持且实际执行的记录契约，不证明发现完整或源码语义真实", "分项": groups, "派生计数": self.counts, "原始行数（辅助诊断）": self.raw_counts, "检查计数": dict(Counter(statuses)), "明细": self.results, "人工核验（脚本未验证）": MANUAL}
++        return {"机械检查": result, "范围说明": "只检查已支持且实际执行的记录契约，不证明发现完整或源码语义真实", "规范版本": self.contract, "读者内容指纹": self.fingerprints, "分项": groups, "派生计数": self.counts, "原始行数（辅助诊断）": self.raw_counts, "检查计数": dict(Counter(statuses)), "明细": self.results, "人工核验（脚本未验证）": MANUAL}
+ 
+ 
+ def main(argv=None):
+-    parser = argparse.ArgumentParser(description="只读检查 ruan-project-reader 2.3.0 的 project-map；不会改状态。")
+-    parser.add_argument("project_map", type=Path, help="含 README.md / STATE.md / COVERAGE.md / modules 的知识库目录")
++    parser = argparse.ArgumentParser(description="只读检查 ruan-project-reader 2.4.0 的 project-map 或计算指纹；不会改状态。")
++    parser.add_argument("project_map", type=Path, nargs="?", help="含 README.md / STATE.md / COVERAGE.md / modules 的知识库目录")
++    action = parser.add_mutually_exclusive_group()
++    action.add_argument("--fingerprint", type=Path, metavar="MODULE", help="只读计算单文件读者内容 SHA-256")
++    action.add_argument("--scope-fingerprint", type=Path, metavar="PROJECT_MAP", help="只读计算全部模块的 NFC/UTF-8 排序范围指纹；已有整体清单须一致")
+     parser.add_argument("--json", action="store_true", help="将报告输出到标准输出；不创建 JSON 状态库")
+     args = parser.parse_args(argv)
++    if args.fingerprint or args.scope_fingerprint:
++        if args.project_map:
++            parser.error("指纹入口与普通检查目录不能同时指定")
++        if args.fingerprint:
++            report = fingerprint(args.fingerprint)
++        else:
++            root = args.scope_fingerprint
++            checker = Checker(root)
++            try:
++                doc = checker.read(root / "COVERAGE.md")
++                paths = None
++                if doc and doc.section("整体验收记录") is not None:
++                    rows = checker.table(doc, "整体验收记录", SCOPE_HEADER, group="验收")
++                    if rows is None:
++                        raise ContractError("未验证", "整体清单无法解析")
++                    # Empty inactive table permits initial inventory generation.
++                    block = doc.section("整体验收记录")
++                    saved = doc.fields(block).get("整体读者内容指纹", [])
++                    inactive = saved in (["未取得"], ["未验证"], ["失效"])
++                    overall = doc.fields().get("本轮范围整体完成", [])
++                    paths = [r["模块路径"] for r in rows]
++                    if not paths and inactive and overall == ["否"]:
++                        paths = None
++                if doc is None:
++                    raise ContractError("未验证", "COVERAGE 无法读取")
++                report = scope_fingerprint(root, paths)
++                issues = [r for r in checker.results if r["结果"] != "通过"]
++                if issues:
++                    report.update(结果="失败" if any(r["结果"] == "失败" for r in issues) else "未验证", sha256=None, 说明=str(issues))
++            except (OSError, UnicodeError, ContractError) as exc:
++                report = {"文件": str(root), "规范版本": "2.4", "算法": SCOPE_ALGORITHM,
++                          "结果": getattr(exc, "status", "未验证"), "说明": str(exc), "sha256": None}
++        print(json.dumps(report, ensure_ascii=False, indent=2))
++        return {"通过": 0, "失败": 1, "未验证": 2}[report["结果"]]
++    if args.project_map is None:
++        parser.error("须提供知识库路径或一个指纹入口")
+     checker = Checker(args.project_map)
+     try:
+         report = checker.run()
+diff --git a/src/ruan-project-reader/templates/COVERAGE.md b/src/ruan-project-reader/templates/COVERAGE.md
+index bd8d050..8f78338 100644
+--- a/src/ruan-project-reader/templates/COVERAGE.md
++++ b/src/ruan-project-reader/templates/COVERAGE.md
+@@ -36,3 +36,15 @@
+ | --- | --- | --- | --- | --- | --- | --- | --- |
+ 
+ 已发现入口立即登记，未读内部时保留“未展开”和“未映射”及下一步；真实无记录才留空表。每个未映射入口、孤立汇点、未查区域和检查失败须登记原始任务，来源用 E1／S1／方法方向名。暂时收敛前实际填写异向交叉复查，不以相同方法重跑替代。整体完成前在本文件增加全项目四项闸门。
++
++## 整体验收记录
++
++整体读者内容指纹：未取得
++技术核验：未取得
++用户验收问题：未取得
++用户验收回答：未取得
++
++| 模块路径 |
++| --- |
++
++所有范围内模块（含总览）先各自验收、指纹有效且全项目闸门满足后，才填写整体待验收清单及只读工具算出的整体指纹。用户认可当前整体版本才将整体完成置是。模块重开或覆盖结论受影响时立即置否，清单清空，上述四字段置未取得；正文恢复原哈希也不自动恢复认可。
+diff --git a/src/ruan-project-reader/templates/STATE.md b/src/ruan-project-reader/templates/STATE.md
+index 7c59b02..6614e0e 100644
+--- a/src/ruan-project-reader/templates/STATE.md
++++ b/src/ruan-project-reader/templates/STATE.md
+@@ -1,8 +1,11 @@
+ # 当前工作现场
+ 
+-当前焦点：〈填写协作对象、范围与当前阶段；交接时写明等待远端质疑、补证反馈或完整稿〉
+-下一步：〈填写本阶段动作；交接时写明等用户转交何种材料、收到后如何恢复〉
++规范版本：2.4
++
++当前焦点：〈填写协作对象、范围与当前阶段；交接时写明等待远端质疑、补证反馈或完整稿、具体版本验收或独立继续授权〉
++下一步：〈填写本阶段动作；交接时写明等用户转交何种材料/明确决定、对应文件与指纹、核验依据及收到后如何恢复〉
+ 梳理中模块数：〈据原始文件派生〉
++待验收模块数：〈据原始文件派生〉
+ 本层完成模块数：〈据原始文件派生〉
+ 已证叶子模块数：〈据原始文件派生〉
+ 待办数：〈当前原始未完成任务逐条统计〉
+@@ -11,4 +14,4 @@
+ 汇点数：〈汇点表行数〉
+ 覆盖记录数：〈入口＋汇点＋发现方法＋交叉复查表的行数〉
+ 
+-恢复先读实际模块、COVERAGE 和本现场，等待材料未到齐则保持等待并结束执行，收到后才进入对应阶段。按原始记录对账摘要；同模块的不同任务逐条核验，缺失或无法解析不按零。这里引用原始未决，不另建待办真相。
++恢复先读实际模块、COVERAGE 和本现场，等待材料/验收或继续授权未取得则保持等待并结束执行，收到后才进入对应阶段。按原始记录对账摘要；同模块的不同任务逐条核验，缺失或无法解析不按零。这里引用原始未决，不另建待办真相。
+diff --git a/src/ruan-project-reader/templates/module.md b/src/ruan-project-reader/templates/module.md
+index 3f64f53..748f4b1 100644
+--- a/src/ruan-project-reader/templates/module.md
++++ b/src/ruan-project-reader/templates/module.md
+@@ -23,7 +23,7 @@ flowchart TD
+ 
+ ## 必要规则与源码依据
+ 
+-〈先向下预研再组织本层图文，列出支撑本层陈述的实际工作位置、条件、状态、异常、事务、配置、外部契约等证据。事实／推断／待核实分开，未查清部分登记缺口。〉
++〈先向下预研再组织本层图文，列出支撑本层陈述的实际工作位置、条件、状态、异常、事务、配置、外部契约等证据。事实／推断／待核实分开，说明读者必须了解的重要未知及其影响；可变待办、调查进度与下一动作放未决，候选处置放候选记录。〉
+ 
+ ## 下钻、引用与外部去向
+ 
+@@ -50,6 +50,14 @@ flowchart TD
+ 
+ ## 核验与下一步
+ 
+-〈用户已转交的远端质疑及完整当前稿的内容或记录位置、逐项补证处理及尚存未决；本地实际源码核验、机械检查结果及未验证范围、人工核验、Mermaid是否自动验证、确认与下一步。尚未收到相应输入时写清等待事项并保持梳理中。切完成／叶子前核实协作输入与源码依据并补入四项闸门表；叶子须附反证依据。〉
++〈用户已转交的远端质疑及完整当前稿的内容或记录位置、逐项补证处理及尚存未决；本地实际源码核验、机械检查结果及未验证范围、人工核验、Mermaid是否自动验证、确认与下一步。尚未收到相应输入时写清等待事项并保持梳理中。进入待验收前核实协作输入与源码依据并补入四项闸门表；拟叶子须附反证依据。通过后仅待验收，用户认可具体指纹版本才转正；继续下一项须独立明确授权。〉
++
++## 验收记录
++
++拟完成类型：未取得
++读者内容指纹：未验证
++核验基准：未取得
++用户验收问题：未取得
++用户验收回答：未取得
+ 
+ 总览使用此模板时：节点表示主体流程，短注或以节点 ID 为标题的正文引用 COVERAGE 的入口序号；边和候选仅跨流程交接，写发送端与对端位置，不复制入口清单或下层内部候选。普通模块删除本模板说明。所有占位均须替换为事实，表格为空也需实际扫描依据。
+diff --git a/src/ruan-project-reader/templates/remote-relay.md b/src/ruan-project-reader/templates/remote-relay.md
+index fee19f5..064cfed 100644
+--- a/src/ruan-project-reader/templates/remote-relay.md
++++ b/src/ruan-project-reader/templates/remote-relay.md
+@@ -1,6 +1,6 @@
+ # 远端转交模板
+ 
+-将下面代码块的占位替换为授权范围内实际内容。块外对用户说话，默认只转普通文字；确需文件在块外说明。不能只给远端无法读取的路径，不自动发送。起步时写项目背景与目标；续接时聚焦当前模块，保留完整当前未决。
++将下面代码块的占位替换为授权范围内实际内容。块外对用户说话，提示词默认普通文字；完整当前稿默认以 UTF-8 Markdown 文件交付，在块外列明文件。不能只给远端无法读取的路径，不自动发送。起步时写项目背景与目标；续接时聚焦当前模块，保留完整当前未决。
+ 
+ 首轮以可供质疑的项目总览草稿为对象，未收敛部分保留缺口与后续去向。每次转交前保存当前稿及 STATE 的等待事项和恢复动作，给出代码块后结束本次执行，等用户带回相应材料再恢复。
+ 
+@@ -26,11 +26,11 @@
+ 
+ 检查跨流程交接时，同时检查直接调用、消息和状态写入后被另一流程扫描；仅有共享名字不连边，已有对象／状态／扫描条件证据也不能因“没有直接调用”而漏画。按真实媒介和触发条件标注。
+ 
+-提交文档时给完整当前 Markdown：状态、限制、职责与边界、一张 Mermaid、逐节点 ID／原标签／约20字短注／去向、规则与源码依据、候选、已实际执行闸门和未决。图中 ID 不放可见标签，只画有依据的执行边。下钻／引用有实际链接或未决承接，不为布局隐藏失败和异步。
++提交文档时给完整当前 Markdown：状态、限制、职责与边界、一张 Mermaid、逐节点 ID／原标签／约20字短注／去向、规则与源码依据、下钻/引用去向、候选、已实际执行闸门、未决、限制说明、核验与下一步及验收记录。核验/验收字段只沿用本地实际提供的内容，尚未取得如实填写，不编造用户回答或指纹。图中 ID 不放可见标签，只画有依据的执行边。下钻／引用有实际链接或未决承接，不为布局隐藏失败和异步。
+ 
+ 候选四字段为扫描范围／扫描方法／检查对象数／未检查区域；表列为来源位置／候选／类别／数量／处置／证据或去向。类别限事务锁并发、写库缓存状态、MQ异步后台、异常重试补偿、权限判断算法、配置分派、外部调用副作用、出向调用、其他。处置限本文已解释、模块引用、外部边界、琐碎、待核实、阻塞。前七类不得琐碎，重要项逐条追溯。未知数量不作零。
+ 
+-按执行语义组织，不强制唯一父模块或固定深度；本层完成不代表后代完成。父层要核实子边界与本场景出口，叶子另须无未处置、无限制、无未落实的重要内部阶段。远端稿不能替本地源码核验或改变正式状态。
++按执行语义组织，不强制唯一父模块或固定深度；本层完成不代表后代完成。父层要核实子边界与本场景出口，叶子另须无未处置、无限制、无未落实的重要内部阶段。远端稿不能替本地源码核验或改变正式状态。本地核验通过仅进入待验收；用户明确认可当前文件指纹版本才转正，另行明确授权才进入下一项。用户有异议须交完整修订稿，本地自己 diff 并适用复核；表达意见也不能跳过新版本验收。
+ 
+-末尾列已确认、未决及下一步。须转交本地的内容放独立 Markdown 代码块，由用户手动转交；给出后结束当前阶段，等待用户带回本地补证或核验结果。
++末尾列已确认、未决及下一步。完整稿默认交付 UTF-8 Markdown 文件，由用户保存后把文件或可访问本地路径交本地；只有无法直接传文件才以外围栏承载完整原文。另给简短转交说明：本轮意见、改动范围、待核实事实与未决，不写入知识库执行正文。提示词使用 ~~~~text 外层围栏，围栏不进入实际模块 Markdown。由用户手动转交；给出后结束当前阶段，等待用户带回本地补证、核验结果或用户验收意见。
+ ~~~~
+diff --git a/src/tests/README.md b/src/tests/README.md
+index 487f78a..847c3a4 100644
+--- a/src/tests/README.md
++++ b/src/tests/README.md
+@@ -1,6 +1,6 @@
+ # 回归与验收
+ 
+-当前正式版为 2.3（工程版本 2.3.0）。36 项回归保留既有 35 项，增加未展开入口登记，并把重复待办消解扩展到 2→1→0；行为证据及未验证范围见 [2.3 报告](../../reports/2.3-2026-10-30/report.md)。
++测试目标为 2.4（工程版本 2.4.0）。保留全部原有36项回归，合法旧库的总结果按只读兼容契约改为未验证，原分项/错误注入/源码哈希断言继续有效；新增验收、规范化、范围清单和隔离流程执行测试。结果及边界见 [2.4报告](../../reports/2.4-2026-10-30/report.md)。
+ 
+ 在工程根目录运行（Python 3.10+，标准库）：
+ 
+@@ -12,11 +12,21 @@ python3 src/build_release.py --verify
+ 
+ Windows 可用合适的 `py -3` 并在环境中设置 `PYTHONDONTWRITEBYTECODE=1`；测试会在带中文和空格的临时目录执行。测试不依赖模型接口、网络、Java 编译环境或生产数据。
+ 
++- `test_acceptance.py`：单文件/范围指纹、CommonMark围栏、UTF-8/BOM/CRLF、九统计、待验收及个别/整体验收负例、只读CLI、显式整库迁移、重开及哈希恢复后的整体撤销。用户/远端输入均模拟；流程演练不证明自主代理或真实Goal能够暂停。
+ - `test_check.py`：完备夹具正例、错误注入、未知值传播、共享模块／多任务计数、CLI 退出码及只读性。
+ - `test_release.py`：数字版本选择、草案排除、冲突、规范哈希、构建过滤、重复构建、失败保留原成品与替换异常回滚。
+-- `fixtures/valid-map/`：人为构造的记录契约夹具，只验证机械规则，不能作为真实项目已理解的证据。
++- `fixtures/valid-map/`：人为构造的记录契约夹具，保留三状态/八统计格式，只验证机械规则，不能作为真实项目已理解的证据；2.4检查器对合法旧库返回退出2。新契约测试仅在隔离副本上补齐结构，不改历史夹具。
+ - `fixtures/source/`：从用户提供的压缩 Demo 选取的九份玩具源码，用于独立行为试用。依赖和构建文件不全，不能编译或声称真实系统运行通过。
+ - `fixtures/forward-reviewed/`：独立试用后经针对性修订的首轮待审稿，用于真实复杂记录回归；包含可转交提示词、源码基线和最终检查摘要。
+ - `acceptance-2.2.0.md`：设计逐项对应、行为试用观察和验证边界。
+ 
+ `src/build_release.py --build` 会先重跑回归，再验证现有成品和设计，暂存完整副本后替换 `install/`。语义验收仍须由维护者对照设计与行为结果完成；测试通过不能自动证明全部需求已实现。此开发脚本和测试均不进入安装包。
++
++
++如需保留迁移和重开执行快照，可指定知识库外输出目录：
++
++```bash
++READER_EVIDENCE_DIR=reports/2.4-2026-10-30/evidence python3 -m unittest discover -s src/tests -p test_acceptance.py -v
++```
++
++模拟记录明确标明来源。文件复制、哈希、检查退出码及状态文件写入实际执行；真实用户授权、真实远端、独立代理暂停、真实Goal自动终止/重触发/中断和长期恢复另需平台实测。不能用回归通过替代这些证据。
+diff --git a/src/tests/test_acceptance.py b/src/tests/test_acceptance.py
+new file mode 100644
+index 0000000..f126425
+--- /dev/null
++++ b/src/tests/test_acceptance.py
+@@ -0,0 +1,435 @@
++"""2.4 executable contracts; all approvals in these tests are simulated inputs."""
++import hashlib
++import json
++import os
++from pathlib import Path
++import re
++import shutil
++import subprocess
++import sys
++import tempfile
++import unicodedata
++import unittest
++
++from test_check import BASE, SCRIPT, MODULE, OVERVIEW, check
++
++
++def current_module(text):
++    # Upgrade only isolated synthetic input; historical fixtures stay byte-identical.
++    text = text.replace('## 规则', '## 必要规则与源码依据\n\n<a id="规则"></a>')
++    text = text.replace('## 候选记录', '## 下钻、引用与外部去向\n\n沿图中引用继续阅读。\n\n## 候选记录')
++    return text + '\n## 限制说明\n\n无\n\n## 核验与下一步\n\n模拟输入：已收到质疑与完整稿，已逐项比对合成事实。\n'
++
++
++def record(path, state='待验收', answer='未取得', baseline='合成事实及本文件闸门记录；模拟本地核验'):
++    text = path.read_text(encoding='utf-8').split('\n## 验收记录', 1)[0]
++    proposed = '本层完成' if path.name.startswith('00-') else '已证叶子'
++    text = re.sub(r'(?m)^状态：.*$', '状态：' + state, text)
++    path.write_text(text, encoding='utf-8')
++    digest = check.fingerprint(path)['sha256']
++    text += f'\n## 验收记录\n\n拟完成类型：{proposed}\n读者内容指纹：{digest}\n核验基准：{baseline}\n用户验收问题：是否认可 {path.name}（{digest[:10]}）当前版本？限制无；未验证真实平台行为。\n用户验收回答：{answer}\n'
++    path.write_text(text, encoding='utf-8')
++    return digest
++
++
++def summary(root):
++    report = check.Checker(root).run()
++    path = root / 'STATE.md'
++    text = path.read_text(encoding='utf-8')
++    for key, val in report['派生计数'].items():
++        text = re.sub(r'(?m)^' + key + '：.*$', f'{key}：{val}', text)
++    path.write_text(text, encoding='utf-8')
++
++
++class AcceptanceTests(unittest.TestCase):
++    def setUp(self):
++        self.tmp = tempfile.TemporaryDirectory(prefix='reader 2.4 中文 ')
++        self.addCleanup(self.tmp.cleanup)
++        self.root = Path(self.tmp.name) / 'project-map'
++        shutil.copytree(BASE / 'fixtures/valid-map', self.root)
++        for p in (self.root / 'modules').glob('*.md'):
++            p.write_text(current_module(p.read_text(encoding='utf-8')), encoding='utf-8')
++        state = self.root / 'STATE.md'
++        state.write_text(state.read_text(encoding='utf-8') + '\n规范版本：2.4\n待验收模块数：2\n', encoding='utf-8')
++        coverage = self.root / 'COVERAGE.md'
++        coverage.write_text(coverage.read_text(encoding='utf-8').replace('本轮范围整体完成：是', '本轮范围整体完成：否'), encoding='utf-8')
++
++    def prepare(self, accepted=False):
++        for p in (self.root / 'modules').glob('*.md'):
++            state = ('本层完成' if p.name.startswith('00-') else '已证叶子') if accepted else '待验收'
++            record(p, state, '模拟用户：通过当前文件。' if accepted else '未取得')
++        summary(self.root)
++
++    def test_fingerprint_is_read_only(self):
++        p = self.root / MODULE
++        before = p.read_bytes()
++        result = check.fingerprint(p)
++        self.assertEqual(result['结果'], '通过', result)
++        self.assertRegex(result['sha256'], r'^[0-9a-f]{64}$')
++        self.assertEqual(before, p.read_bytes())
++
++    def test_pending_and_missing_approval(self):
++        self.prepare()
++        self.assertEqual(check.Checker(self.root).run()['机械检查'], '通过')
++        p = self.root / MODULE
++        p.write_text(p.read_text().replace('状态：待验收', '状态：已证叶子'))
++        summary(self.root)
++        self.assertEqual(check.Checker(self.root).run()['分项']['验收'], '失败')
++
++    def replace(self, relative, old, new):
++        path = self.root / relative
++        text = path.read_text(encoding='utf-8')
++        self.assertIn(old, text)
++        path.write_text(text.replace(old, new), encoding='utf-8')
++
++    def scope_record(self, answer='未取得', claimed=False):
++        value = check.scope_fingerprint(self.root)
++        self.assertEqual(value['结果'], '通过', value)
++        p = self.root / 'COVERAGE.md'
++        text = p.read_text(encoding='utf-8').split('\n## 整体验收记录', 1)[0]
++        text = re.sub(r'本轮范围整体完成：[是否]', '本轮范围整体完成：' + ('是' if claimed else '否'), text)
++        text += f"\n## 整体验收记录\n\n整体读者内容指纹：{value['sha256']}\n技术核验：合成记录全项目四项闸门已核对\n用户验收问题：是否认可清单中整组交付（{value['sha256'][:10]}），覆盖与全项目闸门按所列证据？\n用户验收回答：{answer}\n\n| 模块路径 |\n| --- |\n"
++        text += ''.join('| ' + item['路径'] + ' |\n' for item in value['清单'])
++        p.write_text(text, encoding='utf-8')
++        return value
++
++    def test_normalization_and_independent_golden_bytes(self):
++        p = self.root / MODULE
++        original = p.read_bytes()
++        digest = check.fingerprint(p)['sha256']
++        p.write_bytes(b'\xef\xbb\xbf' + original.replace(b'\n', b'\r\n'))
++        self.assertEqual(check.fingerprint(p)['sha256'], digest)
++        p.write_bytes(original.replace(b'\n## ', b'\n\n\n## ') + b'\n\n')
++        self.assertEqual(check.fingerprint(p)['sha256'], digest)
++        # Fixed tiny reader payload: independently specified expected bytes.
++        headings = ['职责与边界', '执行图', '逐节点短注', '必要规则与源码依据', '下钻、引用与外部去向']
++        reader = '# 样例\n限制：无\n\n' + '\n\n'.join('## ' + h + '\n\n正文  原样' for h in headings) + '\n'
++        full = reader.replace('# 样例\n', '# 样例\n状态：梳理中\n')
++        full += '\n' + '\n\n'.join('## ' + h + '\n\n操作记录' for h in ['候选记录','未决','限制说明','核验与下一步'])
++        p.write_text(full, encoding='utf-8')
++        self.assertEqual(check.fingerprint(p)['sha256'], hashlib.sha256(reader.encode('utf-8')).hexdigest())
++        p.write_bytes(p.read_bytes().replace(b'\n', b'\r', 1))
++        self.assertEqual(check.fingerprint(p)['结果'], '未验证')
++        self.assertIsNone(check.fingerprint(p)['sha256'])
++        p.write_bytes(b'\xff')
++        self.assertEqual(check.fingerprint(p)['结果'], '未验证')
++
++    def test_reader_changes_invalidate_and_operational_changes_do_not(self):
++        self.prepare(True)
++        p = self.root / MODULE
++        original = p.read_text(encoding='utf-8')
++        digest = check.fingerprint(p)['sha256']
++        for section in check.EXCLUDED_SECTIONS:
++            with self.subTest(section=section):
++                text = original.replace('## ' + section + '\n', '## ' + section + '\n\n调查已推进。\n')
++                p.write_text(text, encoding='utf-8')
++                self.assertEqual(check.fingerprint(p)['sha256'], digest)
++        for old, new in [('状态：已证叶子','状态：待验收')]:
++            p.write_text(original.replace(old,new), encoding='utf-8')
++            self.assertEqual(check.fingerprint(p)['sha256'], digest)
++        for old,new in [('限制：无','限制：有'), ('A --> B','A -.-> B'), ('写入记录后返回结果','写入后返回标识'), ('fixture.py:save 写入后返回','fixture.py:save 可能失败'), ('# 保存','# 保存\n前置重要未知'), ('# 保存','标题前的重要事实\n# 保存')]:
++            with self.subTest(change=new):
++                p.write_text(original.replace(old,new),encoding='utf-8')
++                self.assertNotEqual(check.fingerprint(p)['sha256'],digest)
++        p.write_text(original+'\n## 补充\n新事实\n',encoding='utf-8')
++        self.assertNotEqual(check.fingerprint(p)['sha256'],digest)
++        self.assertEqual(check.Checker(self.root).run()['分项']['验收'],'失败')
++
++    def test_fences_and_headings_follow_markdown_boundaries(self):
++        p=self.root/MODULE
++        original=p.read_text(encoding='utf-8')
++        for char,length,closing,indent in [('`',3,3,0),('`',4,5,3),('~',3,4,2),('~',5,6,0)]:
++            with self.subTest(char=char,length=length):
++                body=' '*indent+char*length+'text\n## 未决\n# 非标题\n'+char*(length-1)+'\n'+char*closing+'   \n'
++                p.write_text(original.replace('## 职责与边界\n', '## 职责与边界\n\n'+body),encoding='utf-8')
++                good=check.fingerprint(p)
++                self.assertEqual(good['结果'],'通过',good)
++                p.write_text(p.read_text().replace('# 非标题','# 内容改变'),encoding='utf-8')
++                self.assertNotEqual(check.fingerprint(p)['sha256'],good['sha256'])
++        p.write_text(original.replace('## 职责与边界','   ## 职责与边界 ###'),encoding='utf-8')
++        self.assertEqual(check.fingerprint(p)['结果'],'通过')
++        p.write_text(original+'\n## 补充\n    ## 未决\n',encoding='utf-8')
++        self.assertEqual(check.fingerprint(p)['结果'],'通过')
++        for ending in ['\n```text\n## 未决\n', '\n~~~~text\n~~~\n', '\n```\n~~~~\n']:
++            p.write_text(original+ending,encoding='utf-8')
++            self.assertEqual(check.fingerprint(p)['结果'],'未验证')
++            self.assertIsNone(check.fingerprint(p)['sha256'])
++        # Backtick-containing info string is not an opening fence.
++        p.write_text(original+'\n```bad`info\n## 补充\n事实\n',encoding='utf-8')
++        self.assertEqual(check.fingerprint(p)['结果'],'通过')
++
++    def test_no_partial_hash_on_ambiguous_or_missing_structure(self):
++        p=self.root/MODULE
++        original=p.read_text(encoding='utf-8')
++        cases=[(original+'\n## 未决\n无\n','未验证'),(original+'\n## 验收记录\n无\n## 验收记录\n无\n','未验证'),(original.replace('## 职责与边界','## 边界'),'失败'),(original.replace('状态：已证叶子','状态：已证叶子\n状态：已证叶子'),'失败'),(original.replace('限制：无','限制：有时'),'失败'),(original.replace('限制：无',''),'失败'),(original+'\n# 第二标题\n','失败')]
++        for body,expected in cases:
++            with self.subTest(expected=expected,body=body[-35:]):
++                p.write_text(body,encoding='utf-8')
++                r=check.fingerprint(p)
++                self.assertEqual(r['结果'],expected,r)
++                self.assertIsNone(r['sha256'])
++
++    def test_body_is_not_unicode_normalized_or_whitespace_folded(self):
++        p=self.root/MODULE
++        original=p.read_text(encoding='utf-8')
++        p.write_text(original+'\n## 补充\ncafé  a\n',encoding='utf-8')
++        digest=check.fingerprint(p)['sha256']
++        p.write_text(unicodedata.normalize('NFD',p.read_text()),encoding='utf-8')
++        self.assertNotEqual(check.fingerprint(p)['sha256'],digest)
++        p.write_text(original+'\n## 补充\ncafé a\n',encoding='utf-8')
++        self.assertNotEqual(check.fingerprint(p)['sha256'],digest)
++
++    def test_new_contract_cannot_be_bypassed_by_deleting_version(self):
++        self.prepare()
++        self.replace('STATE.md','规范版本：2.4','')
++        self.assertEqual(check.Checker(self.root).run()['分项']['规范'],'失败')
++        self.replace('STATE.md','待验收模块数：2','')
++        self.assertEqual(check.Checker(self.root).run()['分项']['规范'],'失败')
++
++    def test_declared_contract_requires_records_and_nine_counts(self):
++        self.prepare()
++        self.replace('STATE.md','待验收模块数：2','')
++        self.assertEqual(check.Checker(self.root).run()['分项']['汇总'],'失败')
++        self.replace(MODULE,'## 验收记录','## 其他记录')
++        self.assertEqual(check.Checker(self.root).run()['分项']['验收'],'失败')
++
++    def test_unknown_fingerprint_prevents_promotion_even_with_answer(self):
++        self.prepare()
++        p=self.root/MODULE
++        digest=check.fingerprint(p)['sha256']
++        self.replace(MODULE,'读者内容指纹：'+digest,'读者内容指纹：未验证')
++        self.replace(MODULE,'用户验收回答：未取得','用户验收回答：模拟用户：通过')
++        self.assertEqual(check.Checker(self.root).run()['机械检查'],'未验证')
++        self.replace(MODULE,'状态：待验收','状态：已证叶子')
++        summary(self.root)
++        self.assertEqual(check.Checker(self.root).run()['分项']['验收'],'失败')
++
++    def test_each_file_approval_and_partial_batch(self):
++        self.prepare()
++        record(self.root/OVERVIEW,'本层完成','模拟用户会话T：仅认可00-总览.md。')
++        summary(self.root)
++        report=check.Checker(self.root).run()
++        self.assertEqual(report['机械检查'],'通过',report['明细'])
++        self.assertEqual(report['派生计数']['待验收模块数'],1)
++        self.assertEqual(report['派生计数']['本层完成模块数'],1)
++        self.assertNotIn(check.fingerprint(self.root/MODULE)['sha256'],(self.root/OVERVIEW).read_text())
++        record(self.root/MODULE,'已证叶子','模拟用户会话U：认可保存.md。')
++        summary(self.root)
++        self.assertEqual(check.Checker(self.root).run()['机械检查'],'通过')
++
++    def test_nonblocking_problems_preserve_parent_completion(self):
++        self.prepare(True)
++        self.replace(OVERVIEW,'| 1 | 0 | 0 | 已检查此结构断言 |','| 1 | 1 | 0 | 子层已承接，不影响本层边界 |')
++        self.assertEqual(check.Checker(self.root).run()['机械检查'],'通过')
++        self.replace(OVERVIEW,'| 1 | 1 | 0 |','| 1 | 1 | 1 |')
++        self.assertEqual(check.Checker(self.root).run()['分项']['完成'],'失败')
++
++    def test_pending_leaf_still_requires_technical_gates(self):
++        self.prepare()
++        self.replace(MODULE,'| 1 | 0 | 0 | 已检查此结构断言 |','| 1 | 1 | 1 | 出口未核实 |')
++        self.assertEqual(check.Checker(self.root).run()['分项']['完成'],'失败')
++        self.replace(MODULE,'| 1 | 1 | 1 | 出口未核实 |','| 1 | 0 | 0 | 已检查此结构断言 |')
++        self.replace(MODULE,'限制：无','限制：有')
++        self.assertEqual(check.Checker(self.root).run()['分项']['完成'],'失败')
++
++    def test_scope_requires_individual_acceptance_then_own_answer(self):
++        self.prepare()
++        self.scope_record('模拟用户：整组通过',True)
++        self.assertEqual(check.Checker(self.root).run()['分项']['验收'],'失败')
++        self.prepare(True)
++        self.scope_record()
++        self.assertEqual(check.Checker(self.root).run()['机械检查'],'通过')
++        self.replace('COVERAGE.md','本轮范围整体完成：否','本轮范围整体完成：是')
++        self.assertEqual(check.Checker(self.root).run()['分项']['验收'],'失败')
++        self.scope_record('模拟用户：认可整体覆盖、清单与交付版本。',True)
++        self.assertEqual(check.Checker(self.root).run()['机械检查'],'通过')
++
++    def test_scope_path_rules_and_independent_recalculation(self):
++        self.prepare(True)
++        for name in ['é','z','汉']:
++            shutil.copyfile(self.root/MODULE,self.root/'modules'/f'{name}.md')
++        r=check.scope_fingerprint(self.root)
++        self.assertEqual(r['结果'],'通过')
++        expected_names=['modules/00-总览.md','modules/z.md','modules/é.md','modules/保存.md','modules/汉.md']
++        self.assertEqual([x['路径'] for x in r['清单']],expected_names)
++        payload=b''.join(name.encode()+b'\0'+check.fingerprint(self.root/name)['sha256'].encode()+b'\n' for name in expected_names)
++        self.assertEqual(r['sha256'],hashlib.sha256(payload).hexdigest())
++        self.assertEqual(check.scope_fingerprint(self.root,[x.replace('/','\\') for x in expected_names])['sha256'],r['sha256'])
++        nfd=self.root/'modules'/('e\u0301.md')
++        (self.root/'modules/é.md').rename(nfd)
++        self.assertEqual(check.scope_fingerprint(self.root)['sha256'],r['sha256'])
++        for paths in [expected_names[:-1],expected_names+['modules/z.md'],expected_names+['README.md'],['../escape.md'],expected_names+[str(self.root/MODULE)]]:
++            bad=check.scope_fingerprint(self.root,paths)
++            self.assertEqual(bad['结果'],'失败',bad)
++            self.assertIsNone(bad['sha256'])
++        shutil.copyfile(nfd,self.root/'modules/é.md')
++        self.assertEqual(check.scope_fingerprint(self.root)['结果'],'失败')
++
++    def test_scope_detects_rename_add_remove_and_changed_reader(self):
++        self.prepare(True)
++        original=check.scope_fingerprint(self.root)['sha256']
++        path=self.root/MODULE
++        path.rename(path.with_name('新名称.md'))
++        self.assertNotEqual(check.scope_fingerprint(self.root)['sha256'],original)
++        path.with_name('新名称.md').rename(path)
++        self.assertEqual(check.scope_fingerprint(self.root)['sha256'],original)
++        self.scope_record('模拟用户：通过',True)
++        self.replace('COVERAGE.md','| modules/保存.md |','')
++        self.assertEqual(check.Checker(self.root).run()['分项']['验收'],'失败')
++        proc=subprocess.run([sys.executable,str(SCRIPT),'--scope-fingerprint',str(self.root)],capture_output=True,text=True)
++        self.assertEqual(proc.returncode,1)
++        self.assertIsNone(json.loads(proc.stdout)['sha256'])
++
++    def test_cli_hashes_match_normal_check_and_are_read_only(self):
++        self.prepare(True)
++        self.scope_record('模拟用户：通过',True)
++        def snapshot():
++            return {p.relative_to(self.root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in self.root.rglob('*') if p.is_file()}
++        before=snapshot()
++        computed=check.Checker(self.root).run()['读者内容指纹'][MODULE]['sha256']
++        for args in [['--fingerprint',str(self.root/MODULE)],['--scope-fingerprint',str(self.root)],[str(self.root),'--json']]:
++            proc=subprocess.run([sys.executable,str(SCRIPT),*args],capture_output=True,text=True,cwd=self.tmp.name)
++            self.assertEqual(proc.returncode,0,proc.stdout+proc.stderr)
++            r=json.loads(proc.stdout)
++            if args[0]=='--fingerprint':
++                self.assertEqual(r['sha256'],computed)
++            self.assertEqual(snapshot(),before)
++        with (self.root/MODULE).open('a',encoding='utf-8') as f:
++            f.write('\n~~~~\n## 未决\n')
++        proc=subprocess.run([sys.executable,str(SCRIPT),'--fingerprint',str(self.root/MODULE)],capture_output=True,text=True)
++        self.assertEqual(proc.returncode,2)
++        self.assertIsNone(json.loads(proc.stdout)['sha256'])
++
++    def test_source_baseline_unknown_is_explicit_not_fabricated(self):
++        self.prepare()
++        record(self.root/MODULE,'待验收','未取得','基准未知；沿用既有技术核验记录，未重新读取源码；依据本文件闸门记录')
++        self.assertEqual(check.Checker(self.root).run()['机械检查'],'通过')
++        self.assertIn('基准未知',(self.root/MODULE).read_text())
++
++    def test_active_empty_scope_is_not_silently_replaced_with_inventory(self):
++        self.prepare(True)
++        self.scope_record('模拟用户：通过',True)
++        self.replace('COVERAGE.md','| modules/保存.md |','')
++        self.replace('COVERAGE.md','| modules/00-总览.md |','')
++        proc=subprocess.run([sys.executable,str(SCRIPT),'--scope-fingerprint',str(self.root)],capture_output=True,text=True)
++        self.assertEqual(proc.returncode,1,proc.stdout)
++        self.assertIsNone(json.loads(proc.stdout)['sha256'])
++
++    def test_unreadable_completed_module_is_unverified_not_false_fail(self):
++        self.prepare(True)
++        self.scope_record('模拟用户：通过',True)
++        (self.root/MODULE).write_bytes(b'\xff')
++        result=check.Checker(self.root).run()
++        self.assertEqual(result['机械检查'],'未验证',[r for r in result['明细'] if r['结果']=='失败'])
++
++    def evidence(self, name, event):
++        destination=os.environ.get('READER_EVIDENCE_DIR')
++        if destination:
++            target=Path(destination)/name
++            target.mkdir(parents=True,exist_ok=True)
++            shutil.copytree(self.root,target/'project-map',dirs_exist_ok=True)
++            report=check.Checker(self.root).run()
++            (target/'check.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
++            (target/'input.txt').write_text('隔离模拟输入；不代表真实用户/远端或平台Goal。\n'+event+'\n',encoding='utf-8')
++
++    def test_scope_revocation_persists_when_hash_returns(self):
++        self.prepare(True)
++        accepted=self.scope_record('模拟用户：认可当前整体交付',True)['sha256']
++        self.evidence('scope-1-accepted','A/B分别通过，随后明确认可整体交付。')
++        original=(self.root/MODULE).read_text(encoding='utf-8')
++        # Execute the documented reopen action on the actual isolated files.
++        self.replace(MODULE,'状态：已证叶子','状态：梳理中')
++        coverage=self.root/'COVERAGE.md'
++        body=coverage.read_text(encoding='utf-8').split('\n## 整体验收记录',1)[0].replace('本轮范围整体完成：是','本轮范围整体完成：否')
++        empty='\n## 整体验收记录\n\n整体读者内容指纹：未取得\n技术核验：未取得\n用户验收问题：未取得\n用户验收回答：未取得\n\n| 模块路径 |\n| --- |\n'
++        coverage.write_text(body+empty,encoding='utf-8')
++        self.replace(MODULE,'fixture.py:save 写入后返回','fixture.py:save 的成功条件需要再次核对')
++        summary(self.root)
++        self.evidence('scope-2-reopened','新证据实质影响保存模块；先回梳理中，同步撤销整体声明及有效记录。')
++        self.assertIn('本轮范围整体完成：否',coverage.read_text())
++        self.assertIn('整体读者内容指纹：未取得',coverage.read_text())
++        # Restore the old reader bytes, keeping the workflow in reopened state.
++        (self.root/MODULE).write_text(original.replace('状态：已证叶子','状态：梳理中'),encoding='utf-8')
++        self.assertEqual(check.scope_fingerprint(self.root)['sha256'],accepted)
++        before={p:p.read_bytes() for p in self.root.rglob('*.md')}
++        for _ in range(2):
++            check.Checker(self.root).run()
++        self.assertEqual(before,{p:p.read_bytes() for p in self.root.rglob('*.md')})
++        self.assertIn('本轮范围整体完成：否',coverage.read_text())
++        self.evidence('scope-3-hash-restored','模拟中断恢复：正文恢复旧哈希；没有新验收输入，保持梳理中/整体否。')
++        record(self.root/MODULE,'待验收')
++        summary(self.root)
++        self.evidence('scope-4-pending','适用复核完成，重新等待具体版本验收。')
++        record(self.root/MODULE,'已证叶子','模拟用户：认可保存.md当前版本。')
++        summary(self.root)
++        self.assertIn('本轮范围整体完成：否',coverage.read_text())
++        self.evidence('scope-5-individual-only','模块重新认可不等于重新认可整体。')
++        # A new explicit overall acceptance precedes the coverage-only change.
++        self.scope_record('模拟用户：重新认可当前整体版本。',True)
++        self.evidence('scope-6-overall-renewed','模块及整体分别重新认可。')
++        # A coverage conclusion can change without changing any module hash.
++        body=coverage.read_text().split('\n## 整体验收记录',1)[0].replace('本轮范围整体完成：是','本轮范围整体完成：否').replace('范围：测试构造的保存流程','范围：测试构造的保存流程；有效配置需再次核实')
++        coverage.write_text(body+empty,encoding='utf-8')
++        self.assertEqual(check.scope_fingerprint(self.root)['sha256'],accepted)
++        self.assertIn('本轮范围整体完成：否',coverage.read_text())
++        self.evidence('scope-7-coverage-change','覆盖依据变化，整体持续否，不能用不变哈希替代技术复核。')
++
++    def test_explicit_whole_library_migration_and_partial_acceptance(self):
++        shutil.rmtree(self.root)
++        shutil.copytree(BASE/'fixtures/valid-map',self.root)
++        before={p.relative_to(self.root):p.read_bytes() for p in self.root.rglob('*.md')}
++        old=check.Checker(self.root).run()
++        self.assertEqual(old['机械检查'],'未验证')
++        self.assertEqual(before,{p.relative_to(self.root):p.read_bytes() for p in self.root.rglob('*.md')})
++        self.evidence('migration-1-read-only','没有迁移指令；只读检查后保持全部字节。')
++        # Simulated explicit instruction, not inferred from installation or check.
++        instruction='模拟用户：已在知识库外备份；请按2.4对整个知识库调整格式，基准是否变化无法确认。'
++        original_types={p:p.read_text().split('状态：')[1].split('\n')[0] for p in (self.root/'modules').glob('*.md')}
++        candidates={p:p.read_text().split('## 候选记录',1)[1].split('## 闸门记录',1)[0] for p in original_types}
++        for p in original_types:
++            p.write_text(current_module(p.read_text(encoding='utf-8')),encoding='utf-8')
++            record(p,'待验收','未取得','基准未知；沿用既有技术核验记录，未重新读取源码；依据本文件闸门记录')
++            text=p.read_text().replace('当前版本？','当前版本？无法证明当前源码与既有核验时一致，是否接受既有技术成果的此项不确定性？')
++            p.write_text(text,encoding='utf-8')
++        self.replace('COVERAGE.md','本轮范围整体完成：是','本轮范围整体完成：否')
++        state=self.root/'STATE.md'
++        state.write_text(state.read_text()+'\n规范版本：2.4\n待验收模块数：2\n',encoding='utf-8')
++        summary(self.root)
++        result=check.Checker(self.root).run()
++        self.assertEqual(result['机械检查'],'通过',result['明细'])
++        for p,proposed in original_types.items():
++            self.assertIn('拟完成类型：'+proposed,p.read_text())
++            self.assertEqual(p.read_text().split('## 候选记录',1)[1].split('## 闸门记录',1)[0],candidates[p])
++        self.evidence('migration-2-whole-pending',instruction)
++        self.replace(OVERVIEW,'状态：待验收','状态：本层完成')
++        self.replace(OVERVIEW,'用户验收回答：未取得','用户验收回答：模拟用户：仅认可总览当前版本，接受基准未知，不将此视为当前源码一致；等待继续。')
++        summary(self.root)
++        result=check.Checker(self.root).run()
++        self.assertEqual(result['机械检查'],'通过',result['明细'])
++        self.assertEqual(result['派生计数']['待验收模块数'],1)
++        self.assertIn('本轮范围整体完成：否',(self.root/'COVERAGE.md').read_text())
++        self.evidence('migration-3-partial','模拟用户仅认可总览，其余仍待验收，整体否；没有继续授权。')
++        # Known relevant change cannot be accepted using the historical basis.
++        self.replace(MODULE,'状态：待验收','状态：梳理中')
++        self.replace(MODULE,'核验基准：基准未知；','核验基准：已知相关配置变化待补证；')
++        summary(self.root)
++        self.assertEqual(check.Checker(self.root).run()['派生计数']['梳理中模块数'],1)
++        self.evidence('migration-4-known-change','模拟用户声明保存条件的有效配置已变；保存模块先回梳理中等待受影响核验。')
++
++    def test_file_transfer_equivalence_and_detectable_truncation(self):
++        original=(self.root/MODULE).read_bytes()
++        incoming=Path(self.tmp.name)/'incoming.md'
++        incoming.write_bytes(original)
++        staging=Path(self.tmp.name)/'staged.md'
++        shutil.copyfile(incoming,staging)
++        self.assertEqual(incoming.read_bytes(),staging.read_bytes())
++        # Paste transport is tested as raw text, not model reconstruction.
++        pasted=Path(self.tmp.name)/'pasted.md'
++        pasted.write_text(original.decode('utf-8'),encoding='utf-8')
++        self.assertEqual(pasted.read_bytes(),staging.read_bytes())
++        pasted.write_bytes(original[:-30])
++        self.assertNotEqual(hashlib.sha256(pasted.read_bytes()).hexdigest(),hashlib.sha256(incoming.read_bytes()).hexdigest())
++        self.assertNotEqual(pasted.read_bytes(),incoming.read_bytes())
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/src/tests/test_check.py b/src/tests/test_check.py
+index 2ad9ebf..10221ed 100644
+--- a/src/tests/test_check.py
++++ b/src/tests/test_check.py
+@@ -45,9 +45,16 @@ class ContractTests(unittest.TestCase):
+         with (self.root / MODULE).open("a", encoding="utf-8") as f:
+             f.write(f"| {source} | {kind} | {problem} | 读取调用体 | 检索实现 | 契约尚缺 | 出口不明 | 获取契约后重试 |\n")
+ 
++    def assert_legacy_valid(self, report):
++        self.assertEqual(report["机械检查"], "未验证", report["明细"])
++        self.assertEqual(report["规范版本"], "2.3")
++        for group in ("记录", "发现", "处置", "节点", "链接", "完成", "汇总"):
++            self.assertEqual(report["分项"][group], "通过", report["明细"])
++        self.assertEqual(report["分项"]["规范"], "未验证")
++
+     def test_valid(self):
+         r = self.report()
+-        self.assertEqual(r["机械检查"], "通过", r["明细"])
++        self.assert_legacy_valid(r)
+         self.assertEqual(r["派生计数"]["覆盖记录数"], 6)
+         self.assertTrue(r["人工核验（脚本未验证）"])
+ 
+@@ -133,19 +140,19 @@ class ContractTests(unittest.TestCase):
+         self.task("同一来源", problem="调用场景甲")
+         self.task("同一来源", problem="调用场景乙")
+         self.replace("STATE.md", "待办数：0", "待办数：2")
+-        self.assertEqual(self.report()["机械检查"], "通过")
++        self.assert_legacy_valid(self.report())
+         self.assertEqual(self.report()["派生计数"]["待办数"], 2)
+         p = self.root / MODULE
+         lines = p.read_text(encoding="utf-8").splitlines()
+         p.write_text("\n".join(x for x in lines if "调用场景甲" not in x) + "\n", encoding="utf-8")
+         self.replace("STATE.md", "待办数：2", "待办数：1")
+-        self.assertEqual(self.report()["机械检查"], "通过")
++        self.assert_legacy_valid(self.report())
+         self.assertEqual(self.report()["派生计数"]["待办数"], 1)
+         self.assertIn("调用场景乙", p.read_text(encoding="utf-8"))
+         lines = p.read_text(encoding="utf-8").splitlines()
+         p.write_text("\n".join(x for x in lines if "调用场景乙" not in x) + "\n", encoding="utf-8")
+         self.replace("STATE.md", "待办数：1", "待办数：0")
+-        self.assertEqual(self.report()["机械检查"], "通过")
++        self.assert_legacy_valid(self.report())
+         self.assertEqual(self.report()["派生计数"]["待办数"], 0)
+ 
+     def test_known_unexpanded_entry_is_registered_and_counted(self):
+@@ -159,7 +166,7 @@ class ContractTests(unittest.TestCase):
+         self.replace("STATE.md", "入口数：1", "入口数：2")
+         self.replace("STATE.md", "覆盖记录数：6", "覆盖记录数：7")
+         r = self.report()
+-        self.assertEqual(r["机械检查"], "通过", r["明细"])
++        self.assert_legacy_valid(r)
+         self.assertEqual(r["派生计数"]["入口数"], 2)
+         self.assertEqual(r["派生计数"]["待办数"], 1)
+ 
+@@ -168,7 +175,7 @@ class ContractTests(unittest.TestCase):
+         self.task(kind="阻塞")
+         self.replace("STATE.md", "待办数：0", "待办数：1")
+         self.replace("STATE.md", "阻塞数：0", "阻塞数：1")
+-        self.assertEqual(self.report()["机械检查"], "通过")
++        self.assert_legacy_valid(self.report())
+ 
+     def test_missing_blocked_detail_fails(self):
+         self.unfinished()
+@@ -181,7 +188,7 @@ class ContractTests(unittest.TestCase):
+         self.replace(MODULE, "| 本文已解释 | [规则](#规则)", "| 待核实 | [未决](#未决)")
+         self.task("fixture.py:save / 保存记录")
+         self.replace("STATE.md", "待办数：0", "待办数：1")
+-        self.assertEqual(self.report()["机械检查"], "通过")
++        self.assert_legacy_valid(self.report())
+ 
+     def test_uncarried_candidate_count_unknown(self):
+         self.unfinished()
+@@ -200,27 +207,27 @@ class ContractTests(unittest.TestCase):
+         with (self.root / MODULE).open("a", encoding="utf-8") as f:
+             f.write("\n## 限制说明\n问题：契约未知\n已尝试方法：查公开文档\n缺失依据：生产配置\n影响：重试时序未知\n重试条件：获得配置\n")
+         self.replace("STATE.md", "待办数：0", "待办数：1")
+-        self.assertEqual(self.report()["机械检查"], "通过")
++        self.assert_legacy_valid(self.report())
+ 
+     def test_shared_module_multiple_entries(self):
+         self.replace(OVERVIEW, "E1 触发", "E1、E2 触发")
+         self.replace("COVERAGE.md", "| E1 | fixture.py:save | [保存](modules/保存.md) | [保存流程](modules/00-总览.md#F) | 无 |", "| E1 | fixture.py:save | [保存](modules/保存.md) | [保存流程](modules/00-总览.md#F) | 无 |\n| E2 | fixture.py:other | [保存](modules/保存.md) | [保存流程](modules/00-总览.md#F) | 无 |")
+         self.replace("STATE.md", "入口数：1", "入口数：2")
+         self.replace("STATE.md", "覆盖记录数：6", "覆盖记录数：7")
+-        self.assertEqual(self.report()["机械检查"], "通过")
++        self.assert_legacy_valid(self.report())
+ 
+     def test_crlf(self):
+         for p in self.root.rglob("*.md"):
+             p.write_bytes(p.read_bytes().replace(b"\n", b"\r\n"))
+-        self.assertEqual(self.report()["机械检查"], "通过")
++        self.assert_legacy_valid(self.report())
+ 
+     def test_cli_read_only_and_exit_codes(self):
+         def snapshot():
+             return {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in self.root.rglob("*") if p.is_file()}
+         before = snapshot()
+         proc = subprocess.run([sys.executable, str(SCRIPT), str(self.root), "--json"], capture_output=True, text=True, cwd=self.tmp.name)
+-        self.assertEqual(proc.returncode, 0, proc.stderr)
+-        self.assertEqual(json.loads(proc.stdout)["机械检查"], "通过")
++        self.assertEqual(proc.returncode, 2, proc.stderr)
++        self.assert_legacy_valid(json.loads(proc.stdout))
+         self.assertEqual(snapshot(), before)
+         self.replace(MODULE, '  A["保存"]', '  A@{ shape: rect, label: "保存" }')
+         proc = subprocess.run([sys.executable, str(SCRIPT), str(self.root)], capture_output=True)
+@@ -254,7 +261,7 @@ class ContractTests(unittest.TestCase):
+ 
+     def test_search_method_with_pipe_is_not_table(self):
+         self.replace(MODULE, "扫描方法：逐行读 fixture.py 的 save 和返回", '扫描方法：rg -n "save|return" fixture.py')
+-        self.assertEqual(self.report()["机械检查"], "通过")
++        self.assert_legacy_valid(self.report())
+ 
+     def test_pending_candidate_with_detailed_limitation(self):
+         self.unfinished()
+@@ -262,14 +269,14 @@ class ContractTests(unittest.TestCase):
+         self.replace(MODULE, "| 本文已解释 | [规则](#规则)", "| 待核实 | [未决](#未决)")
+         self.task("fixture.py:save / 保存记录", kind="限制")
+         self.replace("STATE.md", "待办数：0", "待办数：1")
+-        self.assertEqual(self.report()["机械检查"], "通过")
++        self.assert_legacy_valid(self.report())
+         self.replace(MODULE, "| 读取调用体 |", "| 无 |")
+         self.assertEqual(self.report()["分项"]["处置"], "失败")
+ 
+     def test_realistic_forward_draft(self):
+         fixture = BASE / "fixtures/forward-reviewed"
+         r = check.Checker(fixture / "project-map").run()
+-        self.assertEqual(r["机械检查"], "通过")
++        self.assert_legacy_valid(r)
+         self.assertEqual(r["派生计数"]["待办数"], 9)
+         self.assertEqual(r["派生计数"]["阻塞数"], 0)
+         self.assertEqual(r["派生计数"]["已证叶子模块数"], 0)
+diff --git a/design/versions/2.4.0.md b/design/versions/2.4.0.md
+new file mode 100644
+index 0000000..4b6bca6
+--- /dev/null
++++ b/design/versions/2.4.0.md
+@@ -0,0 +1,62 @@
++---
++version: "2.4.0"
++status: approved
++previous_version: "2.3.0"
++---
++
++# ruan-project-reader 版本 2.4.0 设计
++
++## 1. 为什么做这一版
++
++在源码核验后建立绑定具体图文版本的用户验收与独立继续授权，保证人工交接、文件传递和恢复可信。用户于2026-10-30已审阅并批准原始要求，授权按2.4正式版本登记、实施、验证，并在验收通过后交付；登记不表示实现或验收通过。
++
++## 2. 完整目标能力
++
++继承 [2.3.0](2.3.0.md) 的授权源码只读取证、先下研后成文、总览首轮、多方向发现、即时入口/汇点登记、候选逐条处置、父子/公共模块、四项闸门、串行维护、停滞与Goal安全边界。完整要求见 [用户批准的原始修复文档](2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md) 全文；原文保持不变。原稿与继承规则有差异时按原稿及本次用户明确要求实施。
++
++## 3. 相对上一版的差异
++
++- 新增：待验收、每文件验收记录、排除式读者内容指纹、整体清单和指纹、规范版本与第九项汇总。
++- 修改：完整稿以文件回传；本地核验通过后进入待验收，用户认可后转正，独立授权后开始下一项。
++- 废弃：本地核验并保存即直接进入下一项的路径。
++
++## 4. 核心流程与技术设计
++
++本地取证→人工转交远端质疑→本地补证→完整稿文件回传→适用源码与闸门核验→待验收→用户认可当前指纹版本→等待独立继续授权。失败或需要修订回梳理中。每个人工节点保存现场并真正停止。
++
++沿用现有 Markdown、模板和只读 check；采用标准库 SHA-256 与统一 ATX/围栏扫描。读者内容除六个操作性区块和顶部状态行外全部纳入；限制值纳入；正文不做Unicode规范化。范围路径NFC、UTF-8字节排序；每个模块先单独验收，总览同样适用。只在现有文件中记录，不引入状态引擎或自动通信。
++
++## 5. 验收项
++
++各项与原稿第五节同序，要求逐项给出 PASS / FAIL / UNVERIFIED、命令/输入及证据。模拟不冒充真实用户或远端。
++
++| ID | 验收项 | 验证方式 |
++| --- | --- | --- |
++| R-001 | 核验失败返回远端及修订后复核 | 原稿第五节用例1；机械回归、隔离执行或如实未验证 |
++| R-002 | 待验收与人工暂停 | 原稿第五节用例2；机械回归、隔离执行或如实未验证 |
++| R-003 | 缺用户凭据不得转正 | 原稿第五节用例3；机械回归、隔离执行或如实未验证 |
++| R-004 | 带条件认可须修订 | 原稿第五节用例4；机械回归、隔离执行或如实未验证 |
++| R-005 | 验收和继续独立 | 原稿第五节用例5；机械回归、隔离执行或如实未验证 |
++| R-006 | 多文件各自验收记录 | 原稿第五节用例6；机械回归、隔离执行或如实未验证 |
++| R-007 | 动态记录与读者正文边界 | 原稿第五节用例7；机械回归、隔离执行或如实未验证 |
++| R-008 | 指纹规范化与只读入口 | 原稿第五节用例8；机械回归、隔离执行或如实未验证 |
++| R-009 | 缺可信计算能力降级 | 原稿第五节用例9；机械回归、隔离执行或如实未验证 |
++| R-010 | 文件与粘贴传递保真 | 原稿第五节用例10；机械回归、隔离执行或如实未验证 |
++| R-011 | 表达反馈的适用差异复核 | 原稿第五节用例11；机械回归、隔离执行或如实未验证 |
++| R-012 | 事实反馈与状态回退 | 原稿第五节用例12；机械回归、隔离执行或如实未验证 |
++| R-013 | 待验收期间即时登记发现 | 原稿第五节用例13；机械回归、隔离执行或如实未验证 |
++| R-014 | 受影响完成模块重开 | 原稿第五节用例14；机械回归、隔离执行或如实未验证 |
++| R-015 | 整体逐份验收与范围指纹及撤销 | 原稿第五节用例15；机械回归、隔离执行或如实未验证 |
++| R-016 | 合法旧库只读兼容与错误优先 | 原稿第五节用例16；机械回归、隔离执行或如实未验证 |
++| R-017 | 显式整库迁移及基准未知 | 原稿第五节用例17；机械回归、隔离执行或如实未验证 |
++| R-018 | 原完成判据与九项汇总 | 原稿第五节用例18；机械回归、隔离执行或如实未验证 |
++| R-019 | 恢复暂停与真实 Goal 证据边界 | 原稿第五节用例19；机械回归、隔离执行或如实未验证 |
++| R-020 | 无痕融合与原回归 | 原稿第五节用例20；机械回归、隔离执行或如实未验证 |
++
++## 6. 兼容性与迁移
++
++无规范版本且为合法三状态/八统计的知识库按原静态规则只读检查，返回UNVERIFIED(2)，明确结构错误返回FAIL(1)。新旧混用不降级。迁移须用户明确指令，提醒知识库外备份，整库调整状态/记录/九统计，用户验收可分批。沿用既有技术记录时如实写当前核验基准；未知不假定不变；已知变化须补证。
++
++## 7. 已知限制
++
++Python3.10+或可信同算法计算能力是正式转正/整体完成的前提；不妨碍调查和草稿。静态工具不能证明真实用户授权、源码语义或历史撤销动作。真实Goal、双AI往返、长期恢复和平台加载分别实测或记录UNVERIFIED；关键验收未通过不得冒称全通过或自动发布。最终结果与发布决定记录于 reports/2.4-2026-10-30/，不进入Skill安装成品。本次未授权commit、push或Tag。

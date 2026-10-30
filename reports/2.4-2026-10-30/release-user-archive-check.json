@@ -1,0 +1,8 @@
+{
+  "archive_entries": 19,
+  "files": 14,
+  "directories": 5,
+  "all_files_equal_original_install": true,
+  "root_directory": "ruan-project-reader (2)/",
+  "prior_assertion_error": "One-off validation incorrectly assumed the user ZIP had no directory entries and used the canonical root name; corrected after inspecting every entry. No archive bytes changed."
+}

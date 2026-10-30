@@ -1,0 +1,4316 @@
+[
+  {
+    "file": "README.md",
+    "line": 36,
+    "content": "构建会重跑回归、核验原成品、从开发源暂存完整新成品，并生成规定的发布清单。设计语义验收见 [2.4 验收记录](reports/2.4-2026-10-30/report.md)；[2.2.0 验收记录](src/tests/acceptance-2.2.0.md) 保留作历史依据。测试与平台限制见 [测试说明](src/tests/README.md)。不会自动提交、推送或打 Tag。",
+    "classification": "保留：历史依据链接或只读兼容说明"
+  },
+  {
+    "file": "design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md",
+    "line": 1,
+    "content": "# ruan-project-reader Skill 设计规范（2.2）",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md",
+    "line": 3,
+    "content": "*版本 2.2（定稿）· 2026-10-29*",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md",
+    "line": 21,
+    "content": "### 2.1 执行网络与层次",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md",
+    "line": 31,
+    "content": "### 2.2 公共模块的抽取边界",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 2,
+    "content": "version: \"1.6.2\"",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 4,
+    "content": "previous_version: \"1.6.1\"",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 9,
+    "content": "**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 12,
+    "content": "**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 44,
+    "content": "| C06 | 用户要求 1.2 完整文档，并保留真实需求动机与思考 | 需求来源与动机整理要求 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 45,
+    "content": "| C07 | 用户当时要求基于 1.2 产出 1.3，并提供复核意见 | 1.3 修订约束、减重要求与逐项意见 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 46,
+    "content": "| C08 | C07 之后，用户针对 1.3 连续提出来源、阻塞、普通备注、执行关系、入口流归属及预研、测试分批等修订，随后要求区分设计供给来源并升级版本 | 1.3 后续修订与 1.4 的依据；不反写为早期原始需求 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 47,
+    "content": "| D01 | 用户提供的 Claude 1.1 设计稿 | 仅用于旧 U 编号交叉查阅，不等同用户原话 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 48,
+    "content": "| P01 | 本会话对 1.1 的审查建议 | 设计建议来源，不冒充用户动机 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 298,
+    "content": "**当前取代关系：** 早期讨论中可做一两个实验，不再授权把 Figma 实验设成必经步骤。1.1 中的能力解锁、同步指纹与专项验收应删除。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 563,
+    "content": "_probe 保存当前依据，生命周期见 §9.1；_drafts 只放在审稿。未启用自动化不造空缓存和 _pending。盲测本地预期是当前校验资料，不是业务规则的隐藏唯一来源；项目正文仍须自足。`COVERAGE.md` 固定包含命名小节 `## 读者摘要`。COVERAGE 的‘读者摘要’小节只放面向读者的范围、限制、普通备注摘要；盲测题目与结果索引放在 COVERAGE 的其他小节。目录中存在的文件不自动进入盲测包，实际转交范围仅限 §17.2.2 的白名单，工作文件与本地校验资料不随包提供。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 590,
+    "content": "**业务知识不得只藏在缓存、`_probe`、`_drafts`、`_local` 或未转交的工作包中。** 重建所需知识必须落入合适层级的正式节点 Markdown；证据、预研和本地答案不能成为其隐藏的唯一来源。盲测只按 §17.2.2 转交正式阅读材料。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1002,
+    "content": "#### 17.2.1 每个入口流闭环时准备题，不等全库结束",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1017,
+    "content": "后续入口流按链路里程碑合并试答，最迟在声明其范围文档完成前完成；待沉淀题按 §17.2.3 重问。纯视觉重排不重新出题，相关规则改变要更新当前题/答案。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1019,
+    "content": "#### 17.2.2 问题与标准答案隔离",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1031,
+    "content": "#### 17.2.3 明确判断，不凭一句“看起来对”",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1039,
+    "content": "| 失败（知识未入正文） | 作答所需知识仅存在于 §17.2.2 排除的文件，未落正式正文；即使已有承接节点，也不得降为待沉淀 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1087,
+    "content": "#### 18.2.1 第一批：一个试点及少量夹具",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1112,
+    "content": "#### 18.2.2 后续按已启用能力测试",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1410,
+    "content": "本地按上述白名单实际组包，不转交完整 COVERAGE 的工作记录或结果索引，也不把“不要看答案”这句要求当作已隔离的证明。不能隔离时报告普通对照，不能叫盲测。因所需知识只在被排除文件而答不出，本地记“失败（知识未入正文）”，不记待沉淀；待沉淀必须按 §17.2.3 同时给出承接节点 ID 与入口流文档锚点，并在对应节点 closed 后重问。首次题型与 blocked 边界题按 §17.2.1 准备。本段是一次校验任务的材料格式，不改变日常远程的两种回复模式。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1475,
+    "content": "### F.2 与上传 1.1 中 U01–U58 的交叉覆盖",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1477,
+    "content": "下表只对照来源 D01（Claude 1.1 设计稿）的附录 G.1 摘要，不宣称已核验另一个原始记录文件。相同需求可能由多条本稿要求共同落实。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2.md",
+    "line": 1479,
+    "content": "| 1.1 原编号 | 本稿承接 | 当前处理 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/README.md",
+    "line": 7,
+    "content": "- 新版本的文档放在 `versions/`，文件/文件夹名等于版本号：`versions/1.2.0.md`。",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "design/README.md",
+    "line": 9,
+    "content": "- 版本号使用 `MAJOR.MINOR.PATCH` 三段数字（如 `1.2.0`）。",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "design/README.md",
+    "line": 16,
+    "content": "version: \"1.2.0\"",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "design/README.md",
+    "line": 18,
+    "content": "previous_version: \"1.1.0\"",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "design/README.md",
+    "line": 29,
+    "content": "只有你可以确认版本：AI 助手不会擅自把 `draft` 改成 `approved`。若 1.3.0 是草案而 1.2.0 已确认，开发目标仍是 1.2.0。",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "design/versions/2.2.0.md",
+    "line": 2,
+    "content": "version: \"2.2.0\"",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2.0.md",
+    "line": 4,
+    "content": "previous_version: \"1.6.2\"",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2.0.md",
+    "line": 7,
+    "content": "# ruan-project-reader Skill 设计规范（2.2）",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2.0.md",
+    "line": 9,
+    "content": "*版本 2.2（定稿）· 2026-10-29*",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2.0.md",
+    "line": 27,
+    "content": "### 2.1 执行网络与层次",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2.0.md",
+    "line": 37,
+    "content": "### 2.2 公共模块的抽取边界",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/SKILL.md",
+    "line": 8,
+    "content": "依据《ruan-project-reader Skill 设计规范（2.2）》及本轮已明确的 §5.1、§9 两处最小补充（待办逐条计数和执行前复核，见协作与恢复参考）。具体产物是标准化、层次化、可核实、可继续维护的文档库；帮助用户学习是其价值，不代替具体交付要求。默认写入 `project-map/`，不修改项目功能代码。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3.0.md",
+    "line": 2,
+    "content": "version: \"2.3.0\"",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3.0.md",
+    "line": 4,
+    "content": "previous_version: \"2.2.0\"",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3.0.md",
+    "line": 7,
+    "content": "# ruan-project-reader Skill 2.3 正式版",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3.0.md",
+    "line": 9,
+    "content": "用户于 2026-10-30 明确确认“本次 2.3 视为正式版本”，并授权完成后推送远端。本版本按工程的 MAJOR.MINOR.PATCH 规范登记为 **2.3.0**，对外名称为 **2.3**。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3.0.md",
+    "line": 15,
+    "content": "完整能力继承 [2.2.0 设计基线](2.2.0.md)；本版本的差异以 [2.3 修复补丁](2.3/ruan-project-reader-Skill-2.3-修复补丁.md) 第四节为准。两份原始材料保持不变。存在差异时适用 2.3 补丁要求，其他既有规则继续适用。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3.0.md",
+    "line": 29,
+    "content": "详细证据与未验证范围见 [修复验收记录](../../reports/2.3-2026-10-30/report.md)。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3.0.md",
+    "line": 33,
+    "content": "按用户本次明确决定，将当前实现作为 2.3 正式版交付并同步远端；正式构建从 `src/ruan-project-reader/` 生成安装目录和发布清单。源码、清单与本设计使用同一工程版本 2.3.0。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/scripts/check.py",
+    "line": 2,
+    "content": "\"\"\"ruan-project-reader 2.2 Demo: 只读、有限的 Markdown 记录契约检查。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/scripts/check.py",
+    "line": 714,
+    "content": "    parser = argparse.ArgumentParser(description=\"只读检查 ruan-project-reader 2.2 Demo 的 project-map；不会改状态。\")",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.4.0.md",
+    "line": 4,
+    "content": "previous_version: \"2.3.0\"",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4.0.md",
+    "line": 15,
+    "content": "继承 [2.3.0](2.3.0.md) 的授权源码只读取证、先下研后成文、总览首轮、多方向发现、即时入口/汇点登记、候选逐条处置、父子/公共模块、四项闸门、串行维护、停滞与Goal安全边界。完整要求见 [用户批准的原始修复文档](2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md) 全文；原文保持不变。原稿与继承规则有差异时按原稿及本次用户明确要求实施。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "install/ruan-project-reader/scripts/check.py",
+    "line": 637,
+    "content": "                self.contract = \"2.3\"",
+    "classification": "保留：旧数据契约识别或测试，不是当前Skill版本"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 32,
+    "content": "        self.design(\"1.9.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 33,
+    "content": "        self.design(\"1.10.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 34,
+    "content": "        self.design(\"2.2.0\", \"draft\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 35,
+    "content": "        self.assertEqual(release.select_target(self.root)[0], \"1.10.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 38,
+    "content": "        self.design(\"2.2.0\", \"draft\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 43,
+    "content": "        self.design(\"2.2.0\").rename(self.root / \"design/versions/2.3.0.md\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 48,
+    "content": "        path = self.design(\"2.2.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 49,
+    "content": "        path.write_text('---\\nversion: \"2.2.0\"\\nversion: \"2.1.0\"\\nstatus: approved\\n---\\n', encoding=\"utf-8\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 54,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 55,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 75,
+    "content": "        self.design(\"1.0.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 76,
+    "content": "        self.source_version(\"1.0.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 80,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 81,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 87,
+    "content": "        self.design(\"1.0.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 88,
+    "content": "        self.source_version(\"1.0.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 90,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 96,
+    "content": "        self.design(\"1.0.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 97,
+    "content": "        self.source_version(\"1.0.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 99,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 100,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 116,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "src/tests/test_release.py",
+    "line": 117,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：版本选择、冲突与回滚测试数据"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/check-format.md",
+    "line": 3,
+    "content": "**依据是《ruan-project-reader Skill 设计规范（2.2）》及用户明确的两处最小补充（§5.1 原始任务逐条计数；§9 执行前复核已有成果、满足当前任务则消费）。** 本页仅说明本 Demo 脚本认识的 Markdown 序列化写法，不新增模块身份、状态库、固定 DFS 层数、唯一父模块、额外复查轮次或业务完成规则。规范允许而脚本尚不支持的写法，报告“未验证”，不据此断言设计错误。例子是格式，不是项目事实。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/check-format.md",
+    "line": 23,
+    "content": "**2.2 仍未定义“覆盖记录数”的单位。** 该项核对独立保留为未验证，报告附 COVERAGE 原始表行数仅供诊断。正常样例可以所有确定项通过、总结果仍为未验证；不能把它包装成完整通过。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 5,
+    "content": "  \"design/versions/2.2.0.md\": \"107cbdbef401a68cb897e0602dfc3f9f5a357dffd4d906318d5fa3e3a22e36e8\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 6,
+    "content": "  \"design/versions/1.6.2.md\": \"862cc5b8f3130d1878d4714c937c12088c173a7fa1d8898d03da3b0977ea8a64\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 7,
+    "content": "  \"design/versions/1.6.2/ruan-project-reader-design-1.6.2.md\": \"68b2f2fd7890a23b588cc65f6092e59c77735cba27cf5f1ce37108b461b841e0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 8,
+    "content": "  \"design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md\": \"4b347234578507d3c057f09b8c6e01eb2ad00aa2add36b300721f8eb3c077d20\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 9,
+    "content": "  \"design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md\": \"eca7e53df9a28a3935e7e81182b6c0d46788af9cebf8005cf07698d979aa011c\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 10,
+    "content": "  \"design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md\": \"9b4e90a29c7d85c97b430107273291bf5ea1c24ee034960e1d1a9c20075b9bf3\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 11,
+    "content": "  \"design/versions/2.2/demo/文本文档.txt\": \"34f4f2dfeca1db2c3bcb0cc91dee030c092e9cf9d4845bf9592b54193af9da3d\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 12,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader.skill\": \"2da1538a2754ccc4f291574e43c3cf19ace704463156bac3d0cd0ab215db35c5\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 13,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/SKILL.md\": \"ffb2122591bbcc43f7c26a8acb39a6f424e965a24a6003fe27308644ab5c6939\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 14,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/README.md\": \"23fc419067a9e3d86c5158e86780cc756931f98e4e993c5b50b5c5492f1aca4e\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 15,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/COVERAGE.md\": \"dcc274aad0c02f3f5e544843fe7c4f09e9c03aba59be32897731d3ee3f78bc12\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 16,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/gates.md\": \"b9773e4dd137f08d30a7d7e683ae3bfc5daf2218232bba92b6c5473133cd3578\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 17,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/candidates.md\": \"6567adcf7dc92cbf8d95c3c0e47e0817d07cd6c84407d8da583e52156da25eca\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 18,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/remote-relay.md\": \"5df5d4f31cde327726db43135269a6b4546e125d0ddeaef4796228dabb88b6e3\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 19,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/module.md\": \"6c638a264758a68e97627f6964138e4bdec392ec1ffe38bc39c2466e7c2437cb\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 20,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/STATE.md\": \"3fd8b917cbd763784fa9cc8aca7117b803c9ebf3d5f90c3c6e973b5342762d00\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 21,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/search-examples.md\": \"1b856aeb81603045aefe64718de9e893fe7d9315ed7bba5d87d39b3c42d42aea\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 22,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/discovery-and-coverage.md\": \"b12252f398ef2f8d0bab976b8825178b563c91e1f039d1a845e04b1b5d27162e\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 23,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md\": \"eb41b5817901ae1c9f69c6cb25d737e19db2f8522c2ba596cea1bbc359618cd2\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 24,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/diagrams-and-completion.md\": \"ba848e51fbf138f3803b4409fe3ee89c97d2a96e17ff292017fd73a4f16efdae\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 25,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md\": \"53b485cda59e2367d025934522a23bf4214f317b8d03531c1ea1c1abde5d2e00\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 26,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/check-format.md\": \"2d89b7878d774eccb1b402825a5cbff0297dda00387cf04eda7bffdda65e2692\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 27,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/assets/icon.svg\": \"e9301497fa98ef56aaca7ede0857b9a18dc06c34040f0679c609a6bf49b1d38b\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 28,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/scripts/check.py\": \"0669d8875c367262609daa6bd123241fcef9d6d1b38e297ac9a4dc505e71ecb0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 29,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/agents/openai.yaml\": \"a554fbf6ac6153ccd56f3881148502aabdbb1e62b1abea447ebc17388866a44c\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before-sha256.json",
+    "line": 35,
+    "content": "  \"src/tests/acceptance-2.2.0.md\": \"749db13c7e1b8e97d575e46ffe328901161da8bc493cdc143db5d2dc0ec260ae\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/README.md",
+    "line": 3,
+    "content": "此目录保存独立代理使用 2.2.0 Skill 阅读相邻 `source/` 九份玩具源码后的最终首轮待审稿，作为检查器的真实复杂记录回归输入。知识库内的绝对工程路径记录试用时环境，不表示安装者应使用相同路径；夹具不执行这些命令。相对模块、汇点和节点链接仍可机械检查。",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/fixtures/forward-reviewed/README.md",
+    "line": 11,
+    "content": "check-final.json 为最终报告摘要；完整明细可重跑 check.py 得到。一次性生成脚本、重复检查日志和初稿已在提取上述有价值证据后清理。设计对应及试用限制见 ../../acceptance-2.2.0.md。",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 5,
+    "content": "> **核对基线**：2026-10-30 查阅 `ruansilver/ruan-project-reader` 的 2.3.0 正式设计和开发源，包括 `SKILL.md`、`references/collaboration.md`、`references/completion.md`、`references/check-format.md`、`templates/STATE.md`、`templates/module.md`、`templates/remote-relay.md`、`scripts/check.py` 及 2.3 验收报告。实施 AI 必须重新核对实际 HEAD、工作区与当前文件；本文不替代实施时的源码核验。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 9,
+    "content": "用户希望通过**本地 AI 读取真实源码并补证、远端 AI 独立质疑并组织 Markdown/Mermaid、用户人工转交与最终验收**，逐步构建可追溯、可下钻、可恢复的项目理解知识库。2.3 已规定每次远端人工交接必须暂停，但远端交出完整文档之后，尚未形成“本地核验—用户验收—继续授权”的完整后半段。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 18,
+    "content": "6. **升级不能抹杀 2.3 成果**：已有大量按 2.3 形成的知识库没有 2.4 用户验收字段。新检查器应识别旧规范、如实给出未验证结果；仅在用户明确启动迁移时，才对存量成果补充验收流程。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 21,
+    "content": "**修复范围**：以 2.3 为基础，仅补充协作后半段及其必需的状态、记录、核验、恢复和检查支持。保留先下研后成文、首轮总览、入口/汇点及时登记、候选逐条处置、父子/公共模块契约、四项闸门、每次人工转交暂停、同仓串行、发现/处置/完成分离、Goal 安全边界及 Mermaid/短注规则。不引入数据库、通用状态引擎、双 AI 自动通信、Figma 实施或业务代码修改；不把静态检查视为源码真实性或用户实际授权的证明。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 25,
+    "content": "下表列出对 2.3 实际规则的静态核对结果及 2.4 必须处理的设计风险；**不据此声称真实项目中已经发生用户授权被绕过**。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 27,
+    "content": "| 位置／依据 | 2.3 当前情况 | 需要解决的问题 |",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 31,
+    "content": "| `scripts/check.py`、`references/check-format.md` | 模块合法状态为三种，`STATE` 固定核对八项汇总；检查器只读 | 需要支持待验收、当前稿指纹、验收记录及新版汇总，同时不能让旧 2.3 库全量误报失败 |",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 35,
+    "content": "| 2.4 新增指纹机制 | 2.3 未采用正文指纹 | 若把动态候选、闸门、待办和工作现场纳入指纹，普通后续调查就会频繁使已验收父层失效 |",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 37,
+    "content": "**保留原完成语义**：2.3 四项闸门以“其中阻塞本层”为主要完成阻断条件，**并非要求“问题数一律为 0”**。已经有真实去向且不影响父层边界的子层未决，仍可留待后续处理；“已证叶子”和“范围整体完成”继续适用各自更严格的标准。2.4 不能通过新增验收机制暗中改变这些判据。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 39,
+    "content": "2.3 已有 36 项回归及有限隔离样例通过的记录；真实 Goal 自动续跑、真实双 AI 往返、长期恢复及部分平台实机行为仍标为 **UNVERIFIED**。本补丁所有新增规则与验收用例在实施前均属**要求**，不是已发生的验证结果。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 47,
+    "content": "3. 先运行原有回归并保留基线；确认 `check.py` 原有三状态、八项汇总、模块闸门、整体完成以及退出码的具体实现，制定兼容测试。检查是否有 2.3 未验证的 Goal 行为，不能借升级声称已验证。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 56,
+    "content": "保留 2.3 已有的本地取证、远端质疑、本地逐项补证、远端完整稿及各人工转交暂停。完整闭环为：",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 60,
+    "content": "- **本地未通过**：保持“梳理中”。指出具体位置、错误/遗漏、实际证据、影响、未决和需要改动的范围；给出可由用户复制转交远端的独立提示词。远端重新提交完整当前稿，附本轮反馈背景与改动范围；本地再次核验。遇到同一问题连续两轮无实质进展，沿用 2.3 停滞规则，不无限反复。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 75,
+    "content": "- `本层完成 / 已证叶子 → 梳理中`：后续事实、源码/有效配置变化、依赖影响或用户提出的实质修订要求使当前陈述需要修改；沿用 2.3 的重开与受影响引用检查，原验收不能自动批准修订稿。纯运行记录、原始任务处置与派生汇总变化，若不影响读者内容和本层事实，不触发无意义重开。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 87,
+    "content": "转交提示词仍单独放明显的 Markdown 代码块，**沿用 2.3 `templates/remote-relay.md` 的外层 `~~~~text` 围栏约定**，以便安全包含内层使用三反引号的 Mermaid 代码块；只有确实不能直接传文件时才把完整 Markdown 放在外围栏内。不要同时强制另一套四反引号规范，也不要让外层围栏混入实际模块 Markdown。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 112,
+    "content": "**正文与待办的分界**：已核对的 2.3 模板使用 `## 未决` 存原始未完成任务、`## 候选记录` 存候选处置，二者应承接**可变的待办行、调查进度、下一动作和处理状态**。`## 必要规则与源码依据` 保存读者需要知道的已证事实、重要未证边界及其对理解的影响，不能把日常反复增删的待办流水行塞在这一节造成无意义的指纹变化；也不得为了稳定指纹，把会影响读者理解的事实、限制或未知说明移到排除区。读者正文的实质陈述有变化就应重新核验和验收，不能通过修改节名规避。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 118,
+    "content": "3. **切分**：在围栏外确认唯一一级标题与 2.3 模板的必需二级标题，各必需标题必须唯一；六个排除节出现重复或与固定结构歧义时也报未验证。一级标题和首个二级标题之间的文字组成“前置片段”，仅删除其中唯一的 `状态：…` 行，保留 `限制：有/无` 的规范化行和所有其他原文。其他片段从其 `##` 标题行开始，直到下一真实二级标题之前；剔除上述六个排除片段，**不限定剩余二级标题的名称**，保留它们在文件中的实际次序。缺失必需结构时按可确定的错误报 FAIL 或无法解释时报 UNVERIFIED，绝不输出看似有效的部分哈希。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 144,
+    "content": "项目整体完成仍须符合 2.3 的正向入口、反向汇点、盲区、实际未决与**全项目四项闸门**要求。**整体交付清单内每份模块文档（包括 `modules/00-总览.md`）必须先分别达到“本层完成”或“已证叶子”、持有当前有效的单文件用户验收记录，且读者指纹与现稿一致。** 任何仍为“梳理中”或“待验收”的文件都不能被整体确认顺带批准；整体清单不得故意排除本轮范围内的未完成模块来绕过原整体闸门。整体用户验收聚焦覆盖、总览、全局闸门和整组交付范围，**不替代模块逐份验收**。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 165,
+    "content": "2. 对缺少 `规范版本`、仅含三状态/八项统计且未混用新字段的合法 2.3 结构，按**2.3 的静态规则**检查：发现明确格式或一致性错误仍返回 **FAIL（1）**；无这些错误时也提示“2.4 用户验收尚未验证”，整体返回 **UNVERIFIED（2）**，不因为旧库缺待验收数和验收记录直接判失败。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 185,
+    "content": "2. `SKILL.md`、`references/`、`templates/`、`agents/`（如有涉及）和 `install/` 正式成品中不得夹带“2.3 曾如何”“2.4 本次修复了什么”“旧方案禁止”“东坡肉/蛋炒饭”的历史纠错叙事。版本号与正常的“不得越权继续”“未知不得当零”等**当前有效约束**应保留。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 192,
+    "content": "在隔离知识库与修复后的实际 Skill 上执行，保留已有 2.3 回归。每项分别给出 **PASS / FAIL / UNVERIFIED**、输入/命令、结果与可复核证据；模拟用户/远端输入须标明模拟，不能当作真实用户/真实远端验收。下列为**实施要求，不是本补丁已完成的测试结果**。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 211,
+    "content": "| 16. 旧 2.3 库只读兼容 | 对合法的三状态/八字段旧库运行新版 check：不修改文件，返回 UNVERIFIED（2）并说明未启用 2.4 用户验收，而非整库 FAIL；旧库已有明确结构错误仍返回 FAIL（1） |",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 213,
+    "content": "| 18. 原有完成判据与汇总 | 2.4 统计为原八项＋待验收一项，`规范版本` 非统计；2.3 旧八项可只读兼容；父层“问题数非零但阻塞本层为零”仍可完成，叶子未处置/限制及整体覆盖门槛不被改变 |",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 223,
+    "content": "- [ruansilver/ruan-project-reader](https://github.com/ruansilver/ruan-project-reader) 当前 2.3.0 正式设计、开发源与已发布安装体系；实施以实际仓库 HEAD、`AGENTS.md` 和已确认目标版本为准。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 224,
+    "content": "- 2.2 基线设计、2.3 正式设计与 2.3 修复补丁；用于确认已有的源码取证、完成闸门、人工暂停及无痕维护边界，历史已发布设计保持原样。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 227,
+    "content": "**实施交付**须包含：基线与实际修改文件清单、独立 diff、原有及新增测试的逐项结果与证据、指纹算法与命令实测、旧库兼容和迁移边界、人工验收与真实 Goal 的未验证范围、最终 Skill 全文无痕审查、`src/` 与正式 `install/` 的版本/哈希对应关系以及剩余限制。2.3 既有设计与正式安装成品保持不变，直到按 `AGENTS.md` 完成 2.4 设计登记、开发验证和明确授权的发布流程；开发完成不等于自动授权发布。",
+    "classification": "保留：设计继承关系、原始批准输入和兼容边界"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md",
+    "line": 3,
+    "content": "依据：附件《ruan-project-reader Skill 设计规范（2.2）》§6、§9。只维护当前有效稿，不要求保存旧版本或设计过程。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md",
+    "line": 5,
+    "content": "下文标为“本轮明确补充”的内容，是用户本轮对 §5.1、§9 的明确补充，不是 2.2 原文引文；附件原文不作改写。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md",
+    "line": 40,
+    "content": "文件存在或模块已标“本层完成”，都不能单独证明当前任务已经满足。同一模块服务不同调用场景时，仍保留 §2.2 的调用方说明：本场景输入、适用分支、实际可达出口及后继；不能因模块已经存在，就跳过当前场景边界核实。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release-build.txt",
+    "line": 4,
+    "content": "  \"version\": \"2.3.0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release-build.txt",
+    "line": 5,
+    "content": "  \"design_document\": \"design/versions/2.3.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release-build.txt",
+    "line": 12,
+    "content": "Ran 36 tests in 1.109s",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "src/tests/README.md",
+    "line": 21,
+    "content": "- `acceptance-2.2.0.md`：设计逐项对应、行为试用观察和验证边界。",
+    "classification": "保留：历史依据链接或只读兼容说明"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/diagrams-and-completion.md",
+    "line": 3,
+    "content": "依据：附件《ruan-project-reader Skill 设计规范（2.2）》§7–8；候选与检查契约见 [check-format.md](check-format.md)。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 1,
+    "content": "# ruan-project-reader Skill 2.3 修复补丁",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 9,
+    "content": "最终 Skill 只保留简洁、正向的当前有效规则；修复原因、旧行为对照和修改记录只出现在本补丁或独立验收材料中，不进入 Skill 正文、引用资料、模板及示例。仅将实际实现中的现有版本元数据更新至 **2.3**；2.2 设计稿保持原样。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 15,
+    "content": "本补丁采用用户提供的 **《ruan-project-reader Skill 设计规范（2.2）》修订稿 `ruan-project-reader Skill 设计规范（2.2）(2)(2).md`** 作为目标规范：其 §4.2 含“首次协作以项目总览为对象”，§6 含人工转交后暂停（包括 Goal 续跑），§8.1 将完成 §6 双 AI 协作列为本层完成条件。实际 Skill 可能基于其他 2.2 文件或更早实现；须以其真实内容判断是规则缺失、规则冲突还是执行偏离。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 21,
+    "content": "可对照 2.2 设计的 §3.2—3.4、§4.2、§5.1—5.2、§6、§8—9。检查同一规则是否在入口指令、协作资料和模板中互相矛盾，统一为下述行为；保留无关内容，不修改被阅读项目的功能代码。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 75,
+    "content": "本补丁交付时尚未在实际 Skill 上执行上述验收，实施结果均为 **UNVERIFIED**。本地修复完成后，单独提交实际修改位置与 `diff`、每项测试的 **PASS / FAIL / UNVERIFIED** 及证据、未验证范围和剩余限制。自动交接或完成条件的关键用例若为 FAIL / UNVERIFIED，不得宣称 2.3 已完成验收。该报告独立于最终 Skill 保存。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 79,
+    "content": "- 《ruan-project-reader Skill 设计规范（2.2）》修订稿（本次附件 `(2)(2)`，以 §4.2 首次总览协作、§6 人工暂停及 §8.1 双 AI 完成条件识别）：重点对应 §3.2—3.4、§4.2、§5.1—5.2、§6、§8—9。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "src/.work/evaluation/blind-output/local-package-check.md",
+    "line": 13,
+    "content": "- 规则依据：Skill 的 review-and-reproduction.md §17.2.1～17.2.4 与 D.3。已读取 SKILL.md 及该参考，未读取设计、测试源码、业务源码或其他评估结果。",
+    "classification": "保留：会话前已有的忽略实验文件，不进入安装包"
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "line": 1,
+    "content": "# ruan-project-reader 2.2.0 验收记录",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "line": 3,
+    "content": "日期：2026-10-29（Asia/Singapore）。目标：设计 2.2，对应工程三段版本 `2.2.0`。",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "line": 7,
+    "content": "用户明确要求按当前工程约定生成 2.2，原始设计标题标明“定稿”。据此新增 [2.2.0.md](../../design/versions/2.2.0.md)，仅补 `version/status/previous_version` frontmatter；正文与用户的 [2.2 原稿](../../design/versions/2.2/ruan-project-reader%20Skill%20设计规范（2.2）.md) 字节一致。原稿、两份 Demo、1.6.2 设计均保留。",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "line": 11,
+    "content": "| 目标元数据 | 原稿未位于标准 `*.md` 路径且缺 frontmatter；依据本次明确开发指令登记 2.2.0 approved |",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "line": 12,
+    "content": "| 开发源 | 为空，无有效 SKILL.md；2.2 需求初始均未在开发源满足 |",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "line": 13,
+    "content": "| 已发布成品 | 1.6.2，原设计哈希和成品哈希均吻合；无手改或哈希冲突 |",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "line": 26,
+    "content": "| A02 执行网络、多入口、无固定树／深度 §2.1、4.2 | SKILL.md；references/modules.md、discovery.md | 人工审查；样例识别请求、消息、定时三个主体，未按目录建树 |",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "line": 27,
+    "content": "| A03 先内联、独立价值和复用场景差异 §2.2 | references/modules.md；模块与转交模板 | 人工审查；样例未仅为共享接口／Mapper 抽公共流程；多入口共享文档正例回归 |",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "line": 86,
+    "content": "目标版本与当前已发布版本均为 **2.2.0**。执行 `PYTHONDONTWRITEBYTECODE=1 python3 src/build_release.py --build` 时，35 个测试全部通过，然后从开发源生成了 14 个交付文件和独立的 `install/.release.json`。安装目录只包含 SKILL、可选 Codex 界面元数据、五份参考、六份模板和只读检查器，不含测试、缓存、实验记录或 `.gitkeep`。",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/acceptance-2.2.0.md",
+    "line": 101,
+    "content": "未完成项仅为上述真实平台加载、完整远端协作与长期项目使用的待验证范围，不冒充已经测试。没有已知尚未落实的 2.2 设计实现项。Git 仍不可用；未初始化、提交、推送或创建 Tag。已保留本轮有价值试用结果为回归夹具，再清理本轮临时目录；原有实验目录未改动。",
+    "classification": "保留：历史夹具与固定验收证据，不进入安装包"
+  },
+  {
+    "file": "src/tests/test_check.py",
+    "line": 50,
+    "content": "        self.assertEqual(report[\"规范版本\"], \"2.3\")",
+    "classification": "保留：旧数据契约识别或测试，不是当前Skill版本"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md",
+    "line": 3,
+    "content": "依据：附件《ruan-project-reader Skill 设计规范（2.2）》§1–3。本文只展开该版规则，不引入其他设计。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md",
+    "line": 16,
+    "content": "## 2. 执行网络与模块（§2.1）",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md",
+    "line": 26,
+    "content": "## 3. 公共模块的边界（§2.2）",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/final-source.diff",
+    "line": 7,
+    "content": "-  version: \"2.2.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/final-source.diff",
+    "line": 8,
+    "content": "+  version: \"2.3.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/final-source.diff",
+    "line": 121,
+    "content": "-\"\"\"ruan-project-reader 2.2.0: 只读、有限的 Markdown 记录契约检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/final-source.diff",
+    "line": 122,
+    "content": "+\"\"\"ruan-project-reader 2.3.0: 只读、有限的 Markdown 记录契约检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/final-source.diff",
+    "line": 138,
+    "content": "-    parser = argparse.ArgumentParser(description=\"只读检查 ruan-project-reader 2.2.0 的 project-map；不会改状态。\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/final-source.diff",
+    "line": 139,
+    "content": "+    parser = argparse.ArgumentParser(description=\"只读检查 ruan-project-reader 2.3.0 的 project-map；不会改状态。\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/final-source.diff",
+    "line": 272,
+    "content": "-  \"version\": \"2.2.0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/final-source.diff",
+    "line": 273,
+    "content": "-  \"design_document\": \"design/versions/2.2.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/final-source.diff",
+    "line": 274,
+    "content": "+  \"version\": \"2.3.0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/final-source.diff",
+    "line": 275,
+    "content": "+  \"design_document\": \"design/versions/2.3.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/after-tests.txt",
+    "line": 40,
+    "content": "Ran 36 tests in 1.102s",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/discovery-and-coverage.md",
+    "line": 3,
+    "content": "依据：附件《ruan-project-reader Skill 设计规范（2.2）》§4；记录位置沿用 §5.1、§7.1。通用检索示例见 [search-examples.md](search-examples.md)，示例不能代替实际技术栈调查。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/integrity.json",
+    "line": 2,
+    "content": "  \"design_target\": \"2.2.0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/integrity.json",
+    "line": 3,
+    "content": "  \"source_version\": \"2.3\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/integrity.json",
+    "line": 5,
+    "content": "    \"version\": \"2.2.0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/integrity.json",
+    "line": 6,
+    "content": "    \"design_document\": \"design/versions/2.2.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/search-examples.md",
+    "line": 3,
+    "content": "依据：附件《ruan-project-reader Skill 设计规范（2.2）》§4。以下是 **Java / Spring 风格的通用只读 shell 检索示例，不是自动发现扫描器，也不是完整规则库**。须按用户当前授权仓库的真实技术栈、依赖版本、配置方式、源码布局和命名替换。其他技术栈不能直接套用这些名称。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/baseline-release.txt",
+    "line": 2,
+    "content": "通过：目标与已发布 2.2.0；设计、成品哈希及源文件一致",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release-verify.txt",
+    "line": 2,
+    "content": "通过：目标与已发布 2.3.0；设计、成品哈希及源文件一致",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release.md",
+    "line": 1,
+    "content": "# 2.3 正式交付记录",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release.md",
+    "line": 3,
+    "content": "日期：2026-10-30（Asia/Singapore）。用户已明确确认本次 2.3 为正式版本，并授权推送远端。按仓库三段版本号约定，目标版本、源码与正式成品统一为 **2.3.0**，对外名称为 **2.3**。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release.md",
+    "line": 9,
+    "content": "- [首次修复报告](report.md) 保留初始版本、修改前映射、12 个修改文件、逐项验收与原始证据。其 install 2.2.0 和无 Git 元数据的记录属于首次修复阶段。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release.md",
+    "line": 10,
+    "content": "- [最终源码差异](final-source.diff) 对比保存的 2.2.0 源码与本次正式源码，包含全部 12 个修改文件，以及发布清单前后变化；原 [changes.diff](changes.diff) 保留首次修复阶段的版本标识 2.3。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release.md",
+    "line": 11,
+    "content": "- 正式登记新增 `design/versions/2.3.0.md`，记录用户确认、规范引用和验收边界；2.2 原稿、2.3 补丁原稿均未修改。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release.md",
+    "line": 12,
+    "content": "- 本轮将 `SKILL.md` 和检查器中已有的版本标识从 2.3 规范为 2.3.0；行为规则与首次修复后保持一致。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release.md",
+    "line": 29,
+    "content": "| Goal 范围与恢复 | UNVERIFIED | 未运行真实 Goal 自动循环，不能宣称 2.3 已完成全部验收 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release.md",
+    "line": 40,
+    "content": "| 目标／已发布工程版本 | 2.3.0 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release.md",
+    "line": 41,
+    "content": "| 设计 | `design/versions/2.3.0.md` |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 1,
+    "content": "# ruan-project-reader 2.3 修复与验收报告",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 5,
+    "content": "本文保留首次修复阶段的实际验收记录：当时源码修复已落实，Goal 范围与恢复尚未验证，尚未发布。用户随后明确将 2.3 定为正式版本并授权推送，最新正式交付状态见 [release.md](release.md)。**正式交付不把 Goal 的 UNVERIFIED 改写为 PASS，也不宣称补丁全部验收通过。** 下文版本与 Git 状态均对应首次修复结束时。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 11,
+    "content": "| 用户指定修复目标 | 2.3 补丁；仅更新实现中已有版本标识 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 12,
+    "content": "| 维护约定选出的 approved 目标 | `design/versions/2.2.0.md`，版本 2.2.0；2.3 补丁在子目录中，没有标准 approved 版本登记 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 13,
+    "content": "| 修改前源码／已发布版本 | 均为 2.2.0；源码与成品一致，设计与成品哈希校验通过 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 14,
+    "content": "| 修改后源码 | SKILL metadata.version 与检查器已有版本标识为 2.3 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 15,
+    "content": "| install | 保持 2.2.0，目录、发布清单和原 ZIP 均未修改；未执行构建 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 21,
+    "content": "没有修改 2.2 原稿，也没有为了发布新建 approved 设计文件或改动版本选择／构建机制。2.3 正式发布需要先补足实际验收证据，并由用户决定其版本登记；本报告不把源码版本号当成发布凭据。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 29,
+    "content": "| `src/ruan-project-reader/SKILL.md` | 版本 2.3；每层下研后成文、首轮总览、范围、两次交接暂停、等待恢复及完成输入前提 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 39,
+    "content": "| `scripts/check.py` | 两处既有版本标识改为 2.3；人工核验列表增加远端输入提示；检查逻辑未改 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 64,
+    "content": "- **关键未验证项：Goal。** 本轮未启用真实 Goal 自动续跑，普通代理终止和重新触发的证据不能替代 Goal 调度器证据，因此不宣称 2.3 完成验收。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 69,
+    "content": "- 没有超出补丁范围修改原始设计、构建器或被阅读项目的功能代码。正式安装仍为原 2.2.0，不能把开发源当成已发布的 2.3 安装包。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/report.md",
+    "line": 77,
+    "content": "python3 src/ruan-project-reader/scripts/check.py reports/2.3-2026-10-30/evidence/completion-gate/project-map --json",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release-validation.json",
+    "line": 2,
+    "content": "  \"release_name\": \"2.3\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release-validation.json",
+    "line": 3,
+    "content": "  \"version\": \"2.3.0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release-validation.json",
+    "line": 6,
+    "content": "    \"version\": \"2.3.0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/release-validation.json",
+    "line": 7,
+    "content": "    \"design_document\": \"design/versions/2.3.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/module.md",
+    "line": 6,
+    "content": "> 本文件是设计 2.2 的模块模板，不是项目事实。所有 `〈待填写…〉` 均须用实际检查结果替换；未知计数不能填 `0`。头部固定两行，限制为“有”时在“限制说明”中指向对应阻塞项或说明。处于“梳理中”时闸门记录可暂缺。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/changes.diff",
+    "line": 7,
+    "content": "-  version: \"2.2.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/changes.diff",
+    "line": 8,
+    "content": "+  version: \"2.3\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/changes.diff",
+    "line": 121,
+    "content": "-\"\"\"ruan-project-reader 2.2.0: 只读、有限的 Markdown 记录契约检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/changes.diff",
+    "line": 122,
+    "content": "+\"\"\"ruan-project-reader 2.3: 只读、有限的 Markdown 记录契约检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/changes.diff",
+    "line": 138,
+    "content": "-    parser = argparse.ArgumentParser(description=\"只读检查 ruan-project-reader 2.2.0 的 project-map；不会改状态。\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/changes.diff",
+    "line": 139,
+    "content": "+    parser = argparse.ArgumentParser(description=\"只读检查 ruan-project-reader 2.3 的 project-map；不会改状态。\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/mapping-before.md",
+    "line": 3,
+    "content": "日期：2026-10-30（Asia/Singapore）。已完整读取 2.3 补丁、实际 SKILL、5 份引用资料、6 份模板、检查器、界面元数据、两个测试文件和构建脚本；对照本地 2.2 设计相关条款。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/mapping-before.md",
+    "line": 5,
+    "content": "初始源码版本、已发布版本均为 2.2.0；35 项现有测试 PASS，发布一致性验证 PASS，详见 baseline-tests.txt、baseline-release.txt。Git 返回“not a git repository”，不能声称工作区干净或识别用户未提交内容。以 before-sha256.json 和 before/ 保存的修改前文件为对照；原有 src/.work/description/ 保留。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/mapping-before.md",
+    "line": 7,
+    "content": "维护约定选出的 approved 目标为 2.2.0。用户本次明确要求源码补丁 2.3；补丁缺标准版本登记，且仅允许更新已有版本字段，故不新建设计登记、不修改 2.2 设计、不构建 install。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/mapping-before.md",
+    "line": 12,
+    "content": "| 2 首轮总览协作 | SKILL 开始 3／循环 1；discovery 记录与总览；remote-relay 起步说明 | 规则缺失。本地 2.2 §4.2 也没有补丁所述修订稿的首轮总览条款；可直接对应现有流程 | 明确总览草稿、证据、未决和转交即可交接，收敛另行判断 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/mapping-before.md",
+    "line": 18,
+    "content": "未发现必须超出补丁范围才能处理的实现问题。既有首轮试用夹具保留为机械回归，不作为 2.3 暂停行为的通过证据。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/candidates.md",
+    "line": 3,
+    "content": "依据设计 2.2 §3、§5.1。把下列“候选记录”节放在所属模块文档中；它不是第二份独立候选数据库。占位行仅说明格式，不是项目事实，正式记录须替换或删除。没有行不代表没有候选，未知或无法解析的计数不得填零。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/gates.md",
+    "line": 3,
+    "content": "依据设计 2.2 §8.2。模块状态拟由“梳理中”切到“本层完成”或“已证叶子”前，把本节写入模块；声明整体完成前写入 COVERAGE.md，检查范围为全项目。以下均为未执行占位，不代表已经核验。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/COVERAGE.md",
+    "line": 3,
+    "content": "> 设计 2.2 的全局入口、重要汇点、范围、扫描缺口与整体闸门记录模板。占位符不是项目事实，未知不是0；空表或零提取结果不证明没有实现。入口与汇点使用 E1、S1 这类简单序号仅供引用，不另建身份体系。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 7,
+    "content": "  \"src/tests/acceptance-2.2.0.md\": \"749db13c7e1b8e97d575e46ffe328901161da8bc493cdc143db5d2dc0ec260ae\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 49,
+    "content": "  \"design/versions/2.3.0.md\": \"fa1cf28cec6d6af64ab9338067077c35312abd0f1c6502f430bea58f30adc21f\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 51,
+    "content": "  \"design/versions/2.2.0.md\": \"107cbdbef401a68cb897e0602dfc3f9f5a357dffd4d906318d5fa3e3a22e36e8\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 52,
+    "content": "  \"design/versions/1.6.2.md\": \"862cc5b8f3130d1878d4714c937c12088c173a7fa1d8898d03da3b0977ea8a64\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 53,
+    "content": "  \"design/versions/1.6.2/ruan-project-reader-design-1.6.2.md\": \"68b2f2fd7890a23b588cc65f6092e59c77735cba27cf5f1ce37108b461b841e0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 54,
+    "content": "  \"design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md\": \"4b347234578507d3c057f09b8c6e01eb2ad00aa2add36b300721f8eb3c077d20\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 55,
+    "content": "  \"design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md\": \"eca7e53df9a28a3935e7e81182b6c0d46788af9cebf8005cf07698d979aa011c\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 56,
+    "content": "  \"design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md\": \"9b4e90a29c7d85c97b430107273291bf5ea1c24ee034960e1d1a9c20075b9bf3\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 58,
+    "content": "  \"design/versions/2.2/demo/文本文档.txt\": \"34f4f2dfeca1db2c3bcb0cc91dee030c092e9cf9d4845bf9592b54193af9da3d\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 59,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader.skill\": \"2da1538a2754ccc4f291574e43c3cf19ace704463156bac3d0cd0ab215db35c5\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 60,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/SKILL.md\": \"ffb2122591bbcc43f7c26a8acb39a6f424e965a24a6003fe27308644ab5c6939\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 61,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/README.md\": \"23fc419067a9e3d86c5158e86780cc756931f98e4e993c5b50b5c5492f1aca4e\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 62,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/COVERAGE.md\": \"dcc274aad0c02f3f5e544843fe7c4f09e9c03aba59be32897731d3ee3f78bc12\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 63,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/gates.md\": \"b9773e4dd137f08d30a7d7e683ae3bfc5daf2218232bba92b6c5473133cd3578\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 64,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/candidates.md\": \"6567adcf7dc92cbf8d95c3c0e47e0817d07cd6c84407d8da583e52156da25eca\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 65,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/remote-relay.md\": \"5df5d4f31cde327726db43135269a6b4546e125d0ddeaef4796228dabb88b6e3\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 66,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/module.md\": \"6c638a264758a68e97627f6964138e4bdec392ec1ffe38bc39c2466e7c2437cb\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 67,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/STATE.md\": \"3fd8b917cbd763784fa9cc8aca7117b803c9ebf3d5f90c3c6e973b5342762d00\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 68,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/search-examples.md\": \"1b856aeb81603045aefe64718de9e893fe7d9315ed7bba5d87d39b3c42d42aea\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 69,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/discovery-and-coverage.md\": \"b12252f398ef2f8d0bab976b8825178b563c91e1f039d1a845e04b1b5d27162e\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 70,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md\": \"eb41b5817901ae1c9f69c6cb25d737e19db2f8522c2ba596cea1bbc359618cd2\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 71,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/diagrams-and-completion.md\": \"ba848e51fbf138f3803b4409fe3ee89c97d2a96e17ff292017fd73a4f16efdae\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 72,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md\": \"53b485cda59e2367d025934522a23bf4214f317b8d03531c1ea1c1abde5d2e00\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 73,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/check-format.md\": \"2d89b7878d774eccb1b402825a5cbff0297dda00387cf04eda7bffdda65e2692\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 74,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/assets/icon.svg\": \"e9301497fa98ef56aaca7ede0857b9a18dc06c34040f0679c609a6bf49b1d38b\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 75,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/scripts/check.py\": \"0669d8875c367262609daa6bd123241fcef9d6d1b38e297ac9a4dc505e71ecb0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before-sha256.json",
+    "line": 76,
+    "content": "  \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/agents/openai.yaml\": \"a554fbf6ac6153ccd56f3881148502aabdbb1e62b1abea447ebc17388866a44c\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-2.md",
+    "line": 19,
+    "content": "root = Path('/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/project-map')",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-2.md",
+    "line": 40,
+    "content": "实际动作和本响应已保存到 [run-2.md](</mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/run-2.md>)。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "src/.work/evaluation/init-output/REMOTE-STARTER.md",
+    "line": 501,
+    "content": "version = \"0.1.0\"\r",
+    "classification": "保留：会话前已有的忽略实验文件，不进入安装包"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 1,
+    "content": "# 1.6.1→1.6.2 补丁清单",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 3,
+    "content": "所有原文以 1.6.1 实际文件为准。以下每个替换仅执行一次；来源表的折叠与 D01 改名已合并为同一次替换。未触发 T37 后备切换。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 12,
+    "content": "**设计版本：** 1.6.1（终审清理）",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 18,
+    "content": "**设计版本：** 1.6.2（最小清理）",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 30,
+    "content": "**直接底稿：** 完整的 1.6 设计文档。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 36,
+    "content": "**直接底稿：** 完整的 1.6.1 设计文档。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 84,
+    "content": "以下标识指向本会话中可见的材料。本版直接修订底稿是完整附件 `ruan-project-reader-design-1.6.md`；只按本轮三项清理及必要同步修订，保留原需求编号及动机，不用本轮意见替代早期用户原话。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 102,
+    "content": "| B01 | 用户提供的 Claude 1.1 设计稿 | 仅用于旧 U 编号交叉查阅，不等同用户原话 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 103,
+    "content": "| B02 | 已提供的 1.3 完整设计稿 | 1.4 的直接底稿，不是本次直接底稿 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 104,
+    "content": "| B03 | 已提供的 `ruan-project-reader-design-1.4-final.md` 全文 | 1.5 的直接底稿，不是本次直接底稿 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 105,
+    "content": "| B04 | 已提供的 `ruan-project-reader-design-1.5.md` 全文 | 1.6 的直接底稿，不是本次直接底稿 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 106,
+    "content": "| B05 | 当前附件 `ruan-project-reader-design-1.6.md` 全文 | 本版直接修订底稿 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 107,
+    "content": "| P01 | 本会话对 1.1 的审查建议 | 设计建议来源，不冒充用户动机 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 109,
+    "content": "| C09 | 用户此前转交针对 1.4 的十三组静态审阅意见 | 1.5 的修订输入；其中方案取舍见独立修订对照文件 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 110,
+    "content": "| P03 | 1.5 对 C09 的采纳、部分采纳与实施解释 | 设计者建议，不冒充用户早期动机或真实仓库事实 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 111,
+    "content": "| C10 | 用户此前要求以 1.5 为底稿，仅按六项要求及必要同步产出 1.6 与完整 changelog | 1.6 修订依据；不新增机制、不扩展其他规格 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 112,
+    "content": "| C11 | 用户本轮转交 1.6 终审结论，仅要求三处清理、版本改为 1.6.1 并登记 changelog | 本版清理依据；不改其他规则、不提前执行 T37 后备切换 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 118,
+    "content": "| D01 | 用户提供的 Claude 1.1 设计稿 | 仅用于旧 U 编号交叉查阅，不等同用户原话 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 119,
+    "content": "| P01 | 本会话对 1.1 的审查建议 | 设计建议来源，不冒充用户动机 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 198,
+    "content": "**位置｜** §18.2.2 T37 行末",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 216,
+    "content": "**位置｜** §17.2.2「问题与标准答案隔离」",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 256,
+    "content": "**同步位置｜** §17.2.2 同句；执行说明放在题包之外，不把本地答案交给答题 AI",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 319,
+    "content": "下表只对照已提供的 1.1 附录 G.1 摘要，不宣称已核验另一个原始记录文件。相同需求可能由多条本稿要求共同落实。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 325,
+    "content": "下表只对照来源 D01（Claude 1.1 设计稿）的附录 G.1 摘要，不宣称已核验另一个原始记录文件。相同需求可能由多条本稿要求共同落实。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 337,
+    "content": "1.5 对 C09 静态复核的采纳位置与理由、1.6 对 C10 六项局部修订的处理，以及当前 1.6.1 对 C11 三项终审清理的记录，见独立修订对照文件；它们是方案细化，不反写为早期用户动机。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 355,
+    "content": "实施前逐项确认当前 1.6.1 规格，",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 391,
+    "content": "本文是基于实际 1.6 底稿、只按 C11 三项清理及必要同步修订的完整 1.6.1 设计规格，包含需求、当前方案和执行模板；独立 changelog 保留既有修订对照、1.5→1.6 交付说明及本次 1.6→1.6.1 记录。本文未实现 Skill、未分析真实仓库、未运行文档盲测或重建实验。后续按第一档小试点检验效果，再用实际成本数据决定是否增加工具。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 406,
+    "content": "| 文首 | 当前规格文件：`ruan-project-reader-design-1.6.1.md`。 | 当前规格文件：`ruan-project-reader-design-1.6.2.md`。 | 文首版本与新修订记录 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 407,
+    "content": "| 较早修订对照前言 | 若旧表与当前 1.6.1 规格不一致，以 1.6.1 为准。 | 若旧表与当前规格不一致，以文首指向的规格文件为准。 | 保留历史表正文不改 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 411,
+    "content": "## 1.6.1→1.6.2 最小清理",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 413,
+    "content": "直接底稿为实际文件 `ruan-project-reader-design-1.6.1.md`。仅采纳本轮四项及必要的版本、来源和引用同步；不新增机制，不改变其他规则，不恢复已取消项。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 417,
+    "content": "| 1. 正文与版本过程解耦 | 采纳 | §1 折叠 B02–B05、C09–C11、P03，底稿和修订输入转由本文件追溯；去除指定正文及同类说明中的版本/轮次过程措辞，保留历史需求与 C01–C08、P01、P02。文首版本为 1.6.2，直接底稿为 1.6.1 | 阅读说明、§1、§16.1/§16.5/§16.6 的过程说明、附录 F.2/G、当前交付边界；不改运行规则 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 418,
+    "content": "| 2. T37 稳定键后备 | 采纳 | 后备映射以 annotation_key＋节点可见标签对应，不依赖全局行序，保留重排/插入不改键的性质 | 只改 §18.2.2 的 T37；实际观察到污染后才同步 §6.4、§13.3、§9.2、附录 A 第五节、附录 B、附录 C.4，本轮未切换现行 HTML 锚点设计 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 419,
+    "content": "| 3. 盲测执行者 | 采纳 | 用户新开未用于出图/审稿的远程会话并转交 D.3 题包，答案交回本地按 _local/validation 评分，实际转交纳入现有指标；只有已接触相关材料的会话时降为普通文档对照 | §17.2.2、附录 D.3；§17.3 计数定义和既有材料白名单不变 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 430,
+    "content": "| B02 | 已提供的 1.3 完整设计稿 | 1.4 的直接底稿 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 431,
+    "content": "| B03 | `ruan-project-reader-design-1.4-final.md` 全文 | 1.5 的直接底稿 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 432,
+    "content": "| B04 | `ruan-project-reader-design-1.5.md` 全文 | 1.6 的直接底稿 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 433,
+    "content": "| B05 | `ruan-project-reader-design-1.6.md` 全文 | 1.6.1 的直接底稿 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 434,
+    "content": "| C09 | 用户转交针对 1.4 的十三组静态审阅意见 | 1.5 的修订输入；逐项采纳与理由见本文件对应小节 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 435,
+    "content": "| C10 | 用户要求以 1.5 为底稿，仅按六项及必要同步产出完整文件 | 1.6 修订输入 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 436,
+    "content": "| C11 | 用户转交 1.6 终审结论，只做三处清理并更新版本 | 1.6.1 修订输入 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 437,
+    "content": "| P03 | 1.5 对 C09 的采纳、部分采纳与实施解释 | 设计者建议，不是用户早期原话或真实仓库事实 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 439,
+    "content": "当前来源 D01 对应用户提供的 Claude 1.1 设计稿，原标签为 B01；这一改名不改变旧稿内部的 S/U/G/B 编号，也不改变节点备注 B01/note-B01。既有 changelog 保留其当时的版本、来源标签和措辞，不回写历史表。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-3.md",
+    "line": 18,
+    "content": "cat '/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/simulated-questions.md'",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-3.md",
+    "line": 19,
+    "content": "rg -n 'AuditService|def audit|/audit|consume|events|notices|queued|notified|disabled' '/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/source'",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-3.md",
+    "line": 53,
+    "content": "`check.py` 最终退出码 2：341 项通过、6 项未验证、无失败，人工对账结果已保存。完整现稿、输入、补证源码与全部未决见 [relay-3.md](</mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/relay-3.md>) 的独立代码块；[run-3.md](</mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/run-3.md>) 记录本轮实际动作和响应。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/staged-package.json",
+    "line": 14,
+    "content": "    \"version\": \"2.3.0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/staged-package.json",
+    "line": 15,
+    "content": "    \"design_document\": \"design/versions/2.3.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "src/ruan-project-reader/scripts/check.py",
+    "line": 637,
+    "content": "                self.contract = \"2.3\"",
+    "classification": "保留：旧数据契约识别或测试，不是当前Skill版本"
+  },
+  {
+    "file": "src/.work/evaluation/init-retest/000-项目总览.md",
+    "line": 50,
+    "content": "assets/sample.json 是合成输入样例；pyproject.toml 只声明包名 parcel-quote、版本 0.1.0、Python >=3.11，未见依赖列表或脚本命令。它们由 N0021/N0022 承接。\r",
+    "classification": "保留：会话前已有的忽略实验文件，不进入安装包"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-4.md",
+    "line": 31,
+    "content": "cat '/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/simulated-full-document.md'",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-4.md",
+    "line": 32,
+    "content": "rg -n 'AuditService|def audit|/audit' '/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/source'",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-4.md",
+    "line": 54,
+    "content": "已接收并核验模拟完整稿 F1，保存了[当前总览](</mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/project-map/modules/00-总览.md>)。已移除“等待完整稿”待办，剩余 5 条未决；E4、宿主装配及事件交接缺证仍在，总览保持“梳理中”。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-4.md",
+    "line": 58,
+    "content": "接收定位、读取顺序、核验与保存结果及本响应见 [run-4.md](</mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/run-4.md>)。本轮到总览核验交付结束，未开始下一模块；Skill 与源码均未修改。Q1、F1 均按模拟材料记录。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 3,
+    "content": "**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 6,
+    "content": "**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 38,
+    "content": "| C06 | 用户要求 1.2 完整文档，并保留真实需求动机与思考 | 需求来源与动机整理要求 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 39,
+    "content": "| C07 | 用户当时要求基于 1.2 产出 1.3，并提供复核意见 | 1.3 修订约束、减重要求与逐项意见 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 40,
+    "content": "| C08 | C07 之后，用户针对 1.3 连续提出来源、阻塞、普通备注、执行关系、入口流归属及预研、测试分批等修订，随后要求区分设计供给来源并升级版本 | 1.3 后续修订与 1.4 的依据；不反写为早期原始需求 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 41,
+    "content": "| D01 | 用户提供的 Claude 1.1 设计稿 | 仅用于旧 U 编号交叉查阅，不等同用户原话 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 42,
+    "content": "| P01 | 本会话对 1.1 的审查建议 | 设计建议来源，不冒充用户动机 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 292,
+    "content": "**当前取代关系：** 早期讨论中可做一两个实验，不再授权把 Figma 实验设成必经步骤。1.1 中的能力解锁、同步指纹与专项验收应删除。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 557,
+    "content": "_probe 保存当前依据，生命周期见 §9.1；_drafts 只放在审稿。未启用自动化不造空缓存和 _pending。盲测本地预期是当前校验资料，不是业务规则的隐藏唯一来源；项目正文仍须自足。`COVERAGE.md` 固定包含命名小节 `## 读者摘要`。COVERAGE 的‘读者摘要’小节只放面向读者的范围、限制、普通备注摘要；盲测题目与结果索引放在 COVERAGE 的其他小节。目录中存在的文件不自动进入盲测包，实际转交范围仅限 §17.2.2 的白名单，工作文件与本地校验资料不随包提供。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 584,
+    "content": "**业务知识不得只藏在缓存、`_probe`、`_drafts`、`_local` 或未转交的工作包中。** 重建所需知识必须落入合适层级的正式节点 Markdown；证据、预研和本地答案不能成为其隐藏的唯一来源。盲测只按 §17.2.2 转交正式阅读材料。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 996,
+    "content": "#### 17.2.1 每个入口流闭环时准备题，不等全库结束",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1011,
+    "content": "后续入口流按链路里程碑合并试答，最迟在声明其范围文档完成前完成；待沉淀题按 §17.2.3 重问。纯视觉重排不重新出题，相关规则改变要更新当前题/答案。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1013,
+    "content": "#### 17.2.2 问题与标准答案隔离",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1025,
+    "content": "#### 17.2.3 明确判断，不凭一句“看起来对”",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1033,
+    "content": "| 失败（知识未入正文） | 作答所需知识仅存在于 §17.2.2 排除的文件，未落正式正文；即使已有承接节点，也不得降为待沉淀 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1081,
+    "content": "#### 18.2.1 第一批：一个试点及少量夹具",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1106,
+    "content": "#### 18.2.2 后续按已启用能力测试",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1404,
+    "content": "本地按上述白名单实际组包，不转交完整 COVERAGE 的工作记录或结果索引，也不把“不要看答案”这句要求当作已隔离的证明。不能隔离时报告普通对照，不能叫盲测。因所需知识只在被排除文件而答不出，本地记“失败（知识未入正文）”，不记待沉淀；待沉淀必须按 §17.2.3 同时给出承接节点 ID 与入口流文档锚点，并在对应节点 closed 后重问。首次题型与 blocked 边界题按 §17.2.1 准备。本段是一次校验任务的材料格式，不改变日常远程的两种回复模式。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1469,
+    "content": "### F.2 与上传 1.1 中 U01–U58 的交叉覆盖",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1471,
+    "content": "下表只对照来源 D01（Claude 1.1 设计稿）的附录 G.1 摘要，不宣称已核验另一个原始记录文件。相同需求可能由多条本稿要求共同落实。",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1473,
+    "content": "| 1.1 原编号 | 本稿承接 | 当前处理 |",
+    "classification": "保留：历史设计与原始材料"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/production-verify.txt",
+    "line": 2,
+    "content": "失败：目标 2.4.0 与已发布 2.3.0 不同",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-1.md",
+    "line": 26,
+    "content": "- 隔离目录：`/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated`",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-1.md",
+    "line": 83,
+    "content": "- [知识库总览](</mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/project-map/modules/00-总览.md>)：梳理中；3 个入口、4 个汇点、1 个待核实交接候选。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-1.md",
+    "line": 86,
+    "content": "- [执行记录](</mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/run-1.md>) 包含读取／写入顺序、命令、实际结果和本响应；源码与 Skill 均未修改。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/isolated/run-1.md",
+    "line": 88,
+    "content": "完整转交材料较长，已把当前稿、完整未决和六份合成源码放进 [relay-1.md](</mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/isolated/relay-1.md>) 的独立代码块，可整块复制。本轮为验收模拟，尚无真实远端审查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "src/.work/evaluation/iteration-1/init-remote-before-fix.md",
+    "line": 501,
+    "content": "version = \"0.1.0\"\r",
+    "classification": "保留：会话前已有的忽略实验文件，不进入安装包"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-summary.json",
+    "line": 7,
+    "content": "    \"reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md\": 5,",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-summary.json",
+    "line": 8,
+    "content": "    \"reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md\": 5,",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-summary.json",
+    "line": 9,
+    "content": "    \"reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/文本文档.txt\": 1,",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "src/.work/evaluation/business/pyproject.toml",
+    "line": 3,
+    "content": "version = \"0.1.0\"",
+    "classification": "保留：会话前已有的忽略实验文件，不进入安装包"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/production-preserved.json",
+    "line": 2,
+    "content": "  \"version\": \"2.3.0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/production-preserved.json",
+    "line": 3,
+    "content": "  \"design_document\": \"design/versions/2.3.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/baseline-tests.txt",
+    "line": 40,
+    "content": "Ran 36 tests in 1.145s",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/iteration-tests.txt",
+    "line": 41,
+    "content": "Ran 38 tests in 1.562s",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "src/.work/evaluation/init-retest/REMOTE-RELAY.md",
+    "line": 125,
+    "content": "assets/sample.json 是合成输入样例；pyproject.toml 只声明包名 parcel-quote、版本 0.1.0、Python >=3.11，未见依赖列表或脚本命令。它们由 N0021/N0022 承接。\r",
+    "classification": "保留：会话前已有的忽略实验文件，不进入安装包"
+  },
+  {
+    "file": "src/.work/evaluation/init-retest/REMOTE-RELAY.md",
+    "line": 440,
+    "content": "version = \"0.1.0\"\r",
+    "classification": "保留：会话前已有的忽略实验文件，不进入安装包"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/edge-failing-tests.txt",
+    "line": 70,
+    "content": "Ran 20 tests in 1.194s",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/mapping-before.md",
+    "line": 3,
+    "content": "基线 HEAD：f306bf51537d436647ef7b25e0556ff350777708。原有 36 项测试通过；正式设计/开发源/安装目录 2.3.0 且清单哈希吻合。用户已移走标准 ZIP，另有 `install/ruan-project-reader (2).zip`；两项均保存在 before/install，不视为本次修改。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before/ruan-project-reader/SKILL.md",
+    "line": 5,
+    "content": "  version: \"2.2.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "AGENTS.md",
+    "line": 23,
+    "content": "- **目标版本**：读取 `design/versions/*.md` 每份文档开头的 frontmatter，取其中 `status: approved` 且 `version` 最大的那一份。比较时按 `MAJOR.MINOR.PATCH` 三段数字逐段比（`1.10.0` 大于 `1.9.0`）。不要按文件时间、目录名或安装清单反推。",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "AGENTS.md",
+    "line": 25,
+    "content": "- `draft` 文档不是开发目标：已确认的 1.2.0 与草案 1.3.0 并存时，目标仍是 1.2.0。",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "AGENTS.md",
+    "line": 26,
+    "content": "- 没有任何 `approved` 文档时，说明「尚无可开发的已确认版本」。不要自行把版本定为 1.0.0，也不要把 `draft` 改成 `approved`，这一步必须由用户确认。",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "AGENTS.md",
+    "line": 27,
+    "content": "- 设计文档的文件名必须等于其 `version`（如 `1.2.0.md`）。出现重复版本、字段冲突或无法解析时，停止自动发布并向用户报告原因。",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "AGENTS.md",
+    "line": 29,
+    "content": "示例：设计文档为 `1.2.0.md`（approved），`install/.release.json` 记录 `1.1.0`，意味着目标是 1.2.0、正式成品仍是 1.1.0。此时应对照差异继续开发，**不能因为设计文档更新了就把 `install/` 标成 1.2.0**。",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "AGENTS.md",
+    "line": 64,
+    "content": "  \"version\": \"1.2.0\",",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "AGENTS.md",
+    "line": 65,
+    "content": "  \"design_document\": \"design/versions/1.2.0.md\",",
+    "classification": "保留：仓库版本规则示例"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 7,
+    "content": "    \"file\": \"src/tests/acceptance-2.2.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 123,
+    "content": "    \"file\": \"design/versions/2.3.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 131,
+    "content": "    \"file\": \"design/versions/2.2.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 135,
+    "content": "    \"file\": \"design/versions/1.6.2.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 139,
+    "content": "    \"file\": \"design/versions/1.6.2/ruan-project-reader-design-1.6.2.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 143,
+    "content": "    \"file\": \"design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 147,
+    "content": "    \"file\": \"design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 151,
+    "content": "    \"file\": \"design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 159,
+    "content": "    \"file\": \"design/versions/2.2/demo/文本文档.txt\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 163,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader.skill\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 167,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/SKILL.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 171,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/README.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 175,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/COVERAGE.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 179,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/gates.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 183,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/candidates.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 187,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/remote-relay.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 191,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/module.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 195,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/STATE.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 199,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/search-examples.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 203,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/discovery-and-coverage.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 207,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 211,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/diagrams-and-completion.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 215,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 219,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/check-format.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 223,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/assets/icon.svg\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 227,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/scripts/check.py\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/preserved-files.json",
+    "line": 231,
+    "content": "    \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/agents/openai.yaml\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before/ruan-project-reader/scripts/check.py",
+    "line": 2,
+    "content": "\"\"\"ruan-project-reader 2.2.0: 只读、有限的 Markdown 记录契约检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/before/ruan-project-reader/scripts/check.py",
+    "line": 782,
+    "content": "    parser = argparse.ArgumentParser(description=\"只读检查 ruan-project-reader 2.2.0 的 project-map；不会改状态。\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 247,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:9: trailing whitespace.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 248,
+    "content": "+**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 249,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:10: trailing whitespace.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 251,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:11: trailing whitespace.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 253,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:12: trailing whitespace.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 254,
+    "content": "+**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 255,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:13: trailing whitespace.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 257,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:3: trailing whitespace.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 258,
+    "content": "+**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 259,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:4: trailing whitespace.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 261,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:5: trailing whitespace.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 263,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:6: trailing whitespace.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 264,
+    "content": "+**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 265,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:7: trailing whitespace.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 267,
+    "content": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/文本文档.txt:2: new blank line at EOF.",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 332,
+    "content": "+design/versions/1.6.2.md:9:**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 334,
+    "content": "+design/versions/1.6.2.md:12:**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 336,
+    "content": "+design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:3:**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 338,
+    "content": "+design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:6:**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 340,
+    "content": "+src/.work/evaluation/init-output/REMOTE-STARTER.md:501:version = \"0.1.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 342,
+    "content": "+src/.work/evaluation/iteration-1/init-remote-before-fix.md:501:version = \"0.1.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 344,
+    "content": "+src/.work/evaluation/init-retest/000-项目总览.md:50:assets/sample.json 是合成输入样例；pyproject.toml 只声明包名 parcel-quote、版本 0.1.0、Python >=3.11，未见依赖列表或脚本命令。它们由 N0021/N0022 承接。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 346,
+    "content": "+src/.work/evaluation/init-retest/REMOTE-RELAY.md:125:assets/sample.json 是合成输入样例；pyproject.toml 只声明包名 parcel-quote、版本 0.1.0、Python >=3.11，未见依赖列表或脚本命令。它们由 N0021/N0022 承接。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 348,
+    "content": "+src/.work/evaluation/init-retest/REMOTE-RELAY.md:440:version = \"0.1.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 350,
+    "content": "+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:9:**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 352,
+    "content": "+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:12:**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 354,
+    "content": "+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:3:**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 356,
+    "content": "+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:6:**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 358,
+    "content": "+design/versions/1.6.2.md:9:**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 360,
+    "content": "+design/versions/1.6.2.md:12:**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 362,
+    "content": "+src/.work/evaluation/init-retest/000-项目总览.md:50:assets/sample.json 是合成输入样例；pyproject.toml 只声明包名 parcel-quote、版本 0.1.0、Python >=3.11，未见依赖列表或脚本命令。它们由 N0021/N0022 承接。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 364,
+    "content": "+src/.work/evaluation/init-output/REMOTE-STARTER.md:501:version = \"0.1.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 366,
+    "content": "+src/.work/evaluation/init-retest/REMOTE-RELAY.md:125:assets/sample.json 是合成输入样例；pyproject.toml 只声明包名 parcel-quote、版本 0.1.0、Python >=3.11，未见依赖列表或脚本命令。它们由 N0021/N0022 承接。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 368,
+    "content": "+src/.work/evaluation/init-retest/REMOTE-RELAY.md:440:version = \"0.1.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 370,
+    "content": "+src/.work/evaluation/iteration-1/init-remote-before-fix.md:501:version = \"0.1.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 372,
+    "content": "+design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:3:**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 374,
+    "content": "+design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:6:**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 376,
+    "content": "+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:9:**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 378,
+    "content": "+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md:12:**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 380,
+    "content": "+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:3:**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-diff-check-evidence.txt",
+    "line": 382,
+    "content": "+reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md:6:**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/legacy.json",
+    "line": 4,
+    "content": "  \"规范版本\": \"2.3\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 9,
+    "content": "-当前正式版为 **2.3**，工程版本为 **2.3.0**，对应 [已确认设计](design/versions/2.3.0.md)。把 `install/ruan-project-reader/` 整个目录复制到你的 AI 工具的 Skills 目录即可，也可解压 [安装包](install/ruan-project-reader.zip) 后复制其中同名目录。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 12,
+    "content": "-2.3 使用标准 Agent Skills 目录与相对资源路径，运行核心不依赖特定模型、MCP 或联网服务。Codex、Claude Code、DeepSeek Harness 等平台按各自的 Skill 加载方式安装；具体 Harness 需支持本地 Skill，不能仅凭模型名称认定安装位置。检查器需要 Python 3.10+，缺少执行环境时仍可按 Skill 清单进行人工核验。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 15,
+    "content": "-本版明确每层先下研后成文、首轮总览协作、每次人工转交暂停、完成前核实远端输入，以及未展开入口登记和原始待办逐条计数。真实 Goal 自动续跑及其他平台实机验证仍未完成，详见 [验收报告](reports/2.3-2026-10-30/report.md) 和 [正式交付记录](reports/2.3-2026-10-30/release.md)。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 24,
+    "content": "-构建会重跑回归、核验原成品、从开发源暂存完整新成品，并生成规定的发布清单。设计语义验收见 [2.3 验收记录](reports/2.3-2026-10-30/report.md)；[2.2.0 验收记录](src/tests/acceptance-2.2.0.md) 保留作历史依据。测试与平台限制见 [测试说明](src/tests/README.md)。不会自动提交、推送或打 Tag。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 25,
+    "content": "+构建会重跑回归、核验原成品、从开发源暂存完整新成品，并生成规定的发布清单。设计语义验收见 [2.4 验收记录](reports/2.4-2026-10-30/report.md)；[2.2.0 验收记录](src/tests/acceptance-2.2.0.md) 保留作历史依据。测试与平台限制见 [测试说明](src/tests/README.md)。不会自动提交、推送或打 Tag。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 37,
+    "content": "-  version: \"2.3.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 308,
+    "content": "-\"\"\"ruan-project-reader 2.3.0: 只读、有限的 Markdown 记录契约检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 634,
+    "content": "+                self.contract = \"2.3\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 840,
+    "content": "-    parser = argparse.ArgumentParser(description=\"只读检查 ruan-project-reader 2.3.0 的 project-map；不会改状态。\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 995,
+    "content": "-当前正式版为 2.3（工程版本 2.3.0）。36 项回归保留既有 35 项，增加未展开入口登记，并把重复待办消解扩展到 2→1→0；行为证据及未验证范围见 [2.3 报告](../../reports/2.3-2026-10-30/report.md)。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 1011,
+    "content": " - `acceptance-2.2.0.md`：设计逐项对应、行为试用观察和验证边界。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 1474,
+    "content": "+        self.assertEqual(report[\"规范版本\"], \"2.3\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 1604,
+    "content": "+previous_version: \"2.3.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/changes.diff",
+    "line": 1615,
+    "content": "+继承 [2.3.0](2.3.0.md) 的授权源码只读取证、先下研后成文、总览首轮、多方向发现、即时入口/汇点登记、候选逐条处置、父子/公共模块、四项闸门、串行维护、停滞与Goal安全边界。完整要求见 [用户批准的原始修复文档](2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md) 全文；原文保持不变。原稿与继承规则有差异时按原稿及本次用户明确要求实施。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 9,
+    "content": "      \"file\": \"src/tests/acceptance-2.2.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 154,
+    "content": "      \"file\": \"design/versions/2.3.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 164,
+    "content": "      \"file\": \"design/versions/2.2.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 169,
+    "content": "      \"file\": \"design/versions/1.6.2.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 174,
+    "content": "      \"file\": \"design/versions/1.6.2/ruan-project-reader-design-1.6.2.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 179,
+    "content": "      \"file\": \"design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 184,
+    "content": "      \"file\": \"design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 189,
+    "content": "      \"file\": \"design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 199,
+    "content": "      \"file\": \"design/versions/2.2/demo/文本文档.txt\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 204,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader.skill\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 209,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/SKILL.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 214,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/README.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 219,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/COVERAGE.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 224,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/gates.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 229,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/candidates.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 234,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/remote-relay.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 239,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/module.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 244,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/STATE.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 249,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/search-examples.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 254,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/discovery-and-coverage.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 259,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 264,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/diagrams-and-completion.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 269,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 274,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/check-format.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 279,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/assets/icon.svg\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 284,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/scripts/check.py\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release-preservation.json",
+    "line": 289,
+    "content": "      \"file\": \"design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/agents/openai.yaml\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/report.md",
+    "line": 9,
+    "content": "先读取仓库AGENTS、design/README、版本模板及全部2.4原始要求，再通读开发源、引用、模板、检查器、测试/夹具和构建脚本。用户提供的原始要求全部保持原样。新增2.4.0 approved设计，previous_version=2.3.0；登记不是验收通过声明。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/report.md",
+    "line": 88,
+    "content": "`no-trace-grep.txt` 对开发源和隔离安装成品的禁用叙事模式无命中；正式成品又经 `release-no-trace-grep.txt` 检查无命中。`release-validation.json` 记录正式14文件与已全文审查的源/隔离成品一致，沿用该逐节审查结论。正常“结束本次执行”是当前约束，保留；检查器的“2.3”是只读数据契约选择，非旧产品版本标识。历史forward-reviewed测试证据含当时纠错叙事，保持不变且不进入安装包。完整Mermaid渲染、各Harness实际加载与非Linux平台未验证，未删除这些限制以凑无痕结果。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/baseline-release.txt",
+    "line": 2,
+    "content": "通过：目标与已发布 2.3.0；设计、成品哈希及源文件一致",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/completion-gate/result.md",
+    "line": 17,
+    "content": "- `SKILL.md`：完整读取，版本元数据为 2.3。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.3-2026-10-30/evidence/completion-gate/result.md",
+    "line": 58,
+    "content": "fixture_dir='/mnt/ext_drive/workspace/AI workspace/skills/ruan-project-reader/reports/2.3-2026-10-30/evidence/completion-gate'",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 32,
+    "content": "        self.design(\"1.9.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 33,
+    "content": "        self.design(\"1.10.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 34,
+    "content": "        self.design(\"2.2.0\", \"draft\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 35,
+    "content": "        self.assertEqual(release.select_target(self.root)[0], \"1.10.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 38,
+    "content": "        self.design(\"2.2.0\", \"draft\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 43,
+    "content": "        self.design(\"2.2.0\").rename(self.root / \"design/versions/2.3.0.md\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 48,
+    "content": "        path = self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 49,
+    "content": "        path.write_text('---\\nversion: \"2.2.0\"\\nversion: \"2.1.0\"\\nstatus: approved\\n---\\n', encoding=\"utf-8\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 54,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 55,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 75,
+    "content": "        self.design(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 76,
+    "content": "        self.source_version(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 80,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 81,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 87,
+    "content": "        self.design(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 88,
+    "content": "        self.source_version(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 90,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 96,
+    "content": "        self.design(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 97,
+    "content": "        self.source_version(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 99,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 100,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 116,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/test_release.py",
+    "line": 117,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/README.md",
+    "line": 3,
+    "content": "当前正式版为 2.3（工程版本 2.3.0）。36 项回归保留既有 35 项，增加未展开入口登记，并把重复待办消解扩展到 2→1→0；行为证据及未验证范围见 [2.3 报告](../../reports/2.3-2026-10-30/report.md)。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/README.md",
+    "line": 20,
+    "content": "- `acceptance-2.2.0.md`：设计逐项对应、行为试用观察和验证边界。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/ruan-project-reader/SKILL.md",
+    "line": 5,
+    "content": "  version: \"2.3.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/migration-1-read-only/check.json",
+    "line": 4,
+    "content": "  \"规范版本\": \"2.3\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md",
+    "line": 1,
+    "content": "# ruan-project-reader Skill 设计规范（2.2）",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md",
+    "line": 3,
+    "content": "*版本 2.2（定稿）· 2026-10-29*",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md",
+    "line": 21,
+    "content": "### 2.1 执行网络与层次",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/ruan-project-reader Skill 设计规范（2.2）.md",
+    "line": 31,
+    "content": "### 2.2 公共模块的抽取边界",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 2,
+    "content": "version: \"1.6.2\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 4,
+    "content": "previous_version: \"1.6.1\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 9,
+    "content": "**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 12,
+    "content": "**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 44,
+    "content": "| C06 | 用户要求 1.2 完整文档，并保留真实需求动机与思考 | 需求来源与动机整理要求 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 45,
+    "content": "| C07 | 用户当时要求基于 1.2 产出 1.3，并提供复核意见 | 1.3 修订约束、减重要求与逐项意见 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 46,
+    "content": "| C08 | C07 之后，用户针对 1.3 连续提出来源、阻塞、普通备注、执行关系、入口流归属及预研、测试分批等修订，随后要求区分设计供给来源并升级版本 | 1.3 后续修订与 1.4 的依据；不反写为早期原始需求 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 47,
+    "content": "| D01 | 用户提供的 Claude 1.1 设计稿 | 仅用于旧 U 编号交叉查阅，不等同用户原话 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 48,
+    "content": "| P01 | 本会话对 1.1 的审查建议 | 设计建议来源，不冒充用户动机 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 298,
+    "content": "**当前取代关系：** 早期讨论中可做一两个实验，不再授权把 Figma 实验设成必经步骤。1.1 中的能力解锁、同步指纹与专项验收应删除。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 563,
+    "content": "_probe 保存当前依据，生命周期见 §9.1；_drafts 只放在审稿。未启用自动化不造空缓存和 _pending。盲测本地预期是当前校验资料，不是业务规则的隐藏唯一来源；项目正文仍须自足。`COVERAGE.md` 固定包含命名小节 `## 读者摘要`。COVERAGE 的‘读者摘要’小节只放面向读者的范围、限制、普通备注摘要；盲测题目与结果索引放在 COVERAGE 的其他小节。目录中存在的文件不自动进入盲测包，实际转交范围仅限 §17.2.2 的白名单，工作文件与本地校验资料不随包提供。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 590,
+    "content": "**业务知识不得只藏在缓存、`_probe`、`_drafts`、`_local` 或未转交的工作包中。** 重建所需知识必须落入合适层级的正式节点 Markdown；证据、预研和本地答案不能成为其隐藏的唯一来源。盲测只按 §17.2.2 转交正式阅读材料。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1002,
+    "content": "#### 17.2.1 每个入口流闭环时准备题，不等全库结束",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1017,
+    "content": "后续入口流按链路里程碑合并试答，最迟在声明其范围文档完成前完成；待沉淀题按 §17.2.3 重问。纯视觉重排不重新出题，相关规则改变要更新当前题/答案。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1019,
+    "content": "#### 17.2.2 问题与标准答案隔离",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1031,
+    "content": "#### 17.2.3 明确判断，不凭一句“看起来对”",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1039,
+    "content": "| 失败（知识未入正文） | 作答所需知识仅存在于 §17.2.2 排除的文件，未落正式正文；即使已有承接节点，也不得降为待沉淀 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1087,
+    "content": "#### 18.2.1 第一批：一个试点及少量夹具",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1112,
+    "content": "#### 18.2.2 后续按已启用能力测试",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1410,
+    "content": "本地按上述白名单实际组包，不转交完整 COVERAGE 的工作记录或结果索引，也不把“不要看答案”这句要求当作已隔离的证明。不能隔离时报告普通对照，不能叫盲测。因所需知识只在被排除文件而答不出，本地记“失败（知识未入正文）”，不记待沉淀；待沉淀必须按 §17.2.3 同时给出承接节点 ID 与入口流文档锚点，并在对应节点 closed 后重问。首次题型与 blocked 边界题按 §17.2.1 准备。本段是一次校验任务的材料格式，不改变日常远程的两种回复模式。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1475,
+    "content": "### F.2 与上传 1.1 中 U01–U58 的交叉覆盖",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1477,
+    "content": "下表只对照来源 D01（Claude 1.1 设计稿）的附录 G.1 摘要，不宣称已核验另一个原始记录文件。相同需求可能由多条本稿要求共同落实。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2.md",
+    "line": 1479,
+    "content": "| 1.1 原编号 | 本稿承接 | 当前处理 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/ruan-project-reader/scripts/check.py",
+    "line": 2,
+    "content": "\"\"\"ruan-project-reader 2.3.0: 只读、有限的 Markdown 记录契约检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/ruan-project-reader/scripts/check.py",
+    "line": 783,
+    "content": "    parser = argparse.ArgumentParser(description=\"只读检查 ruan-project-reader 2.3.0 的 project-map；不会改状态。\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/README.md",
+    "line": 7,
+    "content": "- 新版本的文档放在 `versions/`，文件/文件夹名等于版本号：`versions/1.2.0.md`。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/README.md",
+    "line": 9,
+    "content": "- 版本号使用 `MAJOR.MINOR.PATCH` 三段数字（如 `1.2.0`）。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/README.md",
+    "line": 16,
+    "content": "version: \"1.2.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/README.md",
+    "line": 18,
+    "content": "previous_version: \"1.1.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/README.md",
+    "line": 29,
+    "content": "只有你可以确认版本：AI 助手不会擅自把 `draft` 改成 `approved`。若 1.3.0 是草案而 1.2.0 已确认，开发目标仍是 1.2.0。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/fixtures/forward-reviewed/README.md",
+    "line": 3,
+    "content": "此目录保存独立代理使用 2.2.0 Skill 阅读相邻 `source/` 九份玩具源码后的最终首轮待审稿，作为检查器的真实复杂记录回归输入。知识库内的绝对工程路径记录试用时环境，不表示安装者应使用相同路径；夹具不执行这些命令。相对模块、汇点和节点链接仍可机械检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/fixtures/forward-reviewed/README.md",
+    "line": 11,
+    "content": "check-final.json 为最终报告摘要；完整明细可重跑 check.py 得到。一次性生成脚本、重复检查日志和初稿已在提取上述有价值证据后清理。设计对应及试用限制见 ../../acceptance-2.2.0.md。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2.0.md",
+    "line": 2,
+    "content": "version: \"2.2.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2.0.md",
+    "line": 4,
+    "content": "previous_version: \"1.6.2\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2.0.md",
+    "line": 7,
+    "content": "# ruan-project-reader Skill 设计规范（2.2）",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2.0.md",
+    "line": 9,
+    "content": "*版本 2.2（定稿）· 2026-10-29*",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2.0.md",
+    "line": 27,
+    "content": "### 2.1 执行网络与层次",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2.0.md",
+    "line": 37,
+    "content": "### 2.2 公共模块的抽取边界",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_check.py",
+    "line": 50,
+    "content": "        self.assertEqual(report[\"规范版本\"], \"2.3\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/README.md",
+    "line": 21,
+    "content": "- `acceptance-2.2.0.md`：设计逐项对应、行为试用观察和验证边界。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3.0.md",
+    "line": 2,
+    "content": "version: \"2.3.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3.0.md",
+    "line": 4,
+    "content": "previous_version: \"2.2.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3.0.md",
+    "line": 7,
+    "content": "# ruan-project-reader Skill 2.3 正式版",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3.0.md",
+    "line": 9,
+    "content": "用户于 2026-10-30 明确确认“本次 2.3 视为正式版本”，并授权完成后推送远端。本版本按工程的 MAJOR.MINOR.PATCH 规范登记为 **2.3.0**，对外名称为 **2.3**。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3.0.md",
+    "line": 15,
+    "content": "完整能力继承 [2.2.0 设计基线](2.2.0.md)；本版本的差异以 [2.3 修复补丁](2.3/ruan-project-reader-Skill-2.3-修复补丁.md) 第四节为准。两份原始材料保持不变。存在差异时适用 2.3 补丁要求，其他既有规则继续适用。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3.0.md",
+    "line": 29,
+    "content": "详细证据与未验证范围见 [修复验收记录](../../reports/2.3-2026-10-30/report.md)。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3.0.md",
+    "line": 33,
+    "content": "按用户本次明确决定，将当前实现作为 2.3 正式版交付并同步远端；正式构建从 `src/ruan-project-reader/` 生成安装目录和发布清单。源码、清单与本设计使用同一工程版本 2.3.0。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/acceptance-2.2.0.md",
+    "line": 1,
+    "content": "# ruan-project-reader 2.2.0 验收记录",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/acceptance-2.2.0.md",
+    "line": 3,
+    "content": "日期：2026-10-29（Asia/Singapore）。目标：设计 2.2，对应工程三段版本 `2.2.0`。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/acceptance-2.2.0.md",
+    "line": 7,
+    "content": "用户明确要求按当前工程约定生成 2.2，原始设计标题标明“定稿”。据此新增 [2.2.0.md](../../design/versions/2.2.0.md)，仅补 `version/status/previous_version` frontmatter；正文与用户的 [2.2 原稿](../../design/versions/2.2/ruan-project-reader%20Skill%20设计规范（2.2）.md) 字节一致。原稿、两份 Demo、1.6.2 设计均保留。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/acceptance-2.2.0.md",
+    "line": 11,
+    "content": "| 目标元数据 | 原稿未位于标准 `*.md` 路径且缺 frontmatter；依据本次明确开发指令登记 2.2.0 approved |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/acceptance-2.2.0.md",
+    "line": 12,
+    "content": "| 开发源 | 为空，无有效 SKILL.md；2.2 需求初始均未在开发源满足 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/acceptance-2.2.0.md",
+    "line": 13,
+    "content": "| 已发布成品 | 1.6.2，原设计哈希和成品哈希均吻合；无手改或哈希冲突 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/acceptance-2.2.0.md",
+    "line": 26,
+    "content": "| A02 执行网络、多入口、无固定树／深度 §2.1、4.2 | SKILL.md；references/modules.md、discovery.md | 人工审查；样例识别请求、消息、定时三个主体，未按目录建树 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/acceptance-2.2.0.md",
+    "line": 27,
+    "content": "| A03 先内联、独立价值和复用场景差异 §2.2 | references/modules.md；模块与转交模板 | 人工审查；样例未仅为共享接口／Mapper 抽公共流程；多入口共享文档正例回归 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/acceptance-2.2.0.md",
+    "line": 86,
+    "content": "目标版本与当前已发布版本均为 **2.2.0**。执行 `PYTHONDONTWRITEBYTECODE=1 python3 src/build_release.py --build` 时，35 个测试全部通过，然后从开发源生成了 14 个交付文件和独立的 `install/.release.json`。安装目录只包含 SKILL、可选 Codex 界面元数据、五份参考、六份模板和只读检查器，不含测试、缓存、实验记录或 `.gitkeep`。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/src/tests/acceptance-2.2.0.md",
+    "line": 101,
+    "content": "未完成项仅为上述真实平台加载、完整远端协作与长期项目使用的待验证范围，不冒充已经测试。没有已知尚未落实的 2.2 设计实现项。Git 仍不可用；未初始化、提交、推送或创建 Tag。已保留本轮有价值试用结果为回归夹具，再清理本轮临时目录；原有实验目录未改动。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 5,
+    "content": "> **核对基线**：2026-10-30 查阅 `ruansilver/ruan-project-reader` 的 2.3.0 正式设计和开发源，包括 `SKILL.md`、`references/collaboration.md`、`references/completion.md`、`references/check-format.md`、`templates/STATE.md`、`templates/module.md`、`templates/remote-relay.md`、`scripts/check.py` 及 2.3 验收报告。实施 AI 必须重新核对实际 HEAD、工作区与当前文件；本文不替代实施时的源码核验。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 9,
+    "content": "用户希望通过**本地 AI 读取真实源码并补证、远端 AI 独立质疑并组织 Markdown/Mermaid、用户人工转交与最终验收**，逐步构建可追溯、可下钻、可恢复的项目理解知识库。2.3 已规定每次远端人工交接必须暂停，但远端交出完整文档之后，尚未形成“本地核验—用户验收—继续授权”的完整后半段。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 18,
+    "content": "6. **升级不能抹杀 2.3 成果**：已有大量按 2.3 形成的知识库没有 2.4 用户验收字段。新检查器应识别旧规范、如实给出未验证结果；仅在用户明确启动迁移时，才对存量成果补充验收流程。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 21,
+    "content": "**修复范围**：以 2.3 为基础，仅补充协作后半段及其必需的状态、记录、核验、恢复和检查支持。保留先下研后成文、首轮总览、入口/汇点及时登记、候选逐条处置、父子/公共模块契约、四项闸门、每次人工转交暂停、同仓串行、发现/处置/完成分离、Goal 安全边界及 Mermaid/短注规则。不引入数据库、通用状态引擎、双 AI 自动通信、Figma 实施或业务代码修改；不把静态检查视为源码真实性或用户实际授权的证明。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 25,
+    "content": "下表列出对 2.3 实际规则的静态核对结果及 2.4 必须处理的设计风险；**不据此声称真实项目中已经发生用户授权被绕过**。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 27,
+    "content": "| 位置／依据 | 2.3 当前情况 | 需要解决的问题 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 31,
+    "content": "| `scripts/check.py`、`references/check-format.md` | 模块合法状态为三种，`STATE` 固定核对八项汇总；检查器只读 | 需要支持待验收、当前稿指纹、验收记录及新版汇总，同时不能让旧 2.3 库全量误报失败 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 35,
+    "content": "| 2.4 新增指纹机制 | 2.3 未采用正文指纹 | 若把动态候选、闸门、待办和工作现场纳入指纹，普通后续调查就会频繁使已验收父层失效 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 37,
+    "content": "**保留原完成语义**：2.3 四项闸门以“其中阻塞本层”为主要完成阻断条件，**并非要求“问题数一律为 0”**。已经有真实去向且不影响父层边界的子层未决，仍可留待后续处理；“已证叶子”和“范围整体完成”继续适用各自更严格的标准。2.4 不能通过新增验收机制暗中改变这些判据。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 39,
+    "content": "2.3 已有 36 项回归及有限隔离样例通过的记录；真实 Goal 自动续跑、真实双 AI 往返、长期恢复及部分平台实机行为仍标为 **UNVERIFIED**。本补丁所有新增规则与验收用例在实施前均属**要求**，不是已发生的验证结果。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 47,
+    "content": "3. 先运行原有回归并保留基线；确认 `check.py` 原有三状态、八项汇总、模块闸门、整体完成以及退出码的具体实现，制定兼容测试。检查是否有 2.3 未验证的 Goal 行为，不能借升级声称已验证。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 56,
+    "content": "保留 2.3 已有的本地取证、远端质疑、本地逐项补证、远端完整稿及各人工转交暂停。完整闭环为：",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 60,
+    "content": "- **本地未通过**：保持“梳理中”。指出具体位置、错误/遗漏、实际证据、影响、未决和需要改动的范围；给出可由用户复制转交远端的独立提示词。远端重新提交完整当前稿，附本轮反馈背景与改动范围；本地再次核验。遇到同一问题连续两轮无实质进展，沿用 2.3 停滞规则，不无限反复。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 75,
+    "content": "- `本层完成 / 已证叶子 → 梳理中`：后续事实、源码/有效配置变化、依赖影响或用户提出的实质修订要求使当前陈述需要修改；沿用 2.3 的重开与受影响引用检查，原验收不能自动批准修订稿。纯运行记录、原始任务处置与派生汇总变化，若不影响读者内容和本层事实，不触发无意义重开。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 87,
+    "content": "转交提示词仍单独放明显的 Markdown 代码块，**沿用 2.3 `templates/remote-relay.md` 的外层 `~~~~text` 围栏约定**，以便安全包含内层使用三反引号的 Mermaid 代码块；只有确实不能直接传文件时才把完整 Markdown 放在外围栏内。不要同时强制另一套四反引号规范，也不要让外层围栏混入实际模块 Markdown。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 112,
+    "content": "**正文与待办的分界**：已核对的 2.3 模板使用 `## 未决` 存原始未完成任务、`## 候选记录` 存候选处置，二者应承接**可变的待办行、调查进度、下一动作和处理状态**。`## 必要规则与源码依据` 保存读者需要知道的已证事实、重要未证边界及其对理解的影响，不能把日常反复增删的待办流水行塞在这一节造成无意义的指纹变化；也不得为了稳定指纹，把会影响读者理解的事实、限制或未知说明移到排除区。读者正文的实质陈述有变化就应重新核验和验收，不能通过修改节名规避。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 118,
+    "content": "3. **切分**：在围栏外确认唯一一级标题与 2.3 模板的必需二级标题，各必需标题必须唯一；六个排除节出现重复或与固定结构歧义时也报未验证。一级标题和首个二级标题之间的文字组成“前置片段”，仅删除其中唯一的 `状态：…` 行，保留 `限制：有/无` 的规范化行和所有其他原文。其他片段从其 `##` 标题行开始，直到下一真实二级标题之前；剔除上述六个排除片段，**不限定剩余二级标题的名称**，保留它们在文件中的实际次序。缺失必需结构时按可确定的错误报 FAIL 或无法解释时报 UNVERIFIED，绝不输出看似有效的部分哈希。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 144,
+    "content": "项目整体完成仍须符合 2.3 的正向入口、反向汇点、盲区、实际未决与**全项目四项闸门**要求。**整体交付清单内每份模块文档（包括 `modules/00-总览.md`）必须先分别达到“本层完成”或“已证叶子”、持有当前有效的单文件用户验收记录，且读者指纹与现稿一致。** 任何仍为“梳理中”或“待验收”的文件都不能被整体确认顺带批准；整体清单不得故意排除本轮范围内的未完成模块来绕过原整体闸门。整体用户验收聚焦覆盖、总览、全局闸门和整组交付范围，**不替代模块逐份验收**。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 165,
+    "content": "2. 对缺少 `规范版本`、仅含三状态/八项统计且未混用新字段的合法 2.3 结构，按**2.3 的静态规则**检查：发现明确格式或一致性错误仍返回 **FAIL（1）**；无这些错误时也提示“2.4 用户验收尚未验证”，整体返回 **UNVERIFIED（2）**，不因为旧库缺待验收数和验收记录直接判失败。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 185,
+    "content": "2. `SKILL.md`、`references/`、`templates/`、`agents/`（如有涉及）和 `install/` 正式成品中不得夹带“2.3 曾如何”“2.4 本次修复了什么”“旧方案禁止”“东坡肉/蛋炒饭”的历史纠错叙事。版本号与正常的“不得越权继续”“未知不得当零”等**当前有效约束**应保留。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 192,
+    "content": "在隔离知识库与修复后的实际 Skill 上执行，保留已有 2.3 回归。每项分别给出 **PASS / FAIL / UNVERIFIED**、输入/命令、结果与可复核证据；模拟用户/远端输入须标明模拟，不能当作真实用户/真实远端验收。下列为**实施要求，不是本补丁已完成的测试结果**。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 211,
+    "content": "| 16. 旧 2.3 库只读兼容 | 对合法的三状态/八字段旧库运行新版 check：不修改文件，返回 UNVERIFIED（2）并说明未启用 2.4 用户验收，而非整库 FAIL；旧库已有明确结构错误仍返回 FAIL（1） |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 213,
+    "content": "| 18. 原有完成判据与汇总 | 2.4 统计为原八项＋待验收一项，`规范版本` 非统计；2.3 旧八项可只读兼容；父层“问题数非零但阻塞本层为零”仍可完成，叶子未处置/限制及整体覆盖门槛不被改变 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 223,
+    "content": "- [ruansilver/ruan-project-reader](https://github.com/ruansilver/ruan-project-reader) 当前 2.3.0 正式设计、开发源与已发布安装体系；实施以实际仓库 HEAD、`AGENTS.md` 和已确认目标版本为准。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 224,
+    "content": "- 2.2 基线设计、2.3 正式设计与 2.3 修复补丁；用于确认已有的源码取证、完成闸门、人工暂停及无痕维护边界，历史已发布设计保持原样。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md",
+    "line": 227,
+    "content": "**实施交付**须包含：基线与实际修改文件清单、独立 diff、原有及新增测试的逐项结果与证据、指纹算法与命令实测、旧库兼容和迁移边界、人工验收与真实 Goal 的未验证范围、最终 Skill 全文无痕审查、`src/` 与正式 `install/` 的版本/哈希对应关系以及剩余限制。2.3 既有设计与正式安装成品保持不变，直到按 `AGENTS.md` 完成 2.4 设计登记、开发验证和明确授权的发布流程；开发完成不等于自动授权发布。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 32,
+    "content": "        self.design(\"1.9.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 33,
+    "content": "        self.design(\"1.10.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 34,
+    "content": "        self.design(\"2.2.0\", \"draft\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 35,
+    "content": "        self.assertEqual(release.select_target(self.root)[0], \"1.10.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 38,
+    "content": "        self.design(\"2.2.0\", \"draft\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 43,
+    "content": "        self.design(\"2.2.0\").rename(self.root / \"design/versions/2.3.0.md\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 48,
+    "content": "        path = self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 49,
+    "content": "        path.write_text('---\\nversion: \"2.2.0\"\\nversion: \"2.1.0\"\\nstatus: approved\\n---\\n', encoding=\"utf-8\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 54,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 55,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 75,
+    "content": "        self.design(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 76,
+    "content": "        self.source_version(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 80,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 81,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 87,
+    "content": "        self.design(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 88,
+    "content": "        self.source_version(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 90,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 96,
+    "content": "        self.design(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 97,
+    "content": "        self.source_version(\"1.0.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 99,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 100,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 116,
+    "content": "        self.design(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/test_release.py",
+    "line": 117,
+    "content": "        self.source_version(\"2.2.0\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/README.md",
+    "line": 22,
+    "content": "当前正式版为 **2.3**，工程版本为 **2.3.0**，对应 [已确认设计](design/versions/2.3.0.md)。把 `install/ruan-project-reader/` 整个目录复制到你的 AI 工具的 Skills 目录即可，也可解压 [安装包](install/ruan-project-reader.zip) 后复制其中同名目录。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/README.md",
+    "line": 24,
+    "content": "2.3 使用标准 Agent Skills 目录与相对资源路径，运行核心不依赖特定模型、MCP 或联网服务。Codex、Claude Code、DeepSeek Harness 等平台按各自的 Skill 加载方式安装；具体 Harness 需支持本地 Skill，不能仅凭模型名称认定安装位置。检查器需要 Python 3.10+，缺少执行环境时仍可按 Skill 清单进行人工核验。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/README.md",
+    "line": 26,
+    "content": "本版明确每层先下研后成文、首轮总览协作、每次人工转交暂停、完成前核实远端输入，以及未展开入口登记和原始待办逐条计数。真实 Goal 自动续跑及其他平台实机验证仍未完成，详见 [验收报告](reports/2.3-2026-10-30/report.md) 和 [正式交付记录](reports/2.3-2026-10-30/release.md)。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/README.md",
+    "line": 36,
+    "content": "构建会重跑回归、核验原成品、从开发源暂存完整新成品，并生成规定的发布清单。设计语义验收见 [2.3 验收记录](reports/2.3-2026-10-30/report.md)；[2.2.0 验收记录](src/tests/acceptance-2.2.0.md) 保留作历史依据。测试与平台限制见 [测试说明](src/tests/README.md)。不会自动提交、推送或打 Tag。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/release.md",
+    "line": 5,
+    "content": "目标设计为 `design/versions/2.4.0.md`（approved，previous_version=2.3.0），正式发布清单 `install/.release.json` 为2.4.0。用户在收到完整验收报告与未验证范围后明确答复：“允许，交付后推送到远端”。该许可用于正式交付、提交和推送，不改变验收项目的证据等级，也不包含Tag或GitHub Release。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 1,
+    "content": "# ruan-project-reader Skill 2.3 修复补丁",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 9,
+    "content": "最终 Skill 只保留简洁、正向的当前有效规则；修复原因、旧行为对照和修改记录只出现在本补丁或独立验收材料中，不进入 Skill 正文、引用资料、模板及示例。仅将实际实现中的现有版本元数据更新至 **2.3**；2.2 设计稿保持原样。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 15,
+    "content": "本补丁采用用户提供的 **《ruan-project-reader Skill 设计规范（2.2）》修订稿 `ruan-project-reader Skill 设计规范（2.2）(2)(2).md`** 作为目标规范：其 §4.2 含“首次协作以项目总览为对象”，§6 含人工转交后暂停（包括 Goal 续跑），§8.1 将完成 §6 双 AI 协作列为本层完成条件。实际 Skill 可能基于其他 2.2 文件或更早实现；须以其真实内容判断是规则缺失、规则冲突还是执行偏离。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 21,
+    "content": "可对照 2.2 设计的 §3.2—3.4、§4.2、§5.1—5.2、§6、§8—9。检查同一规则是否在入口指令、协作资料和模板中互相矛盾，统一为下述行为；保留无关内容，不修改被阅读项目的功能代码。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 75,
+    "content": "本补丁交付时尚未在实际 Skill 上执行上述验收，实施结果均为 **UNVERIFIED**。本地修复完成后，单独提交实际修改位置与 `diff`、每项测试的 **PASS / FAIL / UNVERIFIED** 及证据、未验证范围和剩余限制。自动交接或完成条件的关键用例若为 FAIL / UNVERIFIED，不得宣称 2.3 已完成验收。该报告独立于最终 Skill 保存。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.3/ruan-project-reader-Skill-2.3-修复补丁.md",
+    "line": 79,
+    "content": "- 《ruan-project-reader Skill 设计规范（2.2）》修订稿（本次附件 `(2)(2)`，以 §4.2 首次总览协作、§6 人工暂停及 §8.1 双 AI 完成条件识别）：重点对应 §3.2—3.4、§4.2、§5.1—5.2、§6、§8—9。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/fixtures/forward-reviewed/README.md",
+    "line": 3,
+    "content": "此目录保存独立代理使用 2.2.0 Skill 阅读相邻 `source/` 九份玩具源码后的最终首轮待审稿，作为检查器的真实复杂记录回归输入。知识库内的绝对工程路径记录试用时环境，不表示安装者应使用相同路径；夹具不执行这些命令。相对模块、汇点和节点链接仍可机械检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/fixtures/forward-reviewed/README.md",
+    "line": 11,
+    "content": "check-final.json 为最终报告摘要；完整明细可重跑 check.py 得到。一次性生成脚本、重复检查日志和初稿已在提取上述有价值证据后清理。设计对应及试用限制见 ../../acceptance-2.2.0.md。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4.0.md",
+    "line": 4,
+    "content": "previous_version: \"2.3.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.4.0.md",
+    "line": 15,
+    "content": "继承 [2.3.0](2.3.0.md) 的授权源码只读取证、先下研后成文、总览首轮、多方向发现、即时入口/汇点登记、候选逐条处置、父子/公共模块、四项闸门、串行维护、停滞与Goal安全边界。完整要求见 [用户批准的原始修复文档](2.4/ruan-project-reader-Skill-2.4-修复补丁-成稿.md) 全文；原文保持不变。原稿与继承规则有差异时按原稿及本次用户明确要求实施。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/acceptance-2.2.0.md",
+    "line": 1,
+    "content": "# ruan-project-reader 2.2.0 验收记录",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/acceptance-2.2.0.md",
+    "line": 3,
+    "content": "日期：2026-10-29（Asia/Singapore）。目标：设计 2.2，对应工程三段版本 `2.2.0`。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/acceptance-2.2.0.md",
+    "line": 7,
+    "content": "用户明确要求按当前工程约定生成 2.2，原始设计标题标明“定稿”。据此新增 [2.2.0.md](../../design/versions/2.2.0.md)，仅补 `version/status/previous_version` frontmatter；正文与用户的 [2.2 原稿](../../design/versions/2.2/ruan-project-reader%20Skill%20设计规范（2.2）.md) 字节一致。原稿、两份 Demo、1.6.2 设计均保留。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/acceptance-2.2.0.md",
+    "line": 11,
+    "content": "| 目标元数据 | 原稿未位于标准 `*.md` 路径且缺 frontmatter；依据本次明确开发指令登记 2.2.0 approved |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/acceptance-2.2.0.md",
+    "line": 12,
+    "content": "| 开发源 | 为空，无有效 SKILL.md；2.2 需求初始均未在开发源满足 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/acceptance-2.2.0.md",
+    "line": 13,
+    "content": "| 已发布成品 | 1.6.2，原设计哈希和成品哈希均吻合；无手改或哈希冲突 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/acceptance-2.2.0.md",
+    "line": 26,
+    "content": "| A02 执行网络、多入口、无固定树／深度 §2.1、4.2 | SKILL.md；references/modules.md、discovery.md | 人工审查；样例识别请求、消息、定时三个主体，未按目录建树 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/acceptance-2.2.0.md",
+    "line": 27,
+    "content": "| A03 先内联、独立价值和复用场景差异 §2.2 | references/modules.md；模块与转交模板 | 人工审查；样例未仅为共享接口／Mapper 抽公共流程；多入口共享文档正例回归 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/acceptance-2.2.0.md",
+    "line": 86,
+    "content": "目标版本与当前已发布版本均为 **2.2.0**。执行 `PYTHONDONTWRITEBYTECODE=1 python3 src/build_release.py --build` 时，35 个测试全部通过，然后从开发源生成了 14 个交付文件和独立的 `install/.release.json`。安装目录只包含 SKILL、可选 Codex 界面元数据、五份参考、六份模板和只读检查器，不含测试、缓存、实验记录或 `.gitkeep`。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/tests/acceptance-2.2.0.md",
+    "line": 101,
+    "content": "未完成项仅为上述真实平台加载、完整远端协作与长期项目使用的待验证范围，不冒充已经测试。没有已知尚未落实的 2.2 设计实现项。Git 仍不可用；未初始化、提交、推送或创建 Tag。已保留本轮有价值试用结果为回归夹具，再清理本轮临时目录；原有实验目录未改动。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/install/.release.json",
+    "line": 2,
+    "content": "  \"version\": \"2.3.0\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/install/.release.json",
+    "line": 3,
+    "content": "  \"design_document\": \"design/versions/2.3.0.md\",",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/install/ruan-project-reader/scripts/check.py",
+    "line": 637,
+    "content": "                self.contract = \"2.3\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/install/ruan-project-reader/SKILL.md",
+    "line": 5,
+    "content": "  version: \"2.3.0\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 1,
+    "content": "# 1.6.1→1.6.2 补丁清单",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 3,
+    "content": "所有原文以 1.6.1 实际文件为准。以下每个替换仅执行一次；来源表的折叠与 D01 改名已合并为同一次替换。未触发 T37 后备切换。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 12,
+    "content": "**设计版本：** 1.6.1（终审清理）",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 18,
+    "content": "**设计版本：** 1.6.2（最小清理）",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 30,
+    "content": "**直接底稿：** 完整的 1.6 设计文档。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 36,
+    "content": "**直接底稿：** 完整的 1.6.1 设计文档。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 84,
+    "content": "以下标识指向本会话中可见的材料。本版直接修订底稿是完整附件 `ruan-project-reader-design-1.6.md`；只按本轮三项清理及必要同步修订，保留原需求编号及动机，不用本轮意见替代早期用户原话。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 102,
+    "content": "| B01 | 用户提供的 Claude 1.1 设计稿 | 仅用于旧 U 编号交叉查阅，不等同用户原话 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 103,
+    "content": "| B02 | 已提供的 1.3 完整设计稿 | 1.4 的直接底稿，不是本次直接底稿 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 104,
+    "content": "| B03 | 已提供的 `ruan-project-reader-design-1.4-final.md` 全文 | 1.5 的直接底稿，不是本次直接底稿 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 105,
+    "content": "| B04 | 已提供的 `ruan-project-reader-design-1.5.md` 全文 | 1.6 的直接底稿，不是本次直接底稿 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 106,
+    "content": "| B05 | 当前附件 `ruan-project-reader-design-1.6.md` 全文 | 本版直接修订底稿 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 107,
+    "content": "| P01 | 本会话对 1.1 的审查建议 | 设计建议来源，不冒充用户动机 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 109,
+    "content": "| C09 | 用户此前转交针对 1.4 的十三组静态审阅意见 | 1.5 的修订输入；其中方案取舍见独立修订对照文件 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 110,
+    "content": "| P03 | 1.5 对 C09 的采纳、部分采纳与实施解释 | 设计者建议，不冒充用户早期动机或真实仓库事实 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 111,
+    "content": "| C10 | 用户此前要求以 1.5 为底稿，仅按六项要求及必要同步产出 1.6 与完整 changelog | 1.6 修订依据；不新增机制、不扩展其他规格 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 112,
+    "content": "| C11 | 用户本轮转交 1.6 终审结论，仅要求三处清理、版本改为 1.6.1 并登记 changelog | 本版清理依据；不改其他规则、不提前执行 T37 后备切换 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 118,
+    "content": "| D01 | 用户提供的 Claude 1.1 设计稿 | 仅用于旧 U 编号交叉查阅，不等同用户原话 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 119,
+    "content": "| P01 | 本会话对 1.1 的审查建议 | 设计建议来源，不冒充用户动机 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 198,
+    "content": "**位置｜** §18.2.2 T37 行末",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 216,
+    "content": "**位置｜** §17.2.2「问题与标准答案隔离」",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 256,
+    "content": "**同步位置｜** §17.2.2 同句；执行说明放在题包之外，不把本地答案交给答题 AI",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 319,
+    "content": "下表只对照已提供的 1.1 附录 G.1 摘要，不宣称已核验另一个原始记录文件。相同需求可能由多条本稿要求共同落实。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 325,
+    "content": "下表只对照来源 D01（Claude 1.1 设计稿）的附录 G.1 摘要，不宣称已核验另一个原始记录文件。相同需求可能由多条本稿要求共同落实。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 337,
+    "content": "1.5 对 C09 静态复核的采纳位置与理由、1.6 对 C10 六项局部修订的处理，以及当前 1.6.1 对 C11 三项终审清理的记录，见独立修订对照文件；它们是方案细化，不反写为早期用户动机。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 355,
+    "content": "实施前逐项确认当前 1.6.1 规格，",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 391,
+    "content": "本文是基于实际 1.6 底稿、只按 C11 三项清理及必要同步修订的完整 1.6.1 设计规格，包含需求、当前方案和执行模板；独立 changelog 保留既有修订对照、1.5→1.6 交付说明及本次 1.6→1.6.1 记录。本文未实现 Skill、未分析真实仓库、未运行文档盲测或重建实验。后续按第一档小试点检验效果，再用实际成本数据决定是否增加工具。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 406,
+    "content": "| 文首 | 当前规格文件：`ruan-project-reader-design-1.6.1.md`。 | 当前规格文件：`ruan-project-reader-design-1.6.2.md`。 | 文首版本与新修订记录 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 407,
+    "content": "| 较早修订对照前言 | 若旧表与当前 1.6.1 规格不一致，以 1.6.1 为准。 | 若旧表与当前规格不一致，以文首指向的规格文件为准。 | 保留历史表正文不改 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 411,
+    "content": "## 1.6.1→1.6.2 最小清理",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 413,
+    "content": "直接底稿为实际文件 `ruan-project-reader-design-1.6.1.md`。仅采纳本轮四项及必要的版本、来源和引用同步；不新增机制，不改变其他规则，不恢复已取消项。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 417,
+    "content": "| 1. 正文与版本过程解耦 | 采纳 | §1 折叠 B02–B05、C09–C11、P03，底稿和修订输入转由本文件追溯；去除指定正文及同类说明中的版本/轮次过程措辞，保留历史需求与 C01–C08、P01、P02。文首版本为 1.6.2，直接底稿为 1.6.1 | 阅读说明、§1、§16.1/§16.5/§16.6 的过程说明、附录 F.2/G、当前交付边界；不改运行规则 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 418,
+    "content": "| 2. T37 稳定键后备 | 采纳 | 后备映射以 annotation_key＋节点可见标签对应，不依赖全局行序，保留重排/插入不改键的性质 | 只改 §18.2.2 的 T37；实际观察到污染后才同步 §6.4、§13.3、§9.2、附录 A 第五节、附录 B、附录 C.4，本轮未切换现行 HTML 锚点设计 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 419,
+    "content": "| 3. 盲测执行者 | 采纳 | 用户新开未用于出图/审稿的远程会话并转交 D.3 题包，答案交回本地按 _local/validation 评分，实际转交纳入现有指标；只有已接触相关材料的会话时降为普通文档对照 | §17.2.2、附录 D.3；§17.3 计数定义和既有材料白名单不变 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 430,
+    "content": "| B02 | 已提供的 1.3 完整设计稿 | 1.4 的直接底稿 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 431,
+    "content": "| B03 | `ruan-project-reader-design-1.4-final.md` 全文 | 1.5 的直接底稿 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 432,
+    "content": "| B04 | `ruan-project-reader-design-1.5.md` 全文 | 1.6 的直接底稿 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 433,
+    "content": "| B05 | `ruan-project-reader-design-1.6.md` 全文 | 1.6.1 的直接底稿 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 434,
+    "content": "| C09 | 用户转交针对 1.4 的十三组静态审阅意见 | 1.5 的修订输入；逐项采纳与理由见本文件对应小节 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 435,
+    "content": "| C10 | 用户要求以 1.5 为底稿，仅按六项及必要同步产出完整文件 | 1.6 修订输入 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 436,
+    "content": "| C11 | 用户转交 1.6 终审结论，只做三处清理并更新版本 | 1.6.1 修订输入 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 437,
+    "content": "| P03 | 1.5 对 C09 的采纳、部分采纳与实施解释 | 设计者建议，不是用户早期原话或真实仓库事实 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2-patches.md",
+    "line": 439,
+    "content": "当前来源 D01 对应用户提供的 Claude 1.1 设计稿，原标签为 B01；这一改名不改变旧稿内部的 S/U/G/B 编号，也不改变节点备注 B01/note-B01。既有 changelog 保留其当时的版本、来源标签和措辞，不回写历史表。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/src/ruan-project-reader/scripts/check.py",
+    "line": 637,
+    "content": "                self.contract = \"2.3\"",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/install/ruan-project-reader/scripts/check.py",
+    "line": 2,
+    "content": "\"\"\"ruan-project-reader 2.3.0: 只读、有限的 Markdown 记录契约检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/before/install/ruan-project-reader/scripts/check.py",
+    "line": 783,
+    "content": "    parser = argparse.ArgumentParser(description=\"只读检查 ruan-project-reader 2.3.0 的 project-map；不会改状态。\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/SKILL.md",
+    "line": 8,
+    "content": "依据《ruan-project-reader Skill 设计规范（2.2）》及本轮已明确的 §5.1、§9 两处最小补充（待办逐条计数和执行前复核，见协作与恢复参考）。具体产物是标准化、层次化、可核实、可继续维护的文档库；帮助用户学习是其价值，不代替具体交付要求。默认写入 `project-map/`，不修改项目功能代码。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 3,
+    "content": "**设计版本：** 1.6.2（最小清理）  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 6,
+    "content": "**直接底稿：** 完整的 1.6.1 设计文档。  ",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 38,
+    "content": "| C06 | 用户要求 1.2 完整文档，并保留真实需求动机与思考 | 需求来源与动机整理要求 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 39,
+    "content": "| C07 | 用户当时要求基于 1.2 产出 1.3，并提供复核意见 | 1.3 修订约束、减重要求与逐项意见 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 40,
+    "content": "| C08 | C07 之后，用户针对 1.3 连续提出来源、阻塞、普通备注、执行关系、入口流归属及预研、测试分批等修订，随后要求区分设计供给来源并升级版本 | 1.3 后续修订与 1.4 的依据；不反写为早期原始需求 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 41,
+    "content": "| D01 | 用户提供的 Claude 1.1 设计稿 | 仅用于旧 U 编号交叉查阅，不等同用户原话 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 42,
+    "content": "| P01 | 本会话对 1.1 的审查建议 | 设计建议来源，不冒充用户动机 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 292,
+    "content": "**当前取代关系：** 早期讨论中可做一两个实验，不再授权把 Figma 实验设成必经步骤。1.1 中的能力解锁、同步指纹与专项验收应删除。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 557,
+    "content": "_probe 保存当前依据，生命周期见 §9.1；_drafts 只放在审稿。未启用自动化不造空缓存和 _pending。盲测本地预期是当前校验资料，不是业务规则的隐藏唯一来源；项目正文仍须自足。`COVERAGE.md` 固定包含命名小节 `## 读者摘要`。COVERAGE 的‘读者摘要’小节只放面向读者的范围、限制、普通备注摘要；盲测题目与结果索引放在 COVERAGE 的其他小节。目录中存在的文件不自动进入盲测包，实际转交范围仅限 §17.2.2 的白名单，工作文件与本地校验资料不随包提供。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 584,
+    "content": "**业务知识不得只藏在缓存、`_probe`、`_drafts`、`_local` 或未转交的工作包中。** 重建所需知识必须落入合适层级的正式节点 Markdown；证据、预研和本地答案不能成为其隐藏的唯一来源。盲测只按 §17.2.2 转交正式阅读材料。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 996,
+    "content": "#### 17.2.1 每个入口流闭环时准备题，不等全库结束",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1011,
+    "content": "后续入口流按链路里程碑合并试答，最迟在声明其范围文档完成前完成；待沉淀题按 §17.2.3 重问。纯视觉重排不重新出题，相关规则改变要更新当前题/答案。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1013,
+    "content": "#### 17.2.2 问题与标准答案隔离",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1025,
+    "content": "#### 17.2.3 明确判断，不凭一句“看起来对”",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1033,
+    "content": "| 失败（知识未入正文） | 作答所需知识仅存在于 §17.2.2 排除的文件，未落正式正文；即使已有承接节点，也不得降为待沉淀 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1081,
+    "content": "#### 18.2.1 第一批：一个试点及少量夹具",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1106,
+    "content": "#### 18.2.2 后续按已启用能力测试",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1404,
+    "content": "本地按上述白名单实际组包，不转交完整 COVERAGE 的工作记录或结果索引，也不把“不要看答案”这句要求当作已隔离的证明。不能隔离时报告普通对照，不能叫盲测。因所需知识只在被排除文件而答不出，本地记“失败（知识未入正文）”，不记待沉淀；待沉淀必须按 §17.2.3 同时给出承接节点 ID 与入口流文档锚点，并在对应节点 closed 后重问。首次题型与 blocked 边界题按 §17.2.1 准备。本段是一次校验任务的材料格式，不改变日常远程的两种回复模式。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1469,
+    "content": "### F.2 与上传 1.1 中 U01–U58 的交叉覆盖",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1471,
+    "content": "下表只对照来源 D01（Claude 1.1 设计稿）的附录 G.1 摘要，不宣称已核验另一个原始记录文件。相同需求可能由多条本稿要求共同落实。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/1.6.2/ruan-project-reader-design-1.6.2.md",
+    "line": 1473,
+    "content": "| 1.1 原编号 | 本稿承接 | 当前处理 |",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/module.md",
+    "line": 6,
+    "content": "> 本文件是设计 2.2 的模块模板，不是项目事实。所有 `〈待填写…〉` 均须用实际检查结果替换；未知计数不能填 `0`。头部固定两行，限制为“有”时在“限制说明”中指向对应阻塞项或说明。处于“梳理中”时闸门记录可暂缺。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/check-format.md",
+    "line": 3,
+    "content": "**依据是《ruan-project-reader Skill 设计规范（2.2）》及用户明确的两处最小补充（§5.1 原始任务逐条计数；§9 执行前复核已有成果、满足当前任务则消费）。** 本页仅说明本 Demo 脚本认识的 Markdown 序列化写法，不新增模块身份、状态库、固定 DFS 层数、唯一父模块、额外复查轮次或业务完成规则。规范允许而脚本尚不支持的写法，报告“未验证”，不据此断言设计错误。例子是格式，不是项目事实。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/check-format.md",
+    "line": 23,
+    "content": "**2.2 仍未定义“覆盖记录数”的单位。** 该项核对独立保留为未验证，报告附 COVERAGE 原始表行数仅供诊断。正常样例可以所有确定项通过、总结果仍为未验证；不能把它包装成完整通过。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/scripts/check.py",
+    "line": 2,
+    "content": "\"\"\"ruan-project-reader 2.2 Demo: 只读、有限的 Markdown 记录契约检查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/scripts/check.py",
+    "line": 714,
+    "content": "    parser = argparse.ArgumentParser(description=\"只读检查 ruan-project-reader 2.2 Demo 的 project-map；不会改状态。\")",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/candidates.md",
+    "line": 3,
+    "content": "依据设计 2.2 §3、§5.1。把下列“候选记录”节放在所属模块文档中；它不是第二份独立候选数据库。占位行仅说明格式，不是项目事实，正式记录须替换或删除。没有行不代表没有候选，未知或无法解析的计数不得填零。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/COVERAGE.md",
+    "line": 3,
+    "content": "> 设计 2.2 的全局入口、重要汇点、范围、扫描缺口与整体闸门记录模板。占位符不是项目事实，未知不是0；空表或零提取结果不证明没有实现。入口与汇点使用 E1、S1 这类简单序号仅供引用，不另建身份体系。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/templates/gates.md",
+    "line": 3,
+    "content": "依据设计 2.2 §8.2。模块状态拟由“梳理中”切到“本层完成”或“已证叶子”前，把本节写入模块；声明整体完成前写入 COVERAGE.md，检查范围为全项目。以下均为未执行占位，不代表已经核验。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md",
+    "line": 3,
+    "content": "依据：附件《ruan-project-reader Skill 设计规范（2.2）》§6、§9。只维护当前有效稿，不要求保存旧版本或设计过程。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md",
+    "line": 5,
+    "content": "下文标为“本轮明确补充”的内容，是用户本轮对 §5.1、§9 的明确补充，不是 2.2 原文引文；附件原文不作改写。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/collaboration-and-recovery.md",
+    "line": 40,
+    "content": "文件存在或模块已标“本层完成”，都不能单独证明当前任务已经满足。同一模块服务不同调用场景时，仍保留 §2.2 的调用方说明：本场景输入、适用分支、实际可达出口及后继；不能因模块已经存在，就跳过当前场景边界核实。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/discovery-and-coverage.md",
+    "line": 3,
+    "content": "依据：附件《ruan-project-reader Skill 设计规范（2.2）》§4；记录位置沿用 §5.1、§7.1。通用检索示例见 [search-examples.md](search-examples.md)，示例不能代替实际技术栈调查。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/search-examples.md",
+    "line": 3,
+    "content": "依据：附件《ruan-project-reader Skill 设计规范（2.2）》§4。以下是 **Java / Spring 风格的通用只读 shell 检索示例，不是自动发现扫描器，也不是完整规则库**。须按用户当前授权仓库的真实技术栈、依赖版本、配置方式、源码布局和命名替换。其他技术栈不能直接套用这些名称。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/diagrams-and-completion.md",
+    "line": 3,
+    "content": "依据：附件《ruan-project-reader Skill 设计规范（2.2）》§7–8；候选与检查契约见 [check-format.md](check-format.md)。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md",
+    "line": 3,
+    "content": "依据：附件《ruan-project-reader Skill 设计规范（2.2）》§1–3。本文只展开该版规则，不引入其他设计。",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md",
+    "line": 16,
+    "content": "## 2. 执行网络与模块（§2.1）",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  },
+  {
+    "file": "reports/2.4-2026-10-30/evidence/build/design/versions/2.2/demo/ruan-project-reader-demo-2.2(chatgpt)/ruan-project-reader-demo/references/modules-and-granularity.md",
+    "line": 26,
+    "content": "## 3. 公共模块的边界（§2.2）",
+    "classification": "保留：历史报告、基线、隔离证据或发布事实，不是当前运行版本"
+  }
+]

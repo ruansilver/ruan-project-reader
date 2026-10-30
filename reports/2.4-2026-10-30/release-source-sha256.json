@@ -1,0 +1,18 @@
+{
+  "README.md": "975710a76a89f9f27b7cf897ed8d7ee8fe6edbf392f1d2214804c48ee9644748",
+  "src/ruan-project-reader/SKILL.md": "9effaddf6bd4c1f2dc3bddf280134b9a2c40bac81cbcf9158245259641232079",
+  "src/ruan-project-reader/references/check-format.md": "71046f2f574e91ab1c3ca2267690a709078d4b3cc84a92a4ac51a00f061aa2fc",
+  "src/ruan-project-reader/references/collaboration.md": "a913043d5a825f19959cdf26cef41bebb8cd30628f2a4361eeb3ba3bf35d4023",
+  "src/ruan-project-reader/references/completion.md": "69d0e72d4df2d8f4cd2a7f385109e6ee9bbda758fa639586196e0b051b02d33c",
+  "src/ruan-project-reader/references/discovery.md": "2626f3bdf1decb6b7fee3f97a4df18e88ee06d0504546dc2d2ece59ee62f822c",
+  "src/ruan-project-reader/references/modules.md": "62e58b08dc7ac29499f46117014bb85125eb4d1bdc68eeb043311bbe847b4609",
+  "src/ruan-project-reader/scripts/check.py": "154fac47a27b88942cfdc1960bc54cdf5b7785d94d8aeca8020ddd05a2870c8f",
+  "src/ruan-project-reader/templates/COVERAGE.md": "46e32214d15ba8796124700af66cc1c3cde04da0b0bc3e5c0b1354c348eda02c",
+  "src/ruan-project-reader/templates/STATE.md": "df1db31b502a1a99077ca0f18140d6475c7476832394abc6126b866c96d405fa",
+  "src/ruan-project-reader/templates/module.md": "37dbad2f0170c14c386a9b8826a353a721ed2a7ee285924e7ab5345bd49cdaf7",
+  "src/ruan-project-reader/templates/remote-relay.md": "77170eb9628efa309fd35ae222653670edb9f6066dce5f1b4bab9b9e360bf1ca",
+  "src/tests/README.md": "9d25268ba80c4f47655cdb4c29f91be5b7bb230c8fc2988469f46abfcfcf0ef6",
+  "src/tests/test_check.py": "4815a315a194c89c256cddb00296097934f81e431a2ced28ebf1909d600244d5",
+  "design/versions/2.4.0.md": "60472580497909c63d627d88a3f9d20d42a3e9c94915151cd430b6047c7b86b1",
+  "src/tests/test_acceptance.py": "515c973d247a928a731ba9b83d6b83a6f9373867aa5fdf1d15a846d4dc4e4fd7"
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ruan-project-reader 2.3.0: 只读、有限的 Markdown 记录契约检查。
+"""ruan-project-reader 2.4.0: 只读、有限的 Markdown 记录契约检查与指纹计算。
 
 机器可读排版约定见 references/check-format.md；它们不是新增设计规则。
 退出码：0=机械范围通过；1=存在确定失败；2=存在未验证且无确定失败。
@@ -11,15 +11,19 @@ import argparse
 from collections import Counter
 from dataclasses import dataclass
 import html
+import hashlib
 import json
 from pathlib import Path
 import re
 import sys
+import unicodedata
 from urllib.parse import unquote, urlsplit
 
 CATEGORIES = ("事务锁并发", "写库缓存状态", "MQ异步后台", "异常重试补偿", "权限判断算法", "配置分派", "外部调用副作用", "出向调用", "其他")
 DISPOSITIONS = ("本文已解释", "模块引用", "外部边界", "琐碎", "待核实", "阻塞")
-STATES = ("梳理中", "本层完成", "已证叶子")
+LEGACY_STATES = ("梳理中", "本层完成", "已证叶子")
+STATES = ("梳理中", "待验收", "本层完成", "已证叶子")
+COMPLETED = ("本层完成", "已证叶子")
 GATES = ("入口 → 结果", "源码 → 流程", "封装 → 隐藏环节", "未决 → 处置")
 CANDIDATE_HEADER = ("来源位置", "候选", "类别", "数量", "处置", "证据或去向")
 NOTE_HEADER = ("节点 ID", "原标签", "简短说明", "去向")
@@ -29,8 +33,16 @@ ENTRY_HEADER = ("序号", "来源位置", "主体流程", "总览节点", "下�
 SINK_HEADER = ("序号", "来源位置", "定位或孤立候选", "下一步")
 METHOD_HEADER = ("方法或方向", "适用性", "扫描范围", "扫描方法", "检查对象数", "未检查区域", "新增候选数", "说明")
 CROSS_HEADER = ("产生候选的方法或方向", "交叉复查方法或方向", "检查范围", "方法", "检查对象数", "新增候选数", "未检查区域", "未决去向")
-SUMMARY_KEYS = ("梳理中模块数", "本层完成模块数", "已证叶子模块数", "待办数", "阻塞数", "入口数", "汇点数", "覆盖记录数")
+LEGACY_SUMMARY_KEYS = ("梳理中模块数", "本层完成模块数", "已证叶子模块数", "待办数", "阻塞数", "入口数", "汇点数", "覆盖记录数")
+SUMMARY_KEYS = ("梳理中模块数", "待验收模块数", *LEGACY_SUMMARY_KEYS[1:])
+EXCLUDED_SECTIONS = {"候选记录", "闸门记录", "核验与下一步", "未决", "限制说明", "验收记录"}
+REQUIRED_SECTIONS = {"职责与边界", "执行图", "逐节点短注", "必要规则与源码依据", "下钻、引用与外部去向", "候选记录", "未决", "限制说明", "核验与下一步"}
+FINGERPRINT_ALGORITHM = "reader-content-2.4-sha256"
+SCOPE_ALGORITHM = "reader-scope-2.4-nfc-utf8-sha256"
+SCOPE_HEADER = ("模块路径",)
 MANUAL = [
+    "用户验收回答是否真实、无条件且指向当前版本，继续授权是否独立取得：脚本未验证。",
+    "源码/覆盖变化或模块重开时是否即时撤销整体验收，真实 Goal 是否停止：静态检查不能证明历史行为。",
     "用户是否实际转交本层远端质疑和完整当前稿、记录位置及逐项补证处理：脚本未验证；完成状态须由本地核实协作输入与源码依据。",
     "隐藏调用、发现漏报、业务语义、源码真实性、证据是否支持分类和处置理由：脚本未验证，须本地核源码并由远端独立质疑。",
     "闸门断言、边界契约、外部黑盒契约、交叉复查的实质差异与真实无新增：脚本未验证。",
@@ -40,6 +52,140 @@ MANUAL = [
 ]
 PLACEHOLDER = re.compile(r"待填写|待填|〈|〉|<待|\bTODO\b|^\.{3}$|^…+$|^\?$", re.I)
 LINK = re.compile(r"(?<!!)\[([^\]\n]+)\]\(([^\n]*?)\)")
+
+
+class ContractError(ValueError):
+    def __init__(self, status, message):
+        super().__init__(message)
+        self.status = status
+
+
+def read_utf8(path: Path) -> str:
+    text = path.read_bytes().decode("utf-8")
+    if text.startswith("\ufeff"):
+        text = text[1:]
+    text = text.replace("\r\n", "\n")
+    if "\r" in text:
+        raise ContractError("未验证", "含孤立 CR，无法按 UTF-8/LF 契约计算")
+    return text
+
+
+def markdown_structure(text: str):
+    """ATX headings and fenced blocks at document level; never split inside code."""
+    lines = text.split("\n")
+    headings, blocks = [], []
+    opened = None
+    for i, line in enumerate(lines):
+        if opened is not None:
+            start, char, length, info = opened
+            if re.fullmatch(r" {0,3}" + re.escape(char) + "{" + str(length) + r",}[ \t]*", line):
+                blocks.append((start, i, info))
+                opened = None
+            continue
+        fence = re.match(r"^ {0,3}(`{3,}|~{3,})(.*)$", line)
+        if fence and not (fence[1][0] == "`" and "`" in fence[2]):
+            opened = (i, fence[1][0], len(fence[1]), fence[2].strip())
+            continue
+        heading = re.fullmatch(r" {0,3}(#{1,6})(?:[ \t]+(.*)|[ \t]*)", line)
+        if heading:
+            title = re.sub(r"(?:^|[ \t]+)#+[ \t]*$", "", heading[2] or "").strip()
+            headings.append((i, len(heading[1]), title))
+    if opened:
+        raise ContractError("未验证", f"第 {opened[0]+1} 行代码围栏未闭合")
+    return lines, headings, blocks
+
+
+def reader_content(text: str) -> bytes:
+    lines, headings, blocks = markdown_structure(text)
+    titles = [h for h in headings if h[1] == 1]
+    sections = [h for h in headings if h[1] == 2]
+    if len(titles) != 1 or not sections or titles[0][0] >= sections[0][0]:
+        raise ContractError("失败", "模块须有唯一一级标题，且位于首个二级标题之前")
+    counts = Counter(h[2] for h in sections)
+    for name in REQUIRED_SECTIONS | EXCLUDED_SECTIONS:
+        if counts[name] > 1:
+            raise ContractError("未验证", f"二级标题 {name} 重复，不能确定有效区块")
+    missing = REQUIRED_SECTIONS - counts.keys()
+    if missing:
+        raise ContractError("失败", "缺必需二级标题：" + "、".join(sorted(missing)))
+    prefix = lines[:sections[0][0]]
+    code_lines = {i for start, end, _ in blocks for i in range(start, end+1)}
+    fields = {"状态": [], "限制": []}
+    for i, line in enumerate(prefix):
+        match = re.fullmatch(r"[ \t]*(状态|限制)[：:][ \t]*(.*)", line)
+        if match and i not in code_lines:
+            fields[match[1]].append((i, clean(match[2])))
+    if any(len(v) != 1 for v in fields.values()):
+        raise ContractError("失败", "首节前状态、限制须各恰好一行")
+    state_index, state = fields["状态"][0]
+    limit_index, limit = fields["限制"][0]
+    if state not in STATES or limit not in ("有", "无"):
+        raise ContractError("失败", "状态或限制值非法")
+    prefix[limit_index] = "限制：" + limit
+    del prefix[state_index]
+    fragments = ["\n".join(prefix).rstrip("\n")]
+    for n, (start, _, name) in enumerate(sections):
+        if name in EXCLUDED_SECTIONS:
+            continue
+        end = sections[n+1][0] if n+1 < len(sections) else len(lines)
+        fragments.append("\n".join(lines[start:end]).rstrip("\n"))
+    return ("\n\n".join(fragments) + "\n").encode("utf-8")
+
+
+def fingerprint(path: Path) -> dict:
+    result = {"文件": str(path), "规范版本": "2.4", "算法": FINGERPRINT_ALGORITHM, "sha256": None}
+    try:
+        result["sha256"] = hashlib.sha256(reader_content(read_utf8(path))).hexdigest()
+        result.update(结果="通过", 说明="读者内容指纹已实际计算；不证明用户授权或源码真实性")
+    except ContractError as exc:
+        result.update(结果=exc.status, 说明=str(exc))
+    except (OSError, UnicodeError) as exc:
+        result.update(结果="未验证", 说明=f"不能读取/计算：{exc}")
+    return result
+
+
+def scope_fingerprint(root: Path, paths: list[str] | None = None) -> dict:
+    result = {"文件": str(root), "规范版本": "2.4", "算法": SCOPE_ALGORITHM, "sha256": None, "清单": []}
+    try:
+        inventory = {}
+        for path in (root / "modules").rglob("*.md"):
+            if path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
+                raise ContractError("失败", f"模块路径不能经符号链接越过清点边界：{path}")
+            relative = path.relative_to(root).as_posix().replace("\\", "/")
+            normalized = unicodedata.normalize("NFC", relative)
+            if normalized in inventory:
+                raise ContractError("失败", f"NFC 路径冲突：{relative}")
+            inventory[normalized] = path
+        if "modules/00-总览.md" not in inventory:
+            raise ContractError("失败", "整体范围缺少 modules/00-总览.md")
+        selected = list(inventory) if paths is None else []
+        for raw in paths or []:
+            name = unicodedata.normalize("NFC", raw.replace("\\", "/"))
+            if name.startswith("/") or any(part in ("", ".", "..") for part in name.split("/")) or "\0" in name:
+                raise ContractError("失败", f"须使用 project-map 内模块相对路径：{raw}")
+            if name in selected:
+                raise ContractError("失败", f"清单路径重复/NFC 冲突：{raw}")
+            selected.append(name)
+        if set(selected) != set(inventory):
+            raise ContractError("失败", "清单必须恰好包含全部 modules/**/*.md（含总览），不能遗漏或越界")
+        rows, failures = [], []
+        for name in sorted(selected, key=lambda x: x.encode("utf-8")):
+            item = fingerprint(inventory[name])
+            result["清单"].append({"路径": name, **item})
+            if item["结果"] != "通过":
+                failures.append(item)
+            else:
+                rows.append(name.encode("utf-8") + b"\0" + item["sha256"].encode("ascii") + b"\n")
+        if failures:
+            status = "失败" if any(i["结果"] == "失败" for i in failures) else "未验证"
+            raise ContractError(status, "范围中存在不可计算的模块；见清单明细")
+        result["sha256"] = hashlib.sha256(b"".join(rows)).hexdigest()
+        result.update(结果="通过", 说明="范围指纹已实际计算；模块验收与整体技术条件须另行核验")
+    except ContractError as exc:
+        result.update(结果=exc.status, 说明=str(exc))
+    except (OSError, UnicodeError) as exc:
+        result.update(结果="未验证", 说明=f"范围清点/计算未完成：{exc}")
+    return result
 
 
 def clean(value: str) -> str:
@@ -54,7 +200,10 @@ def plain(value: str) -> str:
 
 
 def without_fences(text: str) -> str:
-    return re.sub(r"(?ms)^\s*(`{3,}|~{3,})[^\n]*\n.*?^\s*\1\s*$", "", text)
+    lines, _, blocks = markdown_structure(text)
+    for start, end, _ in blocks:
+        lines[start:end+1] = [""] * (end-start+1)
+    return "\n".join(lines)
 
 
 def cells(line: str) -> list[str]:
@@ -103,25 +252,18 @@ class Document:
     text: str
 
     def section(self, name: str) -> str | None:
-        lines = without_fences(self.text).splitlines()
-        for index, line in enumerate(lines):
-            match = re.match(r"^(#{1,6})\s+(.+?)\s*#*\s*$", line)
-            if match and clean(match.group(2)) == name:
-                level = len(match.group(1))
-                end = len(lines)
-                for i in range(index + 1, len(lines)):
-                    following = re.match(r"^(#{1,6})\s+", lines[i])
-                    if following and len(following.group(1)) <= level:
-                        end = i
-                        break
-                return "\n".join(lines[index + 1:end])
+        lines, headings, _ = markdown_structure(without_fences(self.text))
+        for index, (at, level, title) in enumerate(headings):
+            if title == name:
+                end = next((i for i, lev, _ in headings[index+1:] if lev <= level), len(lines))
+                return "\n".join(lines[at+1:end])
         return None
 
     def record_section(self, name: str, header: tuple[str, ...]) -> str | None:
         body = self.section(name)
         if body is not None:
             return body
-        # 规范固定的是内容/表头，并未固定章节标题。对唯一匹配表头回溯所在节。
+        # 候选/闸门可按唯一表头定位；模块必需标题另由读者指纹核验。
         lines = without_fences(self.text).splitlines()
         matches = [i for i, line in enumerate(lines) if "|" in line and tuple(cells(line)) == header]
         if len(matches) != 1:
@@ -161,6 +303,9 @@ class Checker:
         self.raw_counts: dict[str, int | None] = {}
         self.extra_tasks = 0
         self.module_inventory_complete = True
+        self.contract = "2.4"
+        self.fingerprints = {}
+        self.unreadable_modules = set()
 
     def record(self, status: str, group: str, path: Path, message: str):
         try:
@@ -183,8 +328,9 @@ class Checker:
         if not self.require(path.is_file(), "记录", path, "文件存在"):
             return None
         try:
-            doc = Document(path, path.read_text(encoding="utf-8-sig"))
-        except (OSError, UnicodeError) as exc:
+            doc = Document(path, read_utf8(path))
+            markdown_structure(doc.text)
+        except (OSError, UnicodeError, ContractError) as exc:
             self.unknown("记录", path, f"无法读取 UTF-8 文档：{exc}")
             return None
         self.docs[path] = doc
@@ -276,7 +422,7 @@ class Checker:
         if rows is None:
             self.unresolved_complete = False
             return None
-        # 用户补充：分别登记的原始任务逐条计数；相同来源不自动合并。
+        # 分别登记的原始任务逐条计数；相同来源不自动合并。
         for row in rows:
             source, kind = plain(row["来源"]), row["类型"]
             self.require(kind in ("待核实", "阻塞", "限制"), "处置", doc.path, f"未决 {source} 类型合法：{kind}")
@@ -336,7 +482,7 @@ class Checker:
     def anchors(self, doc: Document) -> set[str]:
         anchors = set(re.findall(r'<a\s+(?:id|name)=[\"\']([^\"\']+)[\"\']', doc.text, re.I))
         used = Counter()
-        for title in re.findall(r"(?m)^#{1,6}\s+(.+?)\s*#*\s*$", without_fences(doc.text)):
+        for _, _, title in markdown_structure(without_fences(doc.text))[1]:
             title = re.sub(r"[^\w\-\s\u4e00-\u9fff]", "", plain(title).lower())
             slug = re.sub(r"\s+", "-", title.strip())
             suffix = "" if used[slug] == 0 else f"-{used[slug]}"
@@ -348,8 +494,8 @@ class Checker:
         return anchors
 
     def mermaid(self, doc: Document) -> dict[str, str] | None:
-        blocks = re.findall(r"(?ms)^\s*(`{3,}|~{3,})mermaid\s*\n(.*?)^\s*\1\s*$", doc.text)
-        graphs = [body for _, body in blocks]
+        lines, _, blocks = markdown_structure(doc.text)
+        graphs = ["\n".join(lines[start+1:end]) for start, end, info in blocks if info == "mermaid"]
         if not graphs and "mermaid" in doc.text.lower():
             self.unknown("节点", doc.path, "Mermaid 围栏写法无法解析，未验证节点对应")
             return None
@@ -429,14 +575,19 @@ class Checker:
                     continue
                 valid = False
                 external = False
+                unreadable = False
                 for _, target in refs:
                     path, frag = self.target(doc, target)
                     if path is None:
                         external = True
+                    elif path in self.unreadable_modules:
+                        unreadable = True
                     elif path.is_file():
                         if path.suffix.lower() == ".md" and (path in self.modules or frag):
                             valid = True
-                if not valid and external:
+                if not valid and unreadable:
+                    self.unknown("节点", doc.path, f"{ident} 的目标模块存在但无法读取")
+                elif not valid and external:
                     self.unknown("节点", doc.path, f"{ident} 外部引用去向未联网验证")
                 else:
                     self.require(valid, "节点", doc.path, f"{ident} 去向是有效模块/正文或未决定位")
@@ -462,12 +613,104 @@ class Checker:
             if row["检查范围"] in ("不适用", "无"):
                 self.require(row["说明"] not in ("", "无", "不适用"), "完成", doc.path, f"闸门 {row['检查项']} 不适用有原因")
 
+    def detect_contract(self):
+        state = self.docs.get((self.root / "STATE.md").resolve())
+        if state is None:
+            self.unknown("规范", self.root, "无法读取规范版本，不启用兼容降级")
+            return
+        versions = state.fields().get("规范版本", [])
+        if versions == ["2.4"]:
+            self.record("通过", "规范", state.path, "规范版本为 2.4，核对四状态和九项统计")
+        elif versions:
+            self.require(False, "规范", state.path, "规范版本须唯一且为 2.4；不支持的版本不按旧库放行")
+        else:
+            mixed = bool(state.fields().get("待验收模块数"))
+            for path in self.modules:
+                doc = self.docs[path]
+                mixed |= doc.section("验收记录") is not None or "待验收" in doc.fields().get("状态", [])
+                mixed |= "读者内容指纹" in doc.fields()
+            coverage = self.docs.get((self.root / "COVERAGE.md").resolve())
+            mixed |= bool(coverage and coverage.section("整体验收记录") is not None)
+            if mixed:
+                self.require(False, "规范", state.path, "缺规范版本却混用四状态/验收/九统计字段，不能按旧库检查")
+            else:
+                self.contract = "2.3"
+                self.unknown("规范", state.path, "按三状态/八统计契约只读检查；2.4 用户验收尚未验证，不自动迁移")
+
+    def acceptance(self, doc: Document, status: str | None):
+        computed = fingerprint(doc.path)
+        self.fingerprints[str(doc.path.relative_to(self.root))] = computed
+        self.record(computed["结果"], "验收", doc.path, computed["说明"])
+        block = doc.section("验收记录")
+        if not self.require(block is not None, "验收", doc.path, "模块有本文件的验收记录"):
+            return None
+        proposed = self.field(doc, "拟完成类型", block, "验收")
+        saved = self.field(doc, "读者内容指纹", block, "验收")
+        baseline = self.field(doc, "核验基准", block, "验收")
+        question = self.field(doc, "用户验收问题", block, "验收")
+        answer = self.field(doc, "用户验收回答", block, "验收")
+        if status not in (*COMPLETED, "待验收"):
+            return proposed
+        self.require(proposed in COMPLETED, "验收", doc.path, "待验收/完成的拟完成类型合法")
+        absent = (None, "无", "未取得", "未验证", "失效")
+        self.require(baseline not in absent, "验收", doc.path, "记录当前技术核验基准；无法确定时须明写基准未知及依据")
+        if saved in absent and status == "待验收":
+            self.unknown("验收", doc.path, "待验收的记录指纹未验证；不得转正，工具恢复后须重新确认具体版本")
+        elif self.require(bool(saved and re.fullmatch(r"[0-9a-f]{64}", saved)), "验收", doc.path, "记录完整小写 SHA-256"):
+            if computed["sha256"] is not None:
+                self.require(saved == computed["sha256"], "验收", doc.path, "记录指纹等于当前读者内容")
+        if status in COMPLETED:
+            self.require(proposed == status, "验收", doc.path, "完成状态与本文件拟完成类型一致")
+            self.require(question not in absent and answer not in absent, "验收", doc.path, "完成状态具备用户验收问题与实际回答/可复核位置")
+            if question not in absent and computed["sha256"]:
+                self.require(doc.path.name in question and computed["sha256"][:8] in question,
+                             "验收", doc.path, "验收问题列明本文件名及当前指纹前8–12位")
+        return proposed
+
+    def scope_acceptance(self, doc: Document, claimed: bool) -> bool:
+        block = doc.section("整体验收记录")
+        if block is None:
+            if claimed:
+                self.require(False, "验收", doc.path, "整体完成须有整体验收记录")
+            return False
+        headings = markdown_structure(doc.text)[1]
+        if sum(level == 2 and name == "整体验收记录" for _, level, name in headings) != 1:
+            self.unknown("验收", doc.path, "整体验收记录不唯一，不能确定当前有效记录")
+            return False
+        rows = self.table(doc, "整体验收记录", SCOPE_HEADER, group="验收")
+        saved = self.field(doc, "整体读者内容指纹", block, "验收")
+        technical = self.field(doc, "技术核验", block, "验收")
+        question = self.field(doc, "用户验收问题", block, "验收")
+        answer = self.field(doc, "用户验收回答", block, "验收")
+        absent = (None, "无", "未取得", "未验证", "失效")
+        active = claimed or bool(rows) or saved not in absent
+        if not active:
+            return False
+        if rows is not None:
+            result = scope_fingerprint(self.root, [r["模块路径"] for r in rows])
+            self.record(result["结果"], "验收", doc.path, result["说明"])
+            if self.require(bool(saved and re.fullmatch(r"[0-9a-f]{64}", saved)), "验收", doc.path, "整体记录具备完整 SHA-256") and result["sha256"]:
+                self.require(saved == result["sha256"], "验收", doc.path, "整体记录指纹与当前清单内容一致")
+            if claimed and question not in absent and result["sha256"]:
+                self.require(result["sha256"][:8] in question, "验收", doc.path, "整体提问指向当前整体指纹")
+        self.require(technical not in absent, "验收", doc.path, "整体验收有技术核验依据")
+        if not self.module_inventory_complete:
+            self.unknown("验收", doc.path, "模块无法全部读取，逐份验收状态未验证")
+        else:
+            self.require(all(m.get("status") in COMPLETED for m in self.modules.values()),
+                         "验收", doc.path, "清单所有模块（含总览）已个别验收，整体认可不能顺带批准")
+        if claimed:
+            self.require(question not in absent and answer not in absent, "验收", doc.path, "整体完成须取得当前整体版本的用户问题与回答")
+        return True
+
     def module(self, doc: Document):
         # 模块固定两行元信息位于标题前后皆可，但必须位于第一节前。
-        prefix = re.split(r"(?m)^##\s+", doc.text, maxsplit=1)[0]
+        lines, headings, _ = markdown_structure(doc.text)
+        first = next((i for i, level, _ in headings if level == 2), len(lines))
+        prefix = "\n".join(lines[:first])
         status = self.field(doc, "状态", prefix, "完成")
         limitation = self.field(doc, "限制", prefix, "完成")
-        self.require(status in STATES, "完成", doc.path, f"模块状态合法：{status}") if status is not None else None
+        self.require(status in (STATES if self.contract == "2.4" else LEGACY_STATES), "完成", doc.path, f"模块状态合法：{status}") if status is not None else None
         self.require(limitation in ("无", "有"), "完成", doc.path, f"限制值合法：{limitation}") if limitation is not None else None
         unknowns = self.unresolved(doc)
         section = doc.record_section("候选记录", CANDIDATE_HEADER)
@@ -521,7 +764,9 @@ class Checker:
                         for _, raw in refs:
                             target, fragment = self.target(doc, raw)
                             self.require(target is not None and target.is_file(), "处置", doc.path, f"候选 {source} 证据去向实际存在：{raw}")
-                            if row["处置"] == "模块引用":
+                            if row["处置"] == "模块引用" and target in self.unreadable_modules:
+                                self.unknown("处置", doc.path, f"候选 {source} 引用模块存在但无法读取")
+                            elif row["处置"] == "模块引用":
                                 self.require(target in self.modules, "处置", doc.path, f"候选 {source} 引用已纳入本知识库的实际模块")
                             elif target != doc.path:
                                 self.require(False, "处置", doc.path, f"候选 {source} 本文已解释必须定位当前文档")
@@ -557,9 +802,10 @@ class Checker:
                     self.extra_tasks += 1  # 独立完整限制说明也是一条原始未完成记录。
             if block is not None:
                 self.require(block, "完成", doc.path, "限制为有时有对应阻塞项或完整限制说明")
-        complete = status in ("本层完成", "已证叶子")
+        proposed = self.acceptance(doc, status) if self.contract == "2.4" else None
+        complete = status in COMPLETED or status == "待验收"
         self.gates(doc, complete, complete)
-        if status == "已证叶子":
+        if status == "已证叶子" or (status == "待验收" and proposed == "已证叶子"):
             self.require(limitation == "无", "完成", doc.path, "已证叶子限制必须为无")
             if pending is None:
                 self.unknown("完成", doc.path, "已证叶子未处置数无法确定，不能当作零")
@@ -618,6 +864,9 @@ class Checker:
             else:
                 for _, raw in flow_refs:
                     target, _ = self.target(doc, raw)
+                    if target in self.unreadable_modules:
+                        self.unknown("发现", doc.path, f"入口 {row['序号']} 主体模块无法读取")
+                        continue
                     self.require(target in self.modules, "发现", doc.path, f"入口 {row['序号']} 主体流程指向实际模块：{raw}")
         for row in sinks or []:
             position = row["定位或孤立候选"]
@@ -632,6 +881,9 @@ class Checker:
             uncertain = False
             for _, raw in refs:
                 target, fragment = self.target(doc, raw)
+                if target in self.unreadable_modules:
+                    uncertain = True
+                    continue
                 if target not in self.modules or not fragment:
                     continue
                 target_doc = self.docs[target]
@@ -680,6 +932,8 @@ class Checker:
         self.field(doc, "范围", group="发现")
         self.field(doc, "召回探针", group="发现")
         claimed = overall == "是"
+        if self.contract == "2.4":
+            claimed = self.scope_acceptance(doc, claimed) or claimed
         if convergence == "是" or claimed:
             directions = {r["方法或方向"] for r in methods or []}
             self.require({"正向入口", "反向汇点", "盲区审查"} <= directions, "发现", doc.path, "暂时收敛须登记正向入口、反向汇点、盲区审查及适用性")
@@ -694,8 +948,8 @@ class Checker:
                 self.require(not any(records) and self.extra_tasks == 0, "完成", doc.path, "整体完成没有未处置的原始任务或独立限制说明")
             else:
                 self.unknown("完成", doc.path, "整体完成的未决尚未完整解析")
-            self.require(all(m.get("status") in STATES[1:] and m.get("limitation") == "无"
-                             for m in self.modules.values()), "完成", doc.path, "整体完成没有梳理中或受限模块")
+            self.require(all(m.get("status") in COMPLETED and m.get("limitation") == "无"
+                             for m in self.modules.values()), "完成", doc.path, "整体完成没有梳理中、待验收或受限模块")
             for rows, field in ((entries, "总览节点"), (sinks, "定位或孤立候选")):
                 self.require(rows is not None and all(r[field] not in ("未映射", "孤立候选", "孤立汇点候选") for r in rows or []), "完成", doc.path, "整体完成的入口及汇点均已映射")
             for rows in (methods, crosses):
@@ -704,14 +958,14 @@ class Checker:
 
     def summary(self, state: Document, coverage: dict):
         statuses = [m.get("status") for m in self.modules.values()]
-        for value in STATES:
+        for value in (STATES if self.contract == "2.4" else LEGACY_STATES):
             self.counts[value + "模块数"] = statuses.count(value) if self.module_inventory_complete and all(s in STATES for s in statuses) else None
         unresolved_sets = [m.get("unresolved") for m in self.modules.values()] + [coverage.get("unresolved")]
         if self.unresolved_complete and all(x is not None for x in unresolved_sets):
             records = [r for rows in unresolved_sets for r in rows]
             self.raw_counts["未决原始行数"] = len(records)
             self.raw_counts["阻塞原始行数"] = sum(r["类型"] == "阻塞" for r in records)
-            # 用户对 §5.1 的补充：当前未完成原始任务逐条计数，不按模块/来源去重。
+            # 当前未完成原始任务逐条计数，不按模块/来源去重。
             # 候选表是这些任务的依据/引用；STATE 只是汇总，不另计一份。
             self.counts["待办数"] = len(records) + self.extra_tasks
             self.counts["阻塞数"] = self.raw_counts["阻塞原始行数"]
@@ -724,7 +978,7 @@ class Checker:
         records = [coverage.get(k) for k in ("entries", "sinks", "methods", "crosses")]
         self.raw_counts["COVERAGE四张登记表原始行数"] = sum(len(x) for x in records) if all(x is not None for x in records) else None
         self.counts["覆盖记录数"] = self.raw_counts["COVERAGE四张登记表原始行数"]
-        for key in SUMMARY_KEYS:
+        for key in (SUMMARY_KEYS if self.contract == "2.4" else LEGACY_SUMMARY_KEYS):
             actual = self.number(self.field(state, key, group="汇总"), state, key, "汇总")
             expected = self.counts[key]
             if expected is None:
@@ -747,8 +1001,10 @@ class Checker:
             if doc:
                 self.modules[doc.path] = {}
             else:
+                self.unreadable_modules.add(path.resolve())
                 self.module_inventory_complete = False
                 self.unresolved_complete = False
+        self.detect_contract()
         # 先建立整个模块/节点索引，引用可共享且不存在唯一父模块或固定深度。
         for path in list(self.modules):
             self.modules[path]["nodes"] = self.mermaid(self.docs[path])
@@ -765,25 +1021,64 @@ class Checker:
             doc = self.read(path)
             if doc:
                 self.local_links(doc)
-        if any(r["结果"] == "失败" for r in self.results) and any(m.get("status") in STATES[1:] for m in self.modules.values()):
-            self.record("失败", "完成", self.root, "存在 check 失败，不得以当前检查支持完成／叶子状态切换；修复后复检")
+        if any(r["结果"] == "失败" for r in self.results) and any(m.get("status") in COMPLETED for m in self.modules.values()):
+            self.record("失败", "完成", self.root, "存在 check 失败，不得以当前检查支持完成／叶子状态切换；补齐后复检")
         return self.report()
 
     def report(self):
         statuses = [r["结果"] for r in self.results]
         result = "失败" if "失败" in statuses else "未验证" if "未验证" in statuses else "通过"
         groups = {}
-        for name in ("记录", "发现", "处置", "节点", "链接", "完成", "汇总"):
+        for name in ("记录", "规范", "发现", "处置", "节点", "链接", "完成", "验收", "汇总"):
             items = [r["结果"] for r in self.results if r["范围"] == name]
             groups[name] = ("失败" if "失败" in items else "未验证" if "未验证" in items else "通过" if items else "未验证")
-        return {"机械检查": result, "范围说明": "只检查已支持且实际执行的记录契约，不证明发现完整或源码语义真实", "分项": groups, "派生计数": self.counts, "原始行数（辅助诊断）": self.raw_counts, "检查计数": dict(Counter(statuses)), "明细": self.results, "人工核验（脚本未验证）": MANUAL}
+        return {"机械检查": result, "范围说明": "只检查已支持且实际执行的记录契约，不证明发现完整或源码语义真实", "规范版本": self.contract, "读者内容指纹": self.fingerprints, "分项": groups, "派生计数": self.counts, "原始行数（辅助诊断）": self.raw_counts, "检查计数": dict(Counter(statuses)), "明细": self.results, "人工核验（脚本未验证）": MANUAL}
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="只读检查 ruan-project-reader 2.3.0 的 project-map；不会改状态。")
-    parser.add_argument("project_map", type=Path, help="含 README.md / STATE.md / COVERAGE.md / modules 的知识库目录")
+    parser = argparse.ArgumentParser(description="只读检查 ruan-project-reader 2.4.0 的 project-map 或计算指纹；不会改状态。")
+    parser.add_argument("project_map", type=Path, nargs="?", help="含 README.md / STATE.md / COVERAGE.md / modules 的知识库目录")
+    action = parser.add_mutually_exclusive_group()
+    action.add_argument("--fingerprint", type=Path, metavar="MODULE", help="只读计算单文件读者内容 SHA-256")
+    action.add_argument("--scope-fingerprint", type=Path, metavar="PROJECT_MAP", help="只读计算全部模块的 NFC/UTF-8 排序范围指纹；已有整体清单须一致")
     parser.add_argument("--json", action="store_true", help="将报告输出到标准输出；不创建 JSON 状态库")
     args = parser.parse_args(argv)
+    if args.fingerprint or args.scope_fingerprint:
+        if args.project_map:
+            parser.error("指纹入口与普通检查目录不能同时指定")
+        if args.fingerprint:
+            report = fingerprint(args.fingerprint)
+        else:
+            root = args.scope_fingerprint
+            checker = Checker(root)
+            try:
+                doc = checker.read(root / "COVERAGE.md")
+                paths = None
+                if doc and doc.section("整体验收记录") is not None:
+                    rows = checker.table(doc, "整体验收记录", SCOPE_HEADER, group="验收")
+                    if rows is None:
+                        raise ContractError("未验证", "整体清单无法解析")
+                    # Empty inactive table permits initial inventory generation.
+                    block = doc.section("整体验收记录")
+                    saved = doc.fields(block).get("整体读者内容指纹", [])
+                    inactive = saved in (["未取得"], ["未验证"], ["失效"])
+                    overall = doc.fields().get("本轮范围整体完成", [])
+                    paths = [r["模块路径"] for r in rows]
+                    if not paths and inactive and overall == ["否"]:
+                        paths = None
+                if doc is None:
+                    raise ContractError("未验证", "COVERAGE 无法读取")
+                report = scope_fingerprint(root, paths)
+                issues = [r for r in checker.results if r["结果"] != "通过"]
+                if issues:
+                    report.update(结果="失败" if any(r["结果"] == "失败" for r in issues) else "未验证", sha256=None, 说明=str(issues))
+            except (OSError, UnicodeError, ContractError) as exc:
+                report = {"文件": str(root), "规范版本": "2.4", "算法": SCOPE_ALGORITHM,
+                          "结果": getattr(exc, "status", "未验证"), "说明": str(exc), "sha256": None}
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return {"通过": 0, "失败": 1, "未验证": 2}[report["结果"]]
+    if args.project_map is None:
+        parser.error("须提供知识库路径或一个指纹入口")
     checker = Checker(args.project_map)
     try:
         report = checker.run()

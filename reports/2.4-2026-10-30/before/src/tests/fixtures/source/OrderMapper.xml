@@ -1,0 +1,15 @@
+<mapper namespace="demo.order.OrderMapper">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO orders (user_id, sku_id, qty, status, create_time)
+    VALUES (#{userId}, #{skuId}, #{qty}, #{status}, NOW())
+  </insert>
+  <select id="selectUnpaidBefore" resultType="Order">
+    SELECT * FROM orders WHERE status = 'UNPAID' AND create_time &lt; #{before}
+  </select>
+  <update id="updateStatus">
+    UPDATE orders SET status = #{to} WHERE id = #{id} AND status = #{from}
+  </update>
+  <select id="selectById" resultType="Order">
+    SELECT * FROM orders WHERE id = #{id}
+  </select>
+</mapper>

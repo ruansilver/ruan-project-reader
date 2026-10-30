@@ -1,0 +1,42 @@
+[
+  {
+    "stage": "01-local-rejected",
+    "input": "远端声称完整，但源码存在重要拒绝出口。",
+    "result": "未验证"
+  },
+  {
+    "stage": "02-pending",
+    "input": "完整修订文件已收到并适用核验通过；尚无用户回答。",
+    "result": "通过"
+  },
+  {
+    "stage": "03-no-new-input",
+    "input": "两次只读检查，没有新材料或用户决定，保持全部文件及待验收状态。",
+    "result": "通过"
+  },
+  {
+    "stage": "04-conditional-response",
+    "input": "可以，但请把图改为从左到右。属于修改异议，未转正。",
+    "result": "通过"
+  },
+  {
+    "stage": "05-layout-pending",
+    "input": "新稿只有图方向变化；自行diff并核对语义，不重查全仓，重新等待新版本认可。",
+    "result": "通过"
+  },
+  {
+    "stage": "06-discovery-while-waiting",
+    "input": "模拟已发现无关入口线索，立即登记COVERAGE和未决，不展开下一模块，不改当前读者稿。",
+    "result": "未验证"
+  },
+  {
+    "stage": "07-accepted-waiting-continue",
+    "input": "通过当前保存.md。只认可当前稿，没有继续指令。",
+    "result": "未验证"
+  },
+  {
+    "stage": "08-explicit-next",
+    "input": "本稿通过，开始下一项。分别记录认可和一次继续指令；本演练不再实际启动后续阅读。",
+    "result": "未验证"
+  }
+]

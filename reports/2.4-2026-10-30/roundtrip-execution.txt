@@ -1,0 +1,7 @@
+{
+  "events": 8,
+  "source_unchanged": true,
+  "fingerprint_before_layout": "918edde82cd33bb67fceddbdf2c6e99c2de2d28145d9dfec6eff2872914c6d4b",
+  "fingerprint_after_layout": "9ee60fd6873fae11008e385500c0c0e865b159419497f310004691916cd967e3",
+  "boundary": "模拟用户/远端与手工流程应用；未测试真实Goal、独立代理停止或真实双AI往返"
+}
